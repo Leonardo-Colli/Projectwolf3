@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditProfile">
+    <TextView
+        android:id="@+id/rectangle_29_ek2"
+        android:layout_width="450dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-10dp"
+        android:background="@drawable/btn_back"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/TxtBack"
+        android:layout_width="41dp"
+        android:layout_height="24.5dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="4dp"
+        android:fontFamily="Roboto"
+        android:text="@string/_back_ek1_string"
+        android:textColor="@color/_bg__inversiones_ek2_color"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/rectangle_29_ek2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="Darker Grotesque"
+        android:gravity="center"
+        android:text="@string/profile_ek1_string"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/rectangle_29_ek2"
+        app:layout_constraintStart_toEndOf="@+id/TxtBack" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="101dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/user_image"
+            android:layout_width="match_parent"
+            android:layout_height="111dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="100dp"
+            android:contentDescription="mask_group"
+            android:foregroundGravity="center"
+            android:src="@drawable/ic_pup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/fullname"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#ffffff"
+            android:fontFamily="Roboto"
+            android:text="@string/marycruz_chávez_fernández_string"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_image" />
+
+
+        <View
+            android:id="@+id/line_32"
+            android:layout_width="230dp"
+            android:layout_height="1dp"
+            android:layout_below="@+id/user_image"
+            android:background="@drawable/line_32_shape"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fullname" />
+
+        <TextView
+            android:id="@+id/nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_below="@+id/line_32"
+            android:layout_marginTop="4dp"
+            android:fontFamily="Roboto"
+            android:text="@string/nombre_string"
+            android:textColor="@color/correo_electr_nico_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.271"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fullname" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nombre"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#ffffff"
+            android:fontFamily="Roboto"
+            android:text="@string/me_marycruz_hotmail_com_string"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nombre" />
+
+        <View
+            android:id="@+id/line_34"
+            android:layout_width="230dp"
+            android:layout_height="1dp"
+            android:layout_below="@+id/email"
+            android:background="@drawable/line_32_shape"
+            app:layout_constraintBottom_toBottomOf="@+id/email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <TextView
+            android:id="@+id/correo_electr_nico"
+            android:layout_width="92dp"
+            android:layout_height="19dp"
+            android:layout_below="@+id/line_34"
+            android:layout_marginTop="4dp"
+            android:fontFamily="Roboto"
+            android:text="@string/correo_electrónico_string"
+            android:textColor="@color/correo_electr_nico_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line_34" />
+
+        <EditText
+            android:id="@+id/lada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="Roboto"
+            android:hint="@string/lada_ejemplo"
+            android:inputType="numberSigned"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.269"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/correo_electr_nico"
+            tools:targetApi="jelly_bean" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nombre"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#ffffff"
+            android:fontFamily="Roboto"
+            android:text="@string/me_marycruz_hotmail_com_string"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/lada"
+            app:layout_constraintTop_toBottomOf="@+id/correo_electr_nico" />
+
+        <TextView
+            android:id="@+id/n_mero_celular"
+            android:layout_width="78dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="Roboto"
+            android:text="@string/número_celular_string"
+            android:textColor="@color/correo_electr_nico_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.309"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/username" />
+
+        <View
+            android:id="@+id/line_35"
+            android:layout_width="170dp"
+            android:layout_height="1dp"
+            android:layout_below="@+id/email"
+            android:background="@drawable/line_32_shape"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.605"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/username" />
+
+        <TextView
+            android:id="@+id/cancelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/poppinsmedium"
+            android:text="@string/cancelar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/n_mero_celular"
+            tools:targetApi="jelly_bean" />
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/btn_logout"
+            android:text="@string/guardar_cambios_string"
+            android:textColor="#ffffff"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

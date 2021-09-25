@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#607D8B</color>
+    <color name="purple_700">#009688</color>
+    <color name="purple_900">#033536</color>
+    <color name="blue">#000050</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="dark_green">#285000</color>
+
+    <color name="warning">#B33A3A</color>
+
+    <!-- Text color for the details of the earthquake in the list item -->
+    <color name="textDetails">#B4BAC0</color>
+
+    <!-- Text color for the primary location of the earthquake in the list item -->
+    <color name="textPrimary">#2B3D4D</color>
+
+    <!-- Magnitude circle color for an earthquake with magnitude between 4 and 5 -->
+    <color name="yellow">#F5A623</color>
+
+    <!-- Text color for the primary location of the earthquake in the list item -->
+    <color name="purple_800">#2B3D4D</color>
+
+    <!-- Magnitude circle color for an earthquake with magnitude between 8 and 9 -->
+    <color name="live_red">#E13A20</color>
+    <color name="_bg__inversiones_ek2_color">#FFFFFF</color>
+    <color name="rectangle_30_color">#E3E3E3</color>
+    <color name="ganancia_color">#000000</color>
+    <color name="rectangle_19_color">#C4C4C4</color>
+    <color name="_rectangle_20_color">#040212</color>
+    <color name="name_color">#170547</color>
+    <color name="rectangle_28_color">#050212</color>
+    <color name="ellipse_4_color">#ffffff</color>
+    <color name="____3_97_color">#AB5C00</color>
+    <color name="____14_89_color">#88007A</color>
+    <color name="rectangle_23_color">#D0CED6</color>
+    <color name="correo_electr_nico_color">#7C7C7C</color>
+    <color name="line_30_color">#8C7CD1</color>
+    <color name="___ek1_color">#110545</color>
+    <color name="rectangle_23_ek3_color">#BFB2DB</color>
+    <color name="_bg__pantalla_principal_ek2_color">#0F0822</color>
+    <color name="rectangle_16_color">#FF710A</color>
+    <color name="rectangle_17_color">#B811BC</color>
+    <color name="rectangle_2_color">#EBEEF1</color>
+    <color name="___olvidaste_tu_contrase_a__color">#353535</color>
+    <color name="rectangle_4_color">#F8F8F8</color>
+    <color name="rectangle_1_color">#EBEDF1</color>
+    <color name="btn_registro">#0F0822</color>
+</resources>

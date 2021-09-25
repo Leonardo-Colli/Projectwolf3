@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".NuevoAhorro">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/poppinsbold"
+        android:gravity="center"
+        android:text="@string/nuevo_ahorro"
+        android:textColor="@color/purple_700"
+        android:textSize="30sp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/objective"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:hint="@string/objetivo"
+        android:textSize="20sp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:drawableEnd="@drawable/ic_objectivo"
+        android:fontFamily="@font/poppinsmedium" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="36dp">
+        
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:id="@+id/rdbtn_semanal"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppinsmedium"
+            android:text="@string/semanal"
+            android:gravity="center"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:textSize="17sp"
+            android:layout_weight="1"
+            android:background="@drawable/rdbtn_semanal_selector"
+            android:onClick="onRdbtnClickedSemanal"/>
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:id="@+id/rdbtn_semanal_m"
+            android:textColor="@color/purple_700"
+            android:fontFamily="@font/poppinsmedium"
+            android:text="@string/quincenal"
+            android:gravity="center"
+            android:button="@android:color/transparent"
+            android:layout_weight="1"
+            android:textSize="17sp"
+            android:background="@drawable/rdbtn_semanal_selector"
+            android:onClick="onRdbtnClickedSemanal"/>
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:id="@+id/rdbtn_semanal_r"
+            android:textColor="@color/purple_700"
+            android:fontFamily="@font/poppinsmedium"
+            android:text="@string/mensual"
+            android:checked="false"
+            android:gravity="center"
+            android:button="@android:color/transparent"
+            android:layout_weight="1"
+            android:textSize="17sp"
+            android:background="@drawable/rdbtn_semanal_selector"
+            android:onClick="onRdbtnClickedSemanal" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="36dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/numero_plazos"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppinsmedium"
+            android:layout_marginStart="30dp"
+            android:layout_weight="0.75"/>
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/min_months"
+            android:inputType="numberSigned"
+            android:textSize="20sp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:id="@+id/plazos"
+            android:drawableEnd="@drawable/ic_plazos"
+            android:fontFamily="@font/poppinsmedium"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="36dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/plazo_title"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppinsmedium"
+            android:layout_marginStart="30dp"
+            android:layout_weight="0.75"/>
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/min_amount"
+            android:inputType="numberSigned"
+            android:textSize="20sp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:id="@+id/monto"
+            android:drawableEnd="@drawable/ic_pesos"
+            android:fontFamily="@font/poppinsmedium"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnLogin"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="36dp"
+        android:onClick="onSaveNote"
+        android:gravity="center"
+        android:text="@string/ahorrar" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:visibility="gone"/>
+
+
+</LinearLayout>

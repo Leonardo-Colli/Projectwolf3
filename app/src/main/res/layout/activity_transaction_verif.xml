@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".TransactionVerif">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/poppinsbold"
+        android:gravity="center"
+        android:text="Verificación"
+        android:textColor="@color/purple_700"
+        android:textSize="30sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:gravity="center"
+        android:text="Pronto, la verificación será automática. En tanto, ayúdanos a marcar a este número para verificar la transacción:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/verif_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/poppinsbold"
+        android:gravity="center"
+        android:text="@string/verif_phone_formatted"
+        android:textColor="@color/purple_700"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="36dp"
+        android:onClick="onVerifTransaction"
+        android:gravity="center"
+        android:text="Continuar" />
+
+
+</LinearLayout>

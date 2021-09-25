@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_perfil"
+            android:title="Perfil"
+            android:icon="@drawable/perfil" />
+        <item
+            android:id="@+id/nav_balance"
+            android:title="Balance"
+            android:icon="@drawable/balance"/>
+        <item
+            android:id="@+id/nav_logout"
+            android:title="Inversiones"
+            android:icon="@drawable/inversiones"/>
+
+        <item
+            android:id="@+id/nav_estrategias"
+            android:title="Estrategias"
+            android:icon="@drawable/estrategias"/>
+        <item
+            android:id="@+id/nav_guiadeuso"
+            android:title="Guia de uso"
+            android:icon="@drawable/guiadeuso"/>
+    </group>
+</menu>

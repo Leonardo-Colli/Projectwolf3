@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".VerifyPhone">
+
+    <TextView
+        android:id="@+id/verif_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:fontFamily="@font/poppinsbold"
+        android:gravity="center"
+        android:text="@string/verificacion_telefono"
+        android:textColor="@color/purple_700"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/otpNumberOne"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.526" />
+
+    <EditText
+        android:id="@+id/otpNumberOne"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:ems="10"
+        android:focusable="auto"
+        android:inputType="number"
+        android:maxLength="1"
+        android:nextFocusForward="@id/otpNumberTwo"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/verif_text" />
+
+    <EditText
+        android:id="@+id/otpNumberTwo"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="1"
+        android:nextFocusForward="@id/otpNumberThree"
+        android:textAlignment="center"
+        app:layout_constraintBaseline_toBaselineOf="@+id/otpNumberOne"
+        app:layout_constraintStart_toEndOf="@+id/otpNumberOne" />
+
+    <EditText
+        android:id="@+id/otpNumberThree"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="1"
+        android:nextFocusForward="@id/otpNumberFour"
+        android:textAlignment="center"
+        app:layout_constraintBaseline_toBaselineOf="@+id/otpNumberTwo"
+        app:layout_constraintStart_toEndOf="@+id/otpNumberTwo" />
+
+    <EditText
+        android:id="@+id/otpNumberFour"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="1"
+        android:nextFocusForward="@id/otpNumberFive"
+        android:textAlignment="center"
+        app:layout_constraintBaseline_toBaselineOf="@+id/otpNumberThree"
+        app:layout_constraintStart_toEndOf="@+id/otpNumberThree" />
+
+    <EditText
+        android:id="@+id/otpNumberFive"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="1"
+        android:nextFocusForward="@id/otpNumberSix"
+        android:textAlignment="center"
+        app:layout_constraintBaseline_toBaselineOf="@+id/otpNumberFour"
+        app:layout_constraintStart_toEndOf="@+id/otpNumberFour" />
+
+    <EditText
+        android:id="@+id/otpNumberSix"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="1"
+        android:textAlignment="center"
+        app:layout_constraintBaseline_toBaselineOf="@+id/otpNumberFive"
+        app:layout_constraintStart_toEndOf="@+id/otpNumberFive" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/otpNumberSix" />
+
+
+    <Button
+        android:id="@+id/btnVerif"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/verificar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progress"
+        app:layout_constraintVertical_bias="0.107" />
+
+
+    <Button
+        android:id="@+id/btnResend"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reenviar"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnVerif"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/profileText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="132dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="@string/editar_cuenta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnVerif"
+        tools:targetApi="jelly_bean" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

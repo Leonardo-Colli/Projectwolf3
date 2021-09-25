@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".FundBalance">
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pie_chart_balance"
+        android:layout_width="match_parent"
+        android:layout_height="450dp" />
+
+
+    <Button
+        android:id="@+id/button_withdrawal"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/button_invest"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
+        android:drawableStart="@drawable/ic_withdrawal"
+        android:text="Retirar"
+        android:textAllCaps="false"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/button_invest"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/balance_banner"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="15sp"
+        android:layout_marginEnd="10dp"
+        android:drawableStart="@drawable/ic_pesos"
+        android:text="Invertir"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/button_profile"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:text="Perfil"
+        android:drawableStart="@drawable/ic_user"
+        android:layout_above="@id/balance_banner"
+        android:layout_toEndOf="@id/button_invest"
+        android:textSize="15sp"
+        android:layout_marginStart="10dp"
+        android:textAllCaps="false"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"/>
+
+
+    <TextView
+        android:id="@+id/balance_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppinsmedium"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:background="@color/purple_900"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Balance: \$0"
+        android:textSize="20sp"
+        android:textColor="@color/white"/>
+
+</RelativeLayout>

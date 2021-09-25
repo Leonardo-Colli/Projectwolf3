@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.project_wolf_3">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:theme="@style/Theme.ProjectWolf3">
+        <activity
+            android:name=".CheckoutActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar"
+            />
+        <activity
+            android:name=".BalanceTotal"
+            android:theme="@style/Theme.Design.Light.NoActionBar"
+            />
+        <activity
+            android:name=".card"
+            android:theme="@style/Theme.Design.Light.NoActionBar"/>
+        <activity
+            android:name=".NewWithdrawal"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name=".TransactionVerif"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name=".NewSaving"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name=".FundTransactions"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name=".UserProfile"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name=".EditProfile"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name=".LogIn"
+            android:exported="true"
+            android:theme="@style/Theme.Design.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+
+            android:name=".SignUp"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name=".Ahorro"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name=".NuevoAhorro"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name=".VerifyPhone"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+    </application>
+
+</manifest>

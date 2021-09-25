@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserProfile">
+
+    <TextView
+        android:id="@+id/rectangle_29_ek2"
+        android:layout_width="450dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-10dp"
+        android:background="@drawable/btn_back" />
+
+    <TextView
+        android:id="@+id/TxtBack"
+        android:layout_width="41dp"
+        android:layout_height="24.5dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="30dp"
+        android:layout_toStartOf="@+id/profileimg"
+        android:fontFamily="Roboto"
+        android:text="@string/_back_ek1_string"
+        android:textColor="@color/_bg__inversiones_ek2_color"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/profile_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/rectangle_29_ek2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="154dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="Darker Grotesque"
+        android:gravity="center"
+        android:text="@string/profile_ek1_string"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
+
+    <ImageView
+        android:id="@+id/profileimg"
+        android:layout_width="20.82dp"
+        android:layout_height="22.17dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="25dp"
+        android:contentDescription="vector"
+        android:src="@drawable/vector" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/user_image"
+        android:layout_width="match_parent"
+        android:layout_height="111dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="101dp"
+        android:layout_marginEnd="140dp"
+        android:contentDescription="@string/perfil_de_usuario"
+        android:src="@drawable/ic_pup" />
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="238dp"
+        android:layout_marginEnd="30dp"
+        android:fontFamily="Roboto"
+        android:text="@string/nombre"
+        android:gravity="center"
+        android:textColor="@color/ganancia_color"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/canc_n__quintana_roo"
+        android:layout_width="150dp"
+        android:layout_height="26dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="268dp"
+        android:layout_marginEnd="110dp"
+        android:fontFamily="Roboto"
+        android:gravity="center"
+        android:text="@string/canc_n__quintana_roo_string"
+        android:textColor="@color/ganancia_color"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/vector_ek12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_name"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="102dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="290dp"
+        android:contentDescription="vector_ek12"
+        android:src="@drawable/ic_map_profile" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/balance_info"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_alignBottom="@+id/canc_n__quintana_roo"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="-76dp"
+        android:background="@drawable/rectanguloperfil"
+        android:elevation="8dp">
+
+        <TextView
+            android:id="@+id/balance_ek7"
+            android:layout_width="79dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="Roboto"
+            android:text="@string/balance_ek7_string"
+            android:textColor="@color/correo_electr_nico_color"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.529" />
+
+
+        <TextView
+            android:id="@+id/user_balance"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="Roboto"
+            android:gravity="center"
+            android:text="@string/_700_00_string"
+            android:textColor="@color/ganancia_color"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.514"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.41" />
+
+        <TextView
+            android:id="@+id/mxn"
+            android:layout_width="39dp"
+            android:layout_height="26dp"
+            android:layout_alignBottom="@+id/balance_ek7"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="Roboto"
+            android:text="@string/mxn_string"
+            android:textColor="@color/ganancia_color"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toEndOf="@+id/user_balance"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.529" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/vector_ek11"
+        android:layout_width="wrap_content"
+        android:layout_height="19.44dp"
+        android:layout_below="@+id/canc_n__quintana_roo"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="99dp"
+        android:layout_marginEnd="300dp"
+        android:contentDescription="vector_ek11"
+        android:src="@drawable/ic_mail_profile" />
+
+    <TextView
+        android:id="@+id/button_email"
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:layout_below="@+id/canc_n__quintana_roo"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="102dp"
+        android:layout_marginLeft="109dp"
+        android:layout_marginTop="99dp"
+        android:layout_marginEnd="150dp"
+        android:fontFamily="Roboto"
+        android:text="@string/me_marycruz_hotmail_com_ek1_string"
+        android:textColor="@color/ganancia_color"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/button_phone"
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
+        android:layout_below="@+id/canc_n__quintana_roo"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="102dp"
+        android:layout_marginLeft="111dp"
+        android:layout_marginTop="138dp"
+        android:layout_marginEnd="150dp"
+        android:fontFamily="Roboto"
+        android:text="@string/__52_998_461_2560_ek1_string"
+        android:textColor="@color/ganancia_color"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/vector_ek13"
+        android:layout_width="21dp"
+        android:layout_height="21dp"
+        android:layout_below="@+id/canc_n__quintana_roo"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="145dp"
+        android:layout_marginEnd="300dp"
+        android:contentDescription="vector_ek13"
+        android:src="@drawable/ic_phone_profile" />
+
+    <TextView
+        android:id="@+id/phone_verif_text"
+        android:layout_width="91dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/canc_n__quintana_roo"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="143dp"
+        android:layout_marginEnd="30dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="@string/verificar"
+        android:textAlignment="center"
+        android:textColor="@color/warning"
+        android:textSize="14sp"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/email_verif_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/canc_n__quintana_roo"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="271dp"
+        android:layout_marginTop="103dp"
+        android:layout_marginEnd="49dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="@string/verificar"
+        android:textAlignment="center"
+        android:textColor="@color/warning"
+        android:textSize="14sp"
+        android:visibility="invisible" />
+
+
+    <Button
+        android:id="@+id/button_logout"
+        android:layout_width="425dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="625dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/btn_logout"
+        android:text="@string/log_out_string"
+        android:textColor="#ffffff"
+        android:textSize="14dp" />
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="58dp"
+        app:fab_addButtonColorPressed="#88007A"
+        app:fab_colorNormal="#88007A"
+        app:fab_icon="@drawable/ic_menu_float">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/editpass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="#050212"
+            app:fab_icon="@drawable/ic_pass"
+            app:fab_size="mini"
+            app:fab_title="Editar contraseña" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/editprofile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="#050212"
+            app:fab_icon="@drawable/ic_edit_profile"
+            app:fab_size="mini"
+            app:fab_title="Editar perfil" />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+
+
+
+</RelativeLayout>

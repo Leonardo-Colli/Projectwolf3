@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".LogIn">
+
+    ¿
+
+    <TextView
+        android:id="@+id/name_ek6"
+        android:layout_width="138dp"
+        android:layout_height="99dp"
+        android:layout_marginTop="47dp"
+        android:fontFamily="Darker Grotesque"
+        android:text="@string/name_ek6_string"
+        android:textColor="@color/_bg__pantalla_principal_ek2_color"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.331" />
+
+    <TextView
+        android:id="@+id/iniciar_sesi_n"
+        android:layout_width="121dp"
+        android:layout_height="34dp"
+        android:fontFamily="Roboto"
+        android:text="@string/iniciar_sesión_string"
+        android:textColor="@color/ganancia_color"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_ek6"
+        app:layout_constraintVertical_bias="0.217" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="228dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/rectangle_11_shape"
+        android:fontFamily="@font/poppinsmedium"
+        android:hint="@string/correo_electrónico_ek1_string"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputEditText
+
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/rectangle_2_shape"
+        android:fontFamily="@font/poppinsmedium"
+        android:hint="@string/contraseña_string"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintVertical_bias="0.032" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
+    <CheckBox
+        android:id="@+id/CheckRemember"
+        android:layout_width="31dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#b911bc"
+        android:buttonTint="#b911bc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
+    <TextView
+        android:id="@+id/recordarme"
+        android:layout_width="123dp"
+        android:layout_height="19.5dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="Roboto"
+        android:text="@string/recordarme_string"
+        android:textColor="@color/ganancia_color"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@+id/CheckRemember"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
+    <Button
+        android:layout_width="203dp"
+        android:layout_height="43dp"
+        android:layout_below="@+id/recordarme"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="104dp"
+        android:background="@drawable/_rectangle_3_ek1_shape"
+        android:text="@string/ingresar_string"
+        android:textColor="#FFFFFF"
+        android:id="@+id/btnLogin"
+        style="@style/Widget.AppCompat.Button.Colored"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progress"
+        app:layout_constraintVertical_bias="0.107" />
+
+
+    <TextView
+        android:id="@+id/signupText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="Roboto"
+        android:text="@string/___no_tienes_una_cuenta__regístrate_string"
+        android:textColor="@color/ganancia_color"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        tools:targetApi="jelly_bean" />
+
+    <TextView
+        android:id="@+id/forgotText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="@string/___olvidaste_tu_contraseña__string"
+        android:textColor="@color/___olvidaste_tu_contrase_a__color"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signupText"
+        tools:targetApi="jelly_bean" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
