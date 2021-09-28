@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="navigationTheme">
+        <!-- color del texto e icono seleccionado-->
+        <item name="colorPrimary">@color/yellow</item>
+        <!-- Fondo  al seleccionar-->
+        <item name="colorControlHighlight">@color/Fondo_menu</item>
+    </style>
+</resources>

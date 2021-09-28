@@ -20,7 +20,8 @@
         android:layout_width="41dp"
         android:layout_height="24.5dp"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="13dp"
         android:fontFamily="Roboto"
         android:text="@string/_back_ek1_string"
         android:textColor="@color/_bg__inversiones_ek2_color"
@@ -32,23 +33,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/profile"
+        android:id="@+id/profile_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/rectangle_29_ek2"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="32dp"
         android:fontFamily="Darker Grotesque"
         android:gravity="center"
         android:text="@string/profile_ek1_string"
         android:textColor="@color/white"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/rectangle_29_ek2"
-        app:layout_constraintStart_toEndOf="@+id/TxtBack" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -157,17 +159,18 @@
             android:id="@+id/lada"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/nombre"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="8dp"
+            android:backgroundTint="#ffffff"
             android:fontFamily="Roboto"
             android:hint="@string/lada_ejemplo"
-            android:inputType="numberSigned"
+            android:text="@string/me_marycruz_hotmail_com_string"
+            android:textColor="#000000"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.269"
+            app:layout_constraintHorizontal_bias="0.252"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/correo_electr_nico"
-            tools:targetApi="jelly_bean" />
+            app:layout_constraintTop_toBottomOf="@+id/correo_electr_nico" />
 
         <EditText
             android:id="@+id/username"
@@ -181,7 +184,7 @@
             android:textColor="#000000"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.054"
             app:layout_constraintStart_toEndOf="@+id/lada"
             app:layout_constraintTop_toBottomOf="@+id/correo_electr_nico" />
 
@@ -194,9 +197,10 @@
             android:text="@string/número_celular_string"
             android:textColor="@color/correo_electr_nico_color"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.309"
+            app:layout_constraintHorizontal_bias="0.3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/username" />
+
 
         <View
             android:id="@+id/line_35"
@@ -205,22 +209,20 @@
             android:layout_below="@+id/email"
             android:background="@drawable/line_32_shape"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.605"
+            app:layout_constraintHorizontal_bias="0.609"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/username" />
 
-        <TextView
-            android:id="@+id/cancelText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:fontFamily="@font/poppinsmedium"
-            android:text="@string/cancelar"
+        <View
+            android:id="@+id/line_36"
+            android:layout_width="23dp"
+            android:layout_height="1dp"
+            android:layout_below="@+id/email"
+            android:background="@drawable/line_32_shape"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.247"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/n_mero_celular"
-            tools:targetApi="jelly_bean" />
+            app:layout_constraintTop_toBottomOf="@+id/lada" />
 
         <Button
             android:id="@+id/buttonSave"
@@ -234,6 +236,31 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            app:fab_addButtonColorPressed="#88007A"
+            app:fab_colorNormal="#88007A"
+            app:fab_icon="@drawable/ic_menu_float"
+            app:layout_constraintBottom_toTopOf="@+id/buttonSave"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.952"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/editpass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="#050212"
+                app:fab_icon="@drawable/ic_pass"
+                app:fab_size="mini"
+                app:fab_title="Editar contraseña" />
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

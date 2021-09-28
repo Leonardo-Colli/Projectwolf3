@@ -1,103 +1,413 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".NewSaving">
+    tools:context=".NewSaving"
+    android:id="@+id/menupincipal"
+    android:theme="@style/Theme.Design.Light.NoActionBar">
 
-    <TextView
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/nav_view"
+        app:headerLayout="@layout/header"
+        android:theme="@style/navigationTheme"
+        app:menu="@menu/main_menu"
+        android:layout_gravity="start"
+        android:background="@color/cardview_light_background"
+        />
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:fontFamily="@font/poppinsbold"
-        android:gravity="center"
-        android:text="Nuevo Ahorro"
-        android:textColor="@color/purple_700"
-        android:textSize="30sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="36dp">
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/button_profile"
+            android:layout_width="17dp"
+            android:layout_height="19dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="25dp"
+            android:contentDescription="vector"
+            android:src="@drawable/vector"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/nueva_inversi_n_ek3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Número de meses: "
-            android:textSize="20sp"
-            android:fontFamily="@font/poppinsmedium"
+            android:layout_height="34dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="100dp"
+            android:fontFamily="Roboto"
+            android:gravity="center"
+            android:text="@string/nueva_inversión_ek3_string"
+            android:textColor="@color/ganancia_color"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/rectangle_23_ek1"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
             android:layout_marginStart="30dp"
-            android:layout_weight="0.75"/>
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="30dp"
+            android:alpha="0.40000000596046"
+            android:background="@drawable/rectangle_23_ek1_shape"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nueva_inversi_n_ek3" />
 
 
-        <com.google.android.material.textfield.TextInputEditText
+        <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/min_months"
-            android:inputType="numberSigned"
-            android:textSize="20sp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:id="@+id/plazos"
-            android:drawableEnd="@drawable/ic_plazos"
-            android:fontFamily="@font/poppinsmedium"
-            android:layout_weight="1"/>
-
-    </LinearLayout>
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="30dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/nueva_inversi_n_ek3"
+            tools:layout_editor_absoluteX="0dp">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="36dp">
+            <TextView
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_weight="0.75"
+                android:fontFamily="@font/poppinsmedium"
+                android:text="Número de meses: "
+                android:textSize="18sp" />
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/plazos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableEnd="@drawable/ic_plazos"
+                android:fontFamily="@font/poppinsmedium"
+                android:gravity="center"
+                android:hint="@string/min_months"
+                android:inputType="numberSigned"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+
+        <View
+            android:id="@+id/rectangle_23"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="30dp"
+            android:alpha="0.40000000596046"
+            android:background="@drawable/rectangle_23_ek1_shape"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="30dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            tools:layout_editor_absoluteX="10dp">
+
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="374dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_weight="0.75"
+                android:fontFamily="@font/poppinsmedium"
+                android:text="Monto de ahorro:"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                tools:layout_editor_absoluteX="0dp" />
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/monto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/ic_pesos"
+                android:fontFamily="@font/poppinsmedium"
+                android:gravity="center"
+                android:hint="@string/min_amount"
+                android:inputType="numberSigned"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nueva_inversi_n_ek3"
+                app:layout_constraintVertical_bias="0.369" />
+
+        </LinearLayout>
+
+
+        <View
+            android:id="@+id/rectangle_3"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="88dp"
+            android:layout_marginEnd="30dp"
+            android:alpha="0.40000000596046"
+            android:background="@drawable/rectangle_23_ek1_shape"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_23" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/comisi_n_"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Monto de ahorro:"
-            android:textSize="20sp"
-            android:fontFamily="@font/poppinsmedium"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="300dp"
+            android:fontFamily="Roboto"
+            android:text="@string/comisión__string"
+            android:textColor="@color/ganancia_color"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_23" />
+
+        <TextView
+            android:id="@+id/_1_00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="96dp"
+            android:drawableStart="@drawable/ic_pesos"
+            android:fontFamily="Roboto"
+            android:text="@string/_1_00_string"
+            android:textColor="@color/ganancia_color"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.223"
+            app:layout_constraintStart_toEndOf="@+id/comisi_n_"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <View
+            android:id="@+id/rectangle_4"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
             android:layout_marginStart="30dp"
-            android:layout_weight="0.75"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            android:alpha="0.40000000596046"
+            android:background="@drawable/rectangle_23_ek1_shape"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />
 
+        <TextView
+            android:id="@+id/monto_total_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="300dp"
+            android:fontFamily="Roboto"
+            android:text="@string/monto_total__string"
+            android:textColor="@color/ganancia_color"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />
 
-        <com.google.android.material.textfield.TextInputEditText
+        <TextView
+            android:id="@+id/_109_00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="Roboto"
+            android:text="@string/_109_00_string"
+            android:drawableStart="@drawable/ic_pesos"
+            android:textColor="@color/ganancia_color"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.213"
+            app:layout_constraintStart_toEndOf="@+id/monto_total_"
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />
+
+        <TextView
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/_rectangle_20_shape"
+            android:fontFamily="@font/poppinsmedium"
+            android:gravity="center"
+            android:text="@string/invertir_string"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_4"
+            app:layout_constraintVertical_bias="0.96" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnRegresar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rectangle_4"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="2dp"
+            app:elevation="8dp"
+            app:fab_addButtonColorPressed="@color/teal_700"
+            app:fab_colorNormal="#88007A"
+            app:fab_icon="@drawable/vector_ek34"
+            app:fab_size="mini"
+            app:layout_constraintBottom_toTopOf="@+id/btnSave"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.045"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_4"
+            app:layout_constraintVertical_bias="1.0">
+
+        </com.getbase.floatingactionbutton.FloatingActionButton>
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/nueva_inversi_n_ek3" />
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toEndOf="@+id/rectangle"
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_23" />
+
+        <View
+            android:id="@+id/rectangle"
+            android:layout_width="81dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="32dp"
+            android:alpha="0.40000000596046"
+            android:background="@drawable/fondos_estrategias"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_23" />
+
+        <TextView
+            android:id="@+id/stop_loss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="39dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:fontFamily="Roboto"
+            android:text="@string/stop_loss_string"
+            android:textColor="@color/ganancia_color"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <View
+            android:id="@+id/rectangle_2"
+            android:layout_width="51dp"
+            android:layout_height="21dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="32dp"
+            android:alpha="0.40000000596046"
+            android:background="@drawable/fondos_estrategias"
+            app:layout_constraintEnd_toStartOf="@+id/rectangle3"
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_23" />
+
+        <View
+            android:id="@+id/rectangle3"
+            android:layout_width="51dp"
+            android:layout_height="21dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="30dp"
+            android:alpha="0.40000000596046"
+            android:background="@drawable/fondos_estrategias"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_23" />
+
+        <TextView
+            android:id="@+id/_3_00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="39dp"
+            android:fontFamily="Roboto"
+            android:text="@string/_3_00_string"
+            android:textColor="@color/ganancia_color"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <TextView
+            android:id="@+id/name_ek1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/min_amount"
-            android:inputType="numberSigned"
-            android:textSize="20sp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:id="@+id/monto"
-            android:drawableEnd="@drawable/ic_pesos"
-            android:fontFamily="@font/poppinsmedium"
-            android:layout_weight="1"/>
-
-    </LinearLayout>
-
-
-    <Button
-        android:id="@+id/btnSave"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="36dp"
-        android:onClick="onSaveNote"
-        android:gravity="center"
-        android:text="@string/ahorrar" />
-
-    <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:visibility="gone"/>
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="120dp"
+            android:fontFamily="Darker Grotesque"
+            android:gravity="center"
+            android:text="@string/name_ek1_string"
+            android:textColor="@color/name_color"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/menu_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginStart="10dp"
+            android:fontFamily="Darker Grotesque"
+            android:src="@drawable/ic_menuimg"
+            android:textColor="@color/name_color"
+            android:textSize="18sp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-</LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -52,7 +52,6 @@ public class FundAdapter extends FirestoreRecyclerAdapter<FundModel, FundAdapter
 
     class TransactionViewHolder extends RecyclerView.ViewHolder {
 
-        public View mCardView;
 
         private final TextView roi_vol;
         private final TextView roi_per;
@@ -84,7 +83,7 @@ public class FundAdapter extends FirestoreRecyclerAdapter<FundModel, FundAdapter
         void onItemClick(DocumentSnapshot documentSnapshot, int position);
     }
 
-    public void setOnItemClickListener(onItemClickListener listener) {
+    public void setOnItemClickListener(FundAdapter.onItemClickListener listener) {
         this.listener = listener;
     }
 

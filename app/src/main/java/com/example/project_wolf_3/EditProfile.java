@@ -15,8 +15,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -70,7 +72,7 @@ public class EditProfile extends AppCompatActivity {
         textInputEditTextEmail = findViewById(R.id.email);
         textInputEditTextLada = findViewById(R.id.lada);
         buttonSave = findViewById(R.id.buttonSave);
-        cancel = findViewById(R.id.cancelText);
+        cancel = findViewById(R.id.TxtBack);
         textViewBack = findViewById(R.id.loginText);
         progressBar = findViewById(R.id.progress);
         profileImage = findViewById(R.id.user_image);
@@ -145,7 +147,43 @@ public class EditProfile extends AppCompatActivity {
             }
         });
 
+        FloatingActionButton ButtonPass = findViewById(R.id.editpass);
+        ButtonPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Password reset dialog
+                EditText resetPassword = new EditText(v.getContext());
 
+                AlertDialog.Builder psswdResetDialog = new AlertDialog.Builder(v.getContext());
+                psswdResetDialog.setTitle("Recuperación de contraseña");
+                psswdResetDialog.setMessage("Ingresa tu nueva contraseña, mínimo 6 dígitos");
+                psswdResetDialog.setView(resetPassword);
+
+                psswdResetDialog.setPositiveButton("Si", (dialog, which) -> {
+
+                    // Extract email and reset link
+                    String newPassword = resetPassword.getText().toString();
+                    user.updatePassword(newPassword).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(EditProfile.this, "Contraseña cambiada exitosamente", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(EditProfile.this, "Error! Al cambiar la contraseña", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                });
+
+                psswdResetDialog.setNegativeButton("No", (dialog, which) -> {
+                    // Close the dialog
+                });
+
+                psswdResetDialog.create().show();
+            }
+        });
     }
 
     @Override

@@ -11,9 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -50,19 +48,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     String HTTPMethod = "GET";
     String RequestPath = "/v3/ticker/";
     String JSONPayload = "";
+    Date pos_fund;
     TextView Balance;
     TextView fullname;
+
     ImageView profileImage;
-    Date pos_fund;
+    ImageView menuIcon;
     NavigationView navigationView;
-    Toolbar toolbar;
     DrawerLayout drawerLayout;
+
     String userID;
     String username;
     FundAdapter adapter;
     StorageReference storageReference;
     FirebaseAuth fAuth;
     FirebaseFirestore db;
+    private RecyclerView mFirestoreList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,19 +80,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         drawerLayout = findViewById(R.id.menupincipal);
         navigationView = findViewById(R.id.nav_view);
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        menuIcon = findViewById(R.id.menu_icon);
+        //toolbar = findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
-        navigationView.bringToFront();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open,R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setCheckedItem(R.id.nav_perfil);
-
+        navigationDrawer();
 
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-        RecyclerView mFirestoreList = findViewById(R.id.list);
+        mFirestoreList = findViewById(R.id.list);
         FirebaseUser user = fAuth.getCurrentUser();
         if(userID != null){
             profileImage = navigationView.getHeaderView(0).findViewById(R.id.user_image_nav);
@@ -114,12 +110,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .build();
 
             adapter = new FundAdapter(options);
-
             mFirestoreList.setHasFixedSize(true);
             mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
             mFirestoreList.setAdapter(adapter);
-
-
+            adapter.setOnItemClickListener(new FundAdapter.onItemClickListener() {
+                @Override
+                public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                    String docId = documentSnapshot.getId();
+                    Intent doc = new Intent(getApplicationContext(), FundBalance.class);
+                    doc.putExtra("id", docId);
+                    startActivity(doc);
+                }
+            });
             DocumentReference documentReference = db.collection("users").document(userID);
             ListenerRegistration listenerRegistration = documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
                 @Override
@@ -158,7 +160,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    private void navigationDrawer() {
+        navigationView.bringToFront();
+        // navigationView.setBackgroundColor(getResources().getColor(R.color.Fondo_menu));
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.nav_inversiones);
 
+        menuIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(drawerLayout.isDrawerVisible(GravityCompat.START)){
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                }else drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerVisible(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }else
+        super.onBackPressed();
+    }
 
     @Override
     protected void onStop() {
@@ -178,14 +203,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_perfil:
                 Intent colorsIntent = new Intent(MainActivity.this, UserProfile.class);
                 startActivity(colorsIntent);
-            case R.id.nav_balance:
-                //Intent numbersIntent = new Intent(MainActivity.this, HabitosListActivity.class);
-                //startActivity(numbersIntent);
                 break;
-
-            case R.id.nav_logout:
-                //mAuth.signOut();
-               // startActivity(new Intent(MainActivity.this, LogIn.class));
+            case R.id.nav_balance:
+                Intent numbersIntent = new Intent(MainActivity.this, BalanceTotal.class);
+                startActivity(numbersIntent);
+                break;
+            case R.id.nav_inversiones:
+                Intent inversionesIntent = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(inversionesIntent);
                 break;
 
         }

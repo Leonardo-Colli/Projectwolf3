@@ -1,73 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".FundBalance">
 
-    <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/pie_chart_balance"
-        android:layout_width="match_parent"
-        android:layout_height="450dp" />
-
-
-    <Button
-        android:id="@+id/button_withdrawal"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="400dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/button_invest"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="10dp"
-        android:drawableStart="@drawable/ic_withdrawal"
-        android:text="Retirar"
-        android:textAllCaps="false"
-        android:textSize="15sp" />
-
-    <Button
-        android:id="@+id/button_invest"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="190dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/balance_banner"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp"
-        android:textSize="15sp"
-        android:layout_marginEnd="10dp"
-        android:drawableStart="@drawable/ic_pesos"
-        android:text="Invertir"
-        android:textAllCaps="false" />
-
-    <Button
-        android:id="@+id/button_profile"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="190dp"
-        android:layout_height="wrap_content"
-        android:text="Perfil"
-        android:drawableStart="@drawable/ic_user"
-        android:layout_above="@id/balance_banner"
-        android:layout_toEndOf="@id/button_invest"
-        android:textSize="15sp"
-        android:layout_marginStart="10dp"
-        android:textAllCaps="false"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"/>
-
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/balance_banner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppinsmedium"
-        android:gravity="center"
-        android:layout_alignParentBottom="true"
-        android:background="@color/purple_900"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="Balance: \$0"
-        android:textSize="20sp"
-        android:textColor="@color/white"/>
+        android:id="@+id/balance_ek12"
+        android:layout_width="79dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="56dp"
+        android:fontFamily="Roboto"
+        android:text="@string/balance_ek12_string"
+        android:textColor="@color/ganancia_color"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+    <View
+        android:id="@+id/rectangle_23_ek2"
+        android:layout_width="match_parent"
+        android:layout_height="275dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="10dp"
+        android:alpha="0.40000000596046"
+        android:background="@drawable/fondo_balance_individual"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/balance_ek12" />
+
+    <TextView
+        android:id="@+id/estrategia"
+        android:layout_width="61dp"
+        android:layout_height="20.5dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="Roboto"
+        android:text="@string/estrategia_string"
+        android:textColor="@color/ganancia_color"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toStartOf="@+id/stop_loss_ek1"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/balance_ek12" />
+
+    <TextView
+        android:id="@+id/stop_loss_ek1"
+        android:layout_width="wrap_content"
+        android:layout_height="41dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="Roboto"
+        android:text="@string/stop_loss_ek1_string"
+        android:textColor="@color/ganancia_color"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/balance_ek12" />
+
+    <View
+        android:id="@+id/ellipse_4_ek1"
+        android:layout_width="78dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/ellipse_4_ek1_shape"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/estrategia" />
+
+    <TextView
+        android:id="@+id/retorno"
+        android:layout_width="71dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="Roboto"
+        android:gravity="center"
+        android:text="@string/__3_97__ek1_string"
+        android:textColor="@color/_bg__inversiones_ek2_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/estrategia" />
+
+    <TextView
+        android:id="@+id/balance_ek11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="Roboto"
+        android:text="@string/balance_ek11_string"
+        android:textColor="@color/ganancia_color"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/ellipse_4_ek1"
+        app:layout_constraintTop_toBottomOf="@+id/stop_loss_ek1" />
+
+    <TextView
+        android:id="@+id/Balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="Roboto"
+        android:text="@string/__96_03_ek1_string"
+        android:textColor="@color/ganancia_color"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/balance_ek11"
+        app:layout_constraintTop_toBottomOf="@+id/stop_loss_ek1" />
+
+    <TextView
+        android:id="@+id/Inversion"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="Roboto"
+        android:text="@string/___100_00_ek2_string"
+        android:textColor="@color/ganancia_color"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ellipse_4_ek1" />
+
+    <TextView
+        android:id="@+id/inversi_n_ek5"
+        android:layout_width="69dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="64dp"
+        android:fontFamily="Roboto"
+        android:text="@string/inversión_ek5_string"
+        android:textColor="@color/ganancia_color"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ellipse_4_ek1" />
+
+    <TextView
+        android:id="@+id/Ganancia"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="Roboto"
+        android:text="@string/____3_97_ek1_string"
+        android:textColor="@color/____3_97_color"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/Inversion"
+        app:layout_constraintTop_toBottomOf="@+id/ellipse_4_ek1" />
+
+    <TextView
+        android:id="@+id/ganancia_ek5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="64dp"
+        android:fontFamily="Roboto"
+        android:text="@string/ganancia_ek5_string"
+        android:textColor="@color/ganancia_color"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/Inversion"
+        app:layout_constraintTop_toBottomOf="@+id/ellipse_4_ek1" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="Roboto"
+        android:text="@string/date__15_septiembre_2021_ek1_string"
+        android:textColor="@color/ganancia_color"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inversi_n_ek5" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
