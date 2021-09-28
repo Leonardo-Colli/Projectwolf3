@@ -36,7 +36,7 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.balance_total);
         ImageView profile = findViewById(R.id.profileimg);
-        
+
         drawerLayout = findViewById(R.id.menupincipal);
         navigationView = findViewById(R.id.nav_view);
         menuIcon = findViewById(R.id.menu_icon);
