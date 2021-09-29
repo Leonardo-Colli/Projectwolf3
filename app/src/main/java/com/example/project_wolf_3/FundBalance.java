@@ -100,7 +100,7 @@ public class FundBalance extends AppCompatActivity implements NavigationView.OnN
 
                 @Override
                 protected void onBindViewHolder(@NonNull TransactionViewHolder holder, int position, @NonNull FundModel model) {
-                    holder.Retorno.setText(String.format("$%s", String.format("%,.1f", model.getRoi_vol())));
+                    holder.Retorno.setText(String.format("$%s", String.format("%,.1f", model.getRoi_per()*100)));
                     holder.Balance.setText(String.format("$%s", String.format("%,.2f", model.getFinal_amount())));
                     holder.Inversion.setText(String.format("$%s", String.format("%,.2f", model.getInitial_amount())));
                     holder.Ganancia.setText(String.format("$%s", String.format("%,.2f", model.getRoi_vol())));

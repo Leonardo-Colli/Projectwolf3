@@ -160,7 +160,7 @@
 
 
 				<TextView
-					android:id="@+id/__1_357_28"
+					android:id="@+id/user_balance"
 					android:layout_width="152dp"
 					android:layout_height="56dp"
 					android:layout_below="@+id/date__20_septiembre_2021"
@@ -181,7 +181,7 @@
 					android:layout_marginStart="-2dp"
 					android:layout_marginLeft="338dp"
 					android:layout_marginTop="43dp"
-					android:layout_toEndOf="@+id/__1_357_28"
+					android:layout_toEndOf="@+id/user_balance"
 					android:fontFamily="Roboto"
 					android:text="@string/mxn_ek1_string"
 					android:textColor="@color/ganancia_color"

@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -17,10 +19,17 @@ import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
+
+import java.util.Objects;
 
 public class BalanceTotal extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     NavigationView navigationView;
@@ -28,6 +37,9 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
     ImageView profileImage;
     DrawerLayout drawerLayout;
     StorageReference storageReference;
+    TextView balance;
+
+    String userID;
 
     private FirebaseFirestore firebaseFirestore;
     private RecyclerView mFirestoreList;
@@ -36,12 +48,15 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.balance_total);
         ImageView profile = findViewById(R.id.profileimg);
+        balance = findViewById(R.id.user_balance);
 
         drawerLayout = findViewById(R.id.menupincipal);
         navigationView = findViewById(R.id.nav_view);
         menuIcon = findViewById(R.id.menu_icon);
+
         mAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
+        userID = mAuth.getCurrentUser().getUid();
         navigationDrawer();
 
         profileImage = navigationView.getHeaderView(0).findViewById(R.id.user_image_nav);
@@ -52,6 +67,15 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
             @Override
             public void onSuccess(Uri uri) {
                 Picasso.get().load(uri).into(profileImage);
+            }
+        });
+        DocumentReference documentReference = firebaseFirestore.collection("users").document(userID);
+        ListenerRegistration listenerRegistration = documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                int bal = Objects.requireNonNull(value.getLong("balance")).intValue();
+                String bal_s = "$" + bal;
+                balance.setText(bal_s);
             }
         });
         profile.setOnClickListener(view -> {

@@ -125,14 +125,6 @@ public class card extends AppCompatActivity {
 
         if(fundId != null) {
 
-            DocumentReference documentReference = db.collection("users").document(userID);
-            ListenerRegistration listenerRegistration = documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-                @Override
-                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                    assert value != null;
-                    bal = value.getLong("balance");
-                }
-            });
 
             DocumentReference documentReference1 = db.collection("funds").document(userID).collection("savings").document(fundId);
             ListenerRegistration listenerRegistration1 = documentReference1.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
@@ -198,8 +190,8 @@ public class card extends AppCompatActivity {
 
 
                 //call checkout to get paymentIntentClientSecret key
-                //startCheckout();
-                //progressDialog.show();
+                startCheckout();
+                progressDialog.show();
                 onSaveNote();
 
             }
@@ -207,6 +199,15 @@ public class card extends AppCompatActivity {
     }
     public void onSaveNote(){
         Date plz_dt = Calendar.getInstance().getTime();
+
+        DocumentReference documentReference = db.collection("users").document(userID);
+        ListenerRegistration listenerRegistration = documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                assert value != null;
+                bal = value.getLong("balance");
+            }
+        });
 
         // Filter if period is null
         String plzo = plazo;
@@ -237,8 +238,11 @@ public class card extends AppCompatActivity {
                 Toast.makeText(card.this, "Error! Monto máximo: $100,000", Toast.LENGTH_SHORT).show();
             } else {
 
-                DocumentReference documentReference = db.collection("users").document(userID);
-                documentReference.update("balance", bal + amt);
+
+
+
+                double balT = bal + amt;
+                documentReference.update("balance", balT);
                 if(bal == 0.0){
                     documentReference.update("first_saving", plz_dt);
                 }

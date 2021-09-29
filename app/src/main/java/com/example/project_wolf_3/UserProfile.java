@@ -31,8 +31,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-import java.util.Objects;
-
 public class UserProfile extends AppCompatActivity {
 
 
@@ -111,9 +109,7 @@ public class UserProfile extends AppCompatActivity {
                     fullname.setText(value.getString("fullname"));
                     //rank.setText(String.format("Rango: %s", value.getString("rank")));
 
-                    int bal = Objects.requireNonNull(value.getLong("balance")).intValue();
-                    String bal_s = "$" + bal;
-                    balance.setText(bal_s);
+
 
                     // Email - extract first 10 characters
                     email_all = value.getString("email");
