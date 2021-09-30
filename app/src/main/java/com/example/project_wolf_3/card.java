@@ -123,6 +123,8 @@ public class card extends AppCompatActivity {
                 .build();
         retrofitInterface = retrofit.create(RetrofitInterface.class);
 
+
+
         if(fundId != null) {
 
 
@@ -168,7 +170,6 @@ public class card extends AppCompatActivity {
                 //map.put("price", num2);
                 itemList.add(map);
                 payMap.put("item",itemList);
-
 
                 retrofit2.Call<ValueResult> call = retrofitInterface.executeResult(payMap);
                 call.enqueue(new retrofit2.Callback<ValueResult>() {
