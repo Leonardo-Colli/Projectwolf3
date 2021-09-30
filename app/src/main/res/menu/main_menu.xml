@@ -4,24 +4,24 @@
         <item
             android:id="@+id/nav_perfil"
             android:title="Perfil"
-            android:icon="@drawable/perfil"
+            android:icon="@drawable/ic_perfil2"
             />
         <item
             android:id="@+id/nav_balance"
             android:title="Balance"
-            android:icon="@drawable/balance"/>
+            android:icon="@drawable/ic_grafica"/>
         <item
             android:id="@+id/nav_inversiones"
             android:title="Inversiones"
-            android:icon="@drawable/inversiones"/>
+            android:icon="@drawable/ic_inversionescheck"/>
 
         <item
             android:id="@+id/nav_estrategias"
             android:title="Estrategias"
-            android:icon="@drawable/estrategias"/>
+            android:icon="@drawable/ic_estrategias"/>
         <item
             android:id="@+id/nav_guiadeuso"
             android:title="Guia de uso"
-            android:icon="@drawable/guiadeuso"/>
+            android:icon="@drawable/ic_mas"/>
     </group>
 </menu>

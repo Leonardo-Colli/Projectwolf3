@@ -20,15 +20,15 @@
         android:layout_width="41dp"
         android:layout_height="24.5dp"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="18dp"
         android:layout_marginLeft="19dp"
         android:layout_marginTop="13dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="42dp"
         android:layout_toStartOf="@+id/profileimg"
         android:fontFamily="Roboto"
         android:text="@string/_back_ek1_string"
         android:textColor="@color/_bg__inversiones_ek2_color"
-        android:textSize="13sp"
+        android:textSize="14sp"
         android:textStyle="bold" />
 
     <TextView
@@ -52,25 +52,26 @@
 
     <ImageView
         android:id="@+id/profileimg"
-        android:layout_width="20.82dp"
-        android:layout_height="22.17dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginEnd="16dp"
         android:contentDescription="vector"
-        android:src="@drawable/vector" />
+        android:src="@drawable/vector"
+        tools:ignore="ImageContrastCheck,ImageContrastCheck" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/user_image"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="wrap_content"
+        android:layout_height="170dp"
         android:layout_below="@+id/rectangle_29_ek2"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="130dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="110dp"
         android:contentDescription="@string/perfil_de_usuario"
         android:src="@drawable/ic_pup" />
 
@@ -112,9 +113,9 @@
         android:layout_below="@+id/user_name"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="102dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="290dp"
+        android:layout_marginStart="83dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="309dp"
         android:contentDescription="vector_ek12"
         android:src="@drawable/ic_map_profile" />
 
@@ -137,7 +138,7 @@
             android:layout_width="79dp"
             android:layout_height="34dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="Roboto"
             android:text="@string/balance_ek7_string"
             android:textColor="@color/correo_electr_nico_color"
@@ -163,10 +164,10 @@
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.514"
+            app:layout_constraintHorizontal_bias="0.564"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.41" />
+            app:layout_constraintVertical_bias="0.205" />
 
         <TextView
             android:id="@+id/mxn"
@@ -175,7 +176,7 @@
             android:layout_alignBottom="@+id/balance_ek7"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
             android:fontFamily="Roboto"
             android:text="@string/mxn_string"
@@ -183,7 +184,7 @@
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintHorizontal_bias="0.113"
             app:layout_constraintStart_toEndOf="@+id/user_balance"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.529" />
@@ -193,12 +194,12 @@
     <ImageView
         android:id="@+id/vector_ek11"
         android:layout_width="wrap_content"
-        android:layout_height="19.44dp"
+        android:layout_height="21.44dp"
         android:layout_below="@+id/canc_n__quintana_roo"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="51dp"
-        android:layout_marginTop="99dp"
+        android:layout_marginTop="97dp"
         android:layout_marginEnd="300dp"
         android:contentDescription="vector_ek11"
         android:src="@drawable/ic_mail_profile" />
@@ -213,11 +214,11 @@
         android:layout_marginStart="102dp"
         android:layout_marginLeft="109dp"
         android:layout_marginTop="100dp"
-        android:layout_marginEnd="150dp"
+        android:layout_marginEnd="120dp"
         android:fontFamily="Roboto"
         android:text="@string/me_marycruz_hotmail_com_ek1_string"
         android:textColor="@color/ganancia_color"
-        android:textSize="14sp" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/button_phone"
@@ -228,23 +229,23 @@
         android:layout_alignParentEnd="true"
         android:layout_marginStart="102dp"
         android:layout_marginLeft="111dp"
-        android:layout_marginTop="138dp"
-        android:layout_marginEnd="150dp"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="140dp"
         android:fontFamily="Roboto"
         android:text="@string/__52_998_461_2560_ek1_string"
         android:textColor="@color/ganancia_color"
-        android:textSize="14sp" />
+        android:textSize="16sp" />
 
     <ImageView
         android:id="@+id/vector_ek13"
         android:layout_width="21dp"
-        android:layout_height="21dp"
+        android:layout_height="23dp"
         android:layout_below="@+id/canc_n__quintana_roo"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="145dp"
-        android:layout_marginEnd="300dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="154dp"
+        android:layout_marginEnd="301dp"
         android:contentDescription="vector_ek13"
         android:src="@drawable/ic_phone_profile" />
 
@@ -298,12 +299,12 @@
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="84dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="2dp"
-        android:layout_marginRight="2dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
         android:layout_marginBottom="57dp"
         app:fab_addButtonColorPressed="#88007A"
         app:fab_colorNormal="#88007A"
