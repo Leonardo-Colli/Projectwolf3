@@ -3,6 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Marycruz/OneDrive/Documentos/GitHub/Projectwolf3/app/src/main/res/drawable-v24/_rectangle_3_ek1_shape.xml" value="0.1125" />
+        <entry key="..\:/Users/Marycruz/OneDrive/Documentos/GitHub/Projectwolf3/app/src/main/res/drawable/perfilicono.xml" value="0.2203125" />
+        <entry key="..\:/Users/Marycruz/OneDrive/Documentos/GitHub/Projectwolf3/app/src/main/res/drawable/rectangle_23_ek1_shape.xml" value="0.1125" />
+        <entry key="..\:/Users/Marycruz/OneDrive/Documentos/GitHub/Projectwolf3/app/src/main/res/layout/activity_card.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Marycruz/OneDrive/Documentos/GitHub/Projectwolf3/app/src/main/res/layout/activity_detail.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Marycruz/OneDrive/Documentos/GitHub/Projectwolf3/app/src/main/res/layout/activity_edit_profile.xml" value="0.4740024183796856" />
+        <entry key="..\:/Users/Marycruz/OneDrive/Documentos/GitHub/Projectwolf3/app/src/main/res/layout/activity_fund_balance.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Marycruz/OneDrive/Documentos/GitHub/Projectwolf3/app/src/main/res/layout/activity_fund_transactions.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Marycruz/OneDrive/Documentos/GitHub/Projectwolf3/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Marycruz/OneDrive/Documentos/GitHub/Projectwolf3/app/src/main/res/layout/activity_new_saving.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Marycruz/OneDrive/Documentos/GitHub/Projectwolf3/app/src/main/res/layout/activity_new_withdrawal.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Marycruz/OneDrive/Documentos/GitHub/Projectwolf3/app/src/main/res/layout/activity_sign_up.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Marycruz/OneDrive/Documentos/GitHub/Projectwolf3/app/src/main/res/layout/activity_transaction_verif.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Marycruz/OneDrive/Documentos/GitHub/Projectwolf3/app/src/main/res/layout/activity_user_profile.xml" value="0.5" />
+        <entry key="..\:/Users/Marycruz/OneDrive/Documentos/GitHub/Projectwolf3/app/src/main/res/layout/animacion_entrada.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Marycruz/OneDrive/Documentos/GitHub/Projectwolf3/app/src/main/res/layout/balance_total.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Marycruz/OneDrive/Documentos/GitHub/Projectwolf3/app/src/main/res/layout/header.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Marycruz/OneDrive/Documentos/GitHub/Projectwolf3/app/src/main/res/layout/list_item.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Marycruz/OneDrive/Documentos/GitHub/Projectwolf3/app/src/main/res/layout/nuevo_ahorro.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Marycruz/OneDrive/Documentos/GitHub/Projectwolf3/app/src/main/res/layout/pago.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Marycruz/OneDrive/Documentos/GitHub/Projectwolf3/app/src/main/res/menu/main_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/ProjectWolf3/app/src/main/res/drawable-v24/_rectangle_20_shape.xml" value="0.2703125" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/ProjectWolf3/app/src/main/res/drawable-v24/_rectangle_3_ek1_shape.xml" value="0.2703125" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/ProjectWolf3/app/src/main/res/drawable-v24/balancecirculo.xml" value="0.2703125" />
