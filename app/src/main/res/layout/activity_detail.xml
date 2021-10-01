@@ -81,9 +81,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginEnd="16dp"
         android:contentDescription="vector"
-        android:src="@drawable/vector"
+        android:src="@drawable/ic_perfilinicial"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -125,13 +125,13 @@
         android:id="@+id/btnRegresar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginStart="288dp"
+        android:layout_marginBottom="48dp"
         app:elevation="8dp"
         app:fab_addButtonColorPressed="@color/teal_700"
         app:fab_colorNormal="#88007A"
-        app:fab_icon="@drawable/vector_ek34"
-        app:fab_size="mini"
+        app:fab_icon="@drawable/ic_backarrow"
+        app:fab_size="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
