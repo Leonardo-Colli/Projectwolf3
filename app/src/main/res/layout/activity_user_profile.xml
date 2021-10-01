@@ -57,7 +57,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="9dp"
-        android:layout_marginEnd="19dp"
+        android:layout_marginEnd="15dp"
         android:contentDescription="vector"
         android:src="@drawable/ic_perfilinicial"
         tools:ignore="ImageContrastCheck,ImageContrastCheck" />
@@ -108,13 +108,13 @@
 
     <ImageView
         android:id="@+id/vector_ek12"
-        android:layout_width="34dp"
-        android:layout_height="56dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/user_name"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="67dp"
-        android:layout_marginTop="-10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="310dp"
         android:src="@drawable/ic_location" />
 
