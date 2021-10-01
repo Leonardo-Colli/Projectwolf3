@@ -128,7 +128,7 @@
         android:layout_marginStart="288dp"
         android:layout_marginBottom="48dp"
         app:elevation="8dp"
-        app:fab_addButtonColorPressed="@color/teal_700"
+        app:fab_addButtonColorPressed="#FF710B"
         app:fab_colorNormal="#88007A"
         app:fab_icon="@drawable/ic_backarrow"
         app:fab_size="normal"

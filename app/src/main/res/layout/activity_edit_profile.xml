@@ -238,18 +238,19 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/profile_edit_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            app:fab_addButtonColorPressed="#88007A"
-            app:fab_colorNormal="#88007A"
-            app:fab_icon="@drawable/ic_config"
             app:layout_constraintBottom_toTopOf="@+id/buttonSave"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.952"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:fab_addButtonColorNormal="#88007A"
+            app:fab_addButtonColorPressed="#FF710B"
+            app:fab_icon="@drawable/ic_config">
 
             <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/editpass"
