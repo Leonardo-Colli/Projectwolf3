@@ -79,11 +79,11 @@
 
         <ImageView
             android:id="@+id/menu_icon"
-            android:layout_width="28dp"
+            android:layout_width="31dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="Darker Grotesque"
             android:src="@drawable/ic_menuimg"
             android:textColor="@color/name_color"
