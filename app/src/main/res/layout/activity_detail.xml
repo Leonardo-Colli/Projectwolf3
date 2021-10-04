@@ -64,8 +64,9 @@
     <ImageView
         android:id="@+id/menu_icon"
         android:layout_width="wrap_content"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginStart="10dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="Darker Grotesque"
         android:src="@drawable/ic_menuimg"
         android:textColor="@color/name_color"
@@ -81,7 +82,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="13dp"
+        android:layout_marginEnd="10dp"
         android:contentDescription="vector"
         android:src="@drawable/ic_perfilinicial"
         app:layout_constraintEnd_toEndOf="parent"
@@ -101,7 +102,7 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/btnRetirar"
@@ -128,7 +129,7 @@
         android:layout_marginStart="288dp"
         android:layout_marginBottom="48dp"
         app:elevation="8dp"
-        app:fab_addButtonColorPressed="#FF710B"
+        app:fab_addButtonColorPressed="#FF5D00"
         app:fab_colorNormal="#88007A"
         app:fab_icon="@drawable/ic_backarrow"
         app:fab_size="normal"
