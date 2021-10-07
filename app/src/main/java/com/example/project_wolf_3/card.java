@@ -80,9 +80,9 @@ public class card extends AppCompatActivity {
     private Object currency;
     //declare stripe
     private Stripe stripe;
-
+    public  ArrayList<Object> listardata = new ArrayList<>();
     Double amountDouble=null;
-
+    public Double precioFinal;
     private OkHttpClient httpClient;
 
     static ProgressDialog progressDialog;
@@ -171,7 +171,7 @@ public class card extends AppCompatActivity {
                 itemList.add(map);
                 payMap.put("item",itemList);
 
-                retrofit2.Call<ValueResult> call = retrofitInterface.executeResult(payMap);
+               /* retrofit2.Call<ValueResult> call = retrofitInterface.executeResult(payMap);
                 call.enqueue(new retrofit2.Callback<ValueResult>() {
                     @Override
                     public void onResponse(retrofit2.Call<ValueResult> call, retrofit2.Response<ValueResult> response) {
@@ -186,7 +186,7 @@ public class card extends AppCompatActivity {
                     public void onFailure(retrofit2.Call<ValueResult> call, Throwable t) {
                         Toast.makeText(card.this, "Error", Toast.LENGTH_LONG).show();
                     }
-                });
+                });*/
                 Toast.makeText(card.this,"Dinero: "+amountDouble, Toast.LENGTH_LONG).show();
 
 
@@ -227,7 +227,7 @@ public class card extends AppCompatActivity {
         int plz = Integer.parseInt(plzo);
         // Filter number of payments
         if(plz < 6) {
-            Toast.makeText(card.this, "Error! Plazo mínimo: 6 meses", Toast.LENGTH_SHORT).show();
+            Toast.makeText(card.this, "Error! Plajzo mínimo: 6 meses", Toast.LENGTH_SHORT).show();
         } else if(plz > 36) {
             Toast.makeText(card.this, "Error! Plazo máximo: 3 años", Toast.LENGTH_SHORT).show();
         } else {
@@ -266,7 +266,9 @@ public class card extends AppCompatActivity {
                 if(fundId != null) {
                     double mix_new = amt/(bal + amt);
 
-                    double btc_p0_new = 1010000;
+
+
+                    double btc_p0_new = 100000;
                     double eth_p0_new = 36300;
                     double alt_p0_new = 1250;
                     double final_amount = btc_amt + btc_amt_new + eth_amt + eth_amt_new + alt_amt + alt_amt_new;
