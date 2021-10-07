@@ -52,14 +52,14 @@
 
         <ImageView
             android:id="@+id/button_profile"
-            android:layout_width="20.82dp"
-            android:layout_height="22.17dp"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="25dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="14dp"
             android:contentDescription="vector"
-            android:src="@drawable/vector" />
+            android:src="@drawable/ic_perfilinicial" />
 
         <TextView
             android:id="@+id/name_ek1"
@@ -79,9 +79,11 @@
 
         <ImageView
             android:id="@+id/menu_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_width="31dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="Darker Grotesque"
             android:src="@drawable/ic_menuimg"
             android:textColor="@color/name_color"
@@ -97,12 +99,13 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="2dp"
-        android:layout_marginRight="2dp"
-        android:layout_marginBottom="60dp"
-        app:fab_addButtonColorPressed="@color/teal_700"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
+        android:layout_marginBottom="53dp"
+        android:background="@drawable/degradado"
+        app:fab_colorNormal="@color/purple_700"
         app:fab_icon="@drawable/ic_baseline_add_24"
-        app:fab_size="mini">
+        app:fab_size="normal">
 
     </com.getbase.floatingactionbutton.FloatingActionButton>
 

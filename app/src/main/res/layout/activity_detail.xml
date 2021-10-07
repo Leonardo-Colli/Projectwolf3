@@ -64,8 +64,9 @@
     <ImageView
         android:id="@+id/menu_icon"
         android:layout_width="wrap_content"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginStart="10dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="14dp"
         android:fontFamily="Darker Grotesque"
         android:src="@drawable/ic_menuimg"
         android:textColor="@color/name_color"
@@ -76,14 +77,14 @@
 
     <ImageView
         android:id="@+id/button_profile"
-        android:layout_width="20.82dp"
-        android:layout_height="22.17dp"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginEnd="10dp"
         android:contentDescription="vector"
-        android:src="@drawable/vector"
+        android:src="@drawable/ic_perfilinicial"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -101,7 +102,7 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/btnRetirar"
@@ -125,13 +126,13 @@
         android:id="@+id/btnRegresar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginStart="288dp"
+        android:layout_marginBottom="48dp"
         app:elevation="8dp"
-        app:fab_addButtonColorPressed="@color/teal_700"
+        app:fab_addButtonColorPressed="#FF5D00"
         app:fab_colorNormal="#88007A"
-        app:fab_icon="@drawable/vector_ek34"
-        app:fab_size="mini"
+        app:fab_icon="@drawable/ic_backarrow"
+        app:fab_size="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
