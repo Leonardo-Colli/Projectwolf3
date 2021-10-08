@@ -37,6 +37,7 @@ public class UserProfile extends AppCompatActivity {
     TextView fullname, balance, rank, verif_phone, verif_email, phone, email, back;
     Button logout, password, profile;
     String username, lada, email_all;
+    Double balancetotal;
 
     ImageView profileImage;
 
@@ -68,6 +69,7 @@ public class UserProfile extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+
 
         storageReference = FirebaseStorage.getInstance().getReference();
         StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
@@ -104,6 +106,9 @@ public class UserProfile extends AppCompatActivity {
                     assert value != null;
                     username = value.getString("username");
                     phone.setText(username);
+
+                    balancetotal = value.getDouble("balance");
+                    balance.setText(String.valueOf(balancetotal));
 
                     lada = value.getString("lada");
                     fullname.setText(value.getString("fullname"));

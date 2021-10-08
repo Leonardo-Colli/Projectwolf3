@@ -37,7 +37,7 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
     ImageView profileImage;
     DrawerLayout drawerLayout;
     StorageReference storageReference;
-    TextView balance;
+    TextView balance, inversion;
 
     String userID;
 
@@ -49,6 +49,7 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.balance_total);
         ImageView profile = findViewById(R.id.profileimg);
         balance = findViewById(R.id.user_balance);
+        inversion = findViewById(R.id.inversion);
 
         drawerLayout = findViewById(R.id.menupincipal);
         navigationView = findViewById(R.id.nav_view);
@@ -75,9 +76,13 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 int bal = Objects.requireNonNull(value.getLong("balance")).intValue();
                 String bal_s = "$" + bal;
+                int inv = Objects.requireNonNull(value.getLong("Inversion")).intValue();
+                String inv_s = "$" + inv;
+                inversion.setText(inv_s);
                 balance.setText(bal_s);
             }
         });
+
         profile.setOnClickListener(view -> {
             Intent colorsIntent = new Intent(BalanceTotal.this, UserProfile.class);
             startActivity(colorsIntent);

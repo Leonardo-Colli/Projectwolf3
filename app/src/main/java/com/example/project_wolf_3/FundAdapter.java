@@ -32,10 +32,13 @@ public class FundAdapter extends FirestoreRecyclerAdapter<FundModel, FundAdapter
 
     @Override
     protected void onBindViewHolder(@NonNull TransactionViewHolder holder, int position, @NonNull FundModel model) {
-        holder.roi_vol.setText(String.format("$%s", String.format("%,.2f", model.getRoi_vol())));
+        //holder.roi_vol.setText(String.format("$%s", String.format("%,.2f", model.getRoi_vol())));
         holder.initial_amount.setText(String.format("$%s", String.format("%,.2f", model.getInitial_amount())));
         holder.final_amount.setText(String.format("$%s", String.format("%,.2f", model.getFinal_amount())));
-        holder.roi_per.setText(String.format("%s%%", String.format("%,.2f", model.getRoi_per()*100)));
+        Double value = 54013.3600 + model.getRoi_vol();
+
+        holder.roi_vol.setText(String.valueOf("$ " +value));
+       holder.roi_per.setText(String.format("%s%%", String.format("%,.2f", model.getRoi_per()*100)));
         if(model.getDate() != null) {
             Date date_raw = model.getDate();
             SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");

@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -84,13 +85,13 @@ public class card extends AppCompatActivity {
     Double amountDouble=null;
     public Double precioFinal;
     private OkHttpClient httpClient;
-
+    public double inversionTotal, balanceTotal;
     static ProgressDialog progressDialog;
     FirebaseAuth mAuth;
     private FirebaseFirestore db;
     String userID, fundId;
-    double bal, btc_p0, eth_p0, alt_p0, btc_amt, eth_amt, alt_amt,
-            btc_vol, eth_vol, alt_vol, initial_amount;
+    public double bal, btc_p0, eth_p0, alt_p0, btc_amt, eth_amt, alt_amt,
+            btc_vol, eth_vol, alt_vol, initial_amount, inversion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -187,11 +188,11 @@ public class card extends AppCompatActivity {
                         Toast.makeText(card.this, "Error", Toast.LENGTH_LONG).show();
                     }
                 });*/
-                Toast.makeText(card.this,"Dinero: "+amountDouble, Toast.LENGTH_LONG).show();
+                //Toast.makeText(card.this,"Dinero: "+amountDouble, Toast.LENGTH_LONG).show();
 
 
                 //call checkout to get paymentIntentClientSecret key
-                startCheckout();
+                //startCheckout();
                 progressDialog.show();
                 onSaveNote();
 
@@ -201,148 +202,157 @@ public class card extends AppCompatActivity {
     public void onSaveNote(){
         Date plz_dt = Calendar.getInstance().getTime();
 
-        DocumentReference documentReference = db.collection("users").document(userID);
-        ListenerRegistration listenerRegistration = documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+      DocumentReference documentReference = db.collection("users").document(userID);
+        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                assert value != null;
-                bal = value.getLong("balance");
+            public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
+
+                inversion = documentSnapshot.getDouble("Inversion");
+                bal = documentSnapshot.getDouble("balance");
+                // Filter if period is null
+                String plzo = plazo;
+                if(TextUtils.isEmpty(plzo)){
+                    Toast.makeText(card.this, "Error! El plazo es necesario", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Filter if amount is null
+                String amount = cantidad;
+                if(TextUtils.isEmpty(amount)){
+                    Toast.makeText(card.this, "Error! El monto es necesario", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                int amt = Integer.parseInt(amount);
+                int plz = Integer.parseInt(plzo);
+                // Filter number of payments
+                if(plz < 6) {
+                    Toast.makeText(card.this, "Error! Plajzo mínimo: 6 meses", Toast.LENGTH_SHORT).show();
+                } else if(plz > 36) {
+                    Toast.makeText(card.this, "Error! Plazo máximo: 3 años", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    // Filter amount of payment
+                    if(amt < 100){
+                        Toast.makeText(card.this, "Error! Monto mínimo: $100", Toast.LENGTH_SHORT).show();
+                    } else if(amt > 100000) {
+                        Toast.makeText(card.this, "Error! Monto máximo: $100,000", Toast.LENGTH_SHORT).show();
+                    } else {
+
+
+
+
+                        //documentReference1.update("final_amount", balanceTotal);
+
+                        //Toast.makeText(this, "BALANCE TOTAL: "+ bal, Toast.LENGTH_LONG).show();
+                        if(bal == 0.0){
+                            documentReference.update("first_saving", plz_dt);
+                        }
+
+                        //Parameters
+
+                        double btc_mix = 0.4;
+                        double eth_mix = 0.3;
+                        double alt_mix = 0.3;
+                        double cash_com = 0.03; //comision
+                        double exch_com = 0.01; //comision
+                        double ref_com = 0.01;
+                        double own_com = 0.3;
+                        double btc_amt_new = amt * (1 - cash_com) * (1 - exch_com) * btc_mix;
+                        double eth_amt_new = amt * (1 - cash_com) * (1 - exch_com) * eth_mix;
+                        double alt_amt_new = amt * (1 - cash_com) * (1 - exch_com) * alt_mix;
+                        double fin_amt_new = btc_amt_new + eth_amt_new + alt_amt_new;
+
+
+                        if(fundId != null) {
+                            double mix_new = amt/(bal + amt);
+
+
+
+                            double btc_p0_new = 100000; // cambia
+                            double eth_p0_new = 36300;
+                            double alt_p0_new = 1250; //ada
+                            double final_amount = btc_amt + btc_amt_new + eth_amt + eth_amt_new + alt_amt + alt_amt_new;
+
+                            DocumentReference documentReference1 = db.collection("funds").document(userID).collection("savings").document(fundId);
+
+                            documentReference1.update("btc_p0", btc_p0*(1 - mix_new) + btc_p0_new*mix_new);
+                            documentReference1.update("eth_p0", eth_p0*(1 - mix_new) + eth_p0_new*mix_new);
+                            documentReference1.update("alt_p0", alt_p0*(1 - mix_new) + alt_p0_new*mix_new);
+
+                            documentReference1.update("btc_amt", btc_amt + btc_amt_new);
+                            documentReference1.update("eth_amt", eth_amt + eth_amt_new);
+                            documentReference1.update("alt_amt", alt_amt + alt_amt_new);
+
+                            documentReference1.update("btc_vol", btc_vol + btc_amt_new/btc_p0_new);
+                            documentReference1.update("eth_vol", eth_vol + eth_amt_new/eth_p0_new);
+                            documentReference1.update("alt_vol", alt_vol + alt_amt_new/alt_p0_new);
+
+                            //Esto si cambia
+                            documentReference1.update("initial_amount", initial_amount + amt);
+                            documentReference1.update("final_amount", final_amount);
+                            documentReference1.update("roi_per", (final_amount - initial_amount - amt) / (initial_amount + amt));
+                            documentReference1.update("roi_vol", final_amount - initial_amount - amt);
+
+                        }else {
+
+
+                            double btc_p0_new = 1000000;
+                            double eth_p0_new = 36000;
+                            double alt_p0_new = 1000;
+
+                            inversionTotal = inversion + amt;
+                            documentReference.update("Inversion", inversionTotal);
+                            balanceTotal = bal + fin_amt_new;
+                            documentReference.update("balance", balanceTotal);
+
+
+                            // Create new saving
+                            Map<String, Object> saving = new HashMap<>();
+                            saving.put("date", plz_dt);
+                            saving.put("months", plz);
+                            saving.put("initial_amount", amt);
+                            saving.put("final_amount", fin_amt_new);
+                            saving.put("roi_per", (fin_amt_new - amt) / amt);
+                            saving.put("roi_vol", fin_amt_new - amt);
+
+                            saving.put("btc_mix", btc_mix);
+                            saving.put("eth_mix", eth_mix);
+                            saving.put("alt_mix", alt_mix);
+
+                            saving.put("btc_amt", btc_amt_new);
+                            saving.put("eth_amt", eth_amt_new);
+                            saving.put("alt_amt", alt_amt_new);
+
+                            saving.put("btc_vol", btc_amt_new/btc_p0_new);
+                            saving.put("eth_vol", eth_amt_new/eth_p0_new);
+                            saving.put("alt_vol", alt_amt_new/alt_p0_new);
+
+                            saving.put("btc_p0", btc_p0_new);
+                            saving.put("eth_p0", eth_p0_new);
+                            saving.put("alt_p0", alt_p0_new);
+
+                            saving.put("btc_pC", btc_p0_new);
+                            saving.put("eth_pC", eth_p0_new);
+                            saving.put("alt_pC", alt_p0_new);
+
+                            saving.put("cash_com", cash_com);
+                            saving.put("exch_com", exch_com);
+                            saving.put("ref_com", ref_com);
+                            saving.put("own_com", own_com);
+
+                            db.collection("funds").document(userID).collection("savings").document(String.valueOf(plz_dt)).set(saving)
+                                    .addOnSuccessListener(aVoid -> Toast.makeText(card.this, "Ahorro Guardado", Toast.LENGTH_SHORT).show())
+                                    .addOnFailureListener(e -> Toast.makeText(card.this, "Error! Ahorro no guardado", Toast.LENGTH_SHORT).show());
+
+                        }
+
+                        startActivity(new Intent(getApplicationContext(), TransactionVerif.class));
+
+                    }
+                }
+
             }
         });
-
-        // Filter if period is null
-        String plzo = plazo;
-        if(TextUtils.isEmpty(plzo)){
-            Toast.makeText(card.this, "Error! El plazo es necesario", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // Filter if amount is null
-        String amount = cantidad;
-        if(TextUtils.isEmpty(amount)){
-            Toast.makeText(card.this, "Error! El monto es necesario", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        int amt = Integer.parseInt(amount);
-        int plz = Integer.parseInt(plzo);
-        // Filter number of payments
-        if(plz < 6) {
-            Toast.makeText(card.this, "Error! Plajzo mínimo: 6 meses", Toast.LENGTH_SHORT).show();
-        } else if(plz > 36) {
-            Toast.makeText(card.this, "Error! Plazo máximo: 3 años", Toast.LENGTH_SHORT).show();
-        } else {
-
-            // Filter amount of payment
-            if(amt < 100){
-                Toast.makeText(card.this, "Error! Monto mínimo: $100", Toast.LENGTH_SHORT).show();
-            } else if(amt > 100000) {
-                Toast.makeText(card.this, "Error! Monto máximo: $100,000", Toast.LENGTH_SHORT).show();
-            } else {
-
-
-
-
-                double balT = bal + amt;
-                documentReference.update("balance", balT);
-                if(bal == 0.0){
-                    documentReference.update("first_saving", plz_dt);
-                }
-
-                //Parameters
-
-                double btc_mix = 0.4;
-                double eth_mix = 0.3;
-                double alt_mix = 0.3;
-                double cash_com = 0.03;
-                double exch_com = 0.01;
-                double ref_com = 0.01;
-                double own_com = 0.3;
-                double btc_amt_new = amt * (1 - cash_com) * (1 - exch_com) * btc_mix;
-                double eth_amt_new = amt * (1 - cash_com) * (1 - exch_com) * eth_mix;
-                double alt_amt_new = amt * (1 - cash_com) * (1 - exch_com) * alt_mix;
-                double fin_amt_new = btc_amt_new + eth_amt_new + alt_amt_new;
-
-
-                if(fundId != null) {
-                    double mix_new = amt/(bal + amt);
-
-
-
-                    double btc_p0_new = 100000;
-                    double eth_p0_new = 36300;
-                    double alt_p0_new = 1250;
-                    double final_amount = btc_amt + btc_amt_new + eth_amt + eth_amt_new + alt_amt + alt_amt_new;
-
-                    DocumentReference documentReference1 = db.collection("funds").document(userID).collection("savings").document(fundId);
-
-                    documentReference1.update("btc_p0", btc_p0*(1 - mix_new) + btc_p0_new*mix_new);
-                    documentReference1.update("eth_p0", eth_p0*(1 - mix_new) + eth_p0_new*mix_new);
-                    documentReference1.update("alt_p0", alt_p0*(1 - mix_new) + alt_p0_new*mix_new);
-
-                    documentReference1.update("btc_amt", btc_amt + btc_amt_new);
-                    documentReference1.update("eth_amt", eth_amt + eth_amt_new);
-                    documentReference1.update("alt_amt", alt_amt + alt_amt_new);
-
-                    documentReference1.update("btc_vol", btc_vol + btc_amt_new/btc_p0_new);
-                    documentReference1.update("eth_vol", eth_vol + eth_amt_new/eth_p0_new);
-                    documentReference1.update("alt_vol", alt_vol + alt_amt_new/alt_p0_new);
-
-                    documentReference1.update("initial_amount", initial_amount + amt);
-                    documentReference1.update("final_amount", final_amount);
-                    documentReference1.update("roi_per", (final_amount - initial_amount - amt) / (initial_amount + amt));
-                    documentReference1.update("roi_vol", final_amount - initial_amount - amt);
-
-                }else {
-
-
-                    double btc_p0_new = 1000000;
-                    double eth_p0_new = 36000;
-                    double alt_p0_new = 1000;
-
-                    // Create new saving
-                    Map<String, Object> saving = new HashMap<>();
-                    saving.put("date", plz_dt);
-                    saving.put("months", plz);
-                    saving.put("initial_amount", amt);
-                    saving.put("final_amount", fin_amt_new);
-                    saving.put("roi_per", (fin_amt_new - amt) / amt);
-                    saving.put("roi_vol", fin_amt_new - amt);
-
-                    saving.put("btc_mix", btc_mix);
-                    saving.put("eth_mix", eth_mix);
-                    saving.put("alt_mix", alt_mix);
-
-                    saving.put("btc_amt", btc_amt_new);
-                    saving.put("eth_amt", eth_amt_new);
-                    saving.put("alt_amt", alt_amt_new);
-
-                    saving.put("btc_vol", btc_amt_new/btc_p0_new);
-                    saving.put("eth_vol", eth_amt_new/eth_p0_new);
-                    saving.put("alt_vol", alt_amt_new/alt_p0_new);
-
-                    saving.put("btc_p0", btc_p0_new);
-                    saving.put("eth_p0", eth_p0_new);
-                    saving.put("alt_p0", alt_p0_new);
-
-                    saving.put("btc_pC", btc_p0_new);
-                    saving.put("eth_pC", eth_p0_new);
-                    saving.put("alt_pC", alt_p0_new);
-
-                    saving.put("cash_com", cash_com);
-                    saving.put("exch_com", exch_com);
-                    saving.put("ref_com", ref_com);
-                    saving.put("own_com", own_com);
-
-                    db.collection("funds").document(userID).collection("savings").document(String.valueOf(plz_dt)).set(saving)
-                            .addOnSuccessListener(aVoid -> Toast.makeText(card.this, "Ahorro Guardado", Toast.LENGTH_SHORT).show())
-                            .addOnFailureListener(e -> Toast.makeText(card.this, "Error! Ahorro no guardado", Toast.LENGTH_SHORT).show());
-
-                }
-
-                startActivity(new Intent(getApplicationContext(), TransactionVerif.class));
-
-            }
-        }
 
         // Parse string to int
 

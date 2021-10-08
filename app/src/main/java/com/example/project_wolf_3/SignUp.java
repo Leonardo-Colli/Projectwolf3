@@ -131,6 +131,7 @@ public class SignUp extends AppCompatActivity {
                     userMap.put("timeVerif", false);
                     userMap.put("rank", "Cachorro");
                     userMap.put("balance", 0);
+                    userMap.put("inversion", 0);
 
                     documentReference.set(userMap).addOnSuccessListener(aVoid -> {
                         Toast.makeText(SignUp.this, "Registro Exitoso", Toast.LENGTH_SHORT).show();
