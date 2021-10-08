@@ -115,7 +115,6 @@ public class UserProfile extends AppCompatActivity {
                     //rank.setText(String.format("Rango: %s", value.getString("rank")));
 
 
-
                     // Email - extract first 10 characters
                     email_all = value.getString("email");
                     assert email_all != null;
