@@ -226,4 +226,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_logros">Logros</string>
 
+    <string name="transferencia_bancaria_string">Transferencia Bancaria</string>
+    <string name="dep_sito_en_oxxo_string">Deposito en OXXO</string>
+
 </resources>

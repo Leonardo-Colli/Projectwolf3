@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuPagoActivity">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/menu_icon"
+        android:layout_width="34dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="Darker Grotesque"
+        android:src="@drawable/ic_menuimg"
+        android:textColor="@color/name_color"
+        android:textSize="18sp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/name_ek1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="120dp"
+        android:fontFamily="Darker Grotesque"
+        android:gravity="center"
+        android:text="@string/name_ek1_string"
+        android:textColor="@color/name_color"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/button_profile"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:contentDescription="vector"
+        android:src="@drawable/ic_perfilinicial"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/rectangle_23_ek1_shape"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10">
+
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.75"
+            android:fontFamily="@font/poppinsmedium"
+            android:text="Monto total:"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            tools:layout_editor_absoluteX="0dp" />
+
+
+        <TextView
+            android:id="@+id/amount_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/ic_pesos"
+            android:fontFamily="@font/poppinsmedium"
+            android:gravity="center"
+            android:hint="@string/min_amount"
+            android:inputType="numberSigned"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nueva_inversi_n_ek3"
+            app:layout_constraintVertical_bias="0.369" />
+        |
+    </LinearLayout>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Número de orden"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="123456789123456789123"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+
+    <View
+        android:id="@+id/rectangle_37"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/rectangle_37_shape"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:layout_editor_absoluteX="30dp" />
+
+    <View
+        android:id="@+id/rectangle_38"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/rectangle_37_shape"
+        app:layout_constraintTop_toBottomOf="@+id/rectangle_37"
+        tools:layout_editor_absoluteX="30dp" />
+
+    <TextView
+        android:id="@+id/transferencia_bancaria"
+        android:layout_width="156dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:fontFamily="Roboto"
+        android:text="@string/transferencia_bancaria_string"
+        android:textColor="@color/_bg__frame_1_ek2_color"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/rectangle_37"
+        app:layout_constraintStart_toStartOf="@+id/rectangle_37"
+        app:layout_constraintTop_toTopOf="@+id/rectangle_37" />
+
+    <TextView
+        android:id="@+id/dep_sito_en_oxxo"
+        android:layout_width="127dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="Roboto"
+        android:text="@string/dep_sito_en_oxxo_string"
+        android:textColor="@color/_bg__frame_1_ek2_color"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/rectangle_38"
+        app:layout_constraintStart_toStartOf="@+id/rectangle_38"
+        app:layout_constraintTop_toTopOf="@+id/rectangle_38" />
+
+    <ImageView
+        android:id="@+id/DepositoOxxo"
+        android:layout_width="19dp"
+        android:layout_height="19dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="ic_backarrow_1"
+        android:src="@drawable/ic_backarrow_1"
+        app:layout_constraintBottom_toBottomOf="@+id/rectangle_38"
+        app:layout_constraintEnd_toEndOf="@+id/rectangle_38"
+
+        app:layout_constraintTop_toTopOf="@+id/rectangle_38" />
+
+    <ImageView
+        android:id="@+id/Transferencia"
+        android:layout_width="19dp"
+        android:layout_height="19dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="ic_backarrow_2"
+        android:src="@drawable/ic_backarrow_1"
+        app:layout_constraintBottom_toBottomOf="@+id/rectangle_37"
+        app:layout_constraintEnd_toEndOf="@+id/rectangle_37"
+        app:layout_constraintTop_toTopOf="@+id/rectangle_37" />
+
+    <ImageView
+        android:id="@+id/linea_1"
+        android:layout_width="6.03dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="linea_1"
+        android:src="@drawable/linea_1"
+        app:layout_constraintBottom_toBottomOf="@+id/rectangle_38"
+        app:layout_constraintStart_toStartOf="@+id/rectangle_38"
+        app:layout_constraintTop_toTopOf="@+id/rectangle_38" />
+
+    <ImageView
+        android:id="@+id/linea_2"
+        android:layout_width="6.03dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="linea_2"
+        android:src="@drawable/linea_1"
+        app:layout_constraintBottom_toBottomOf="@+id/rectangle_37"
+        app:layout_constraintStart_toStartOf="@+id/rectangle_37"
+        app:layout_constraintTop_toTopOf="@+id/rectangle_37" />
+
+    <View
+        android:id="@+id/rectangle_3"
+        android:layout_width="233dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="30dp"
+        android:alpha="0.40000000596046"
+        android:background="@drawable/rectangle_23_ek1_shape"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rectangle_38" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Cómo funciona?"
+        app:layout_constraintBottom_toBottomOf="@+id/rectangle_3"
+        app:layout_constraintEnd_toEndOf="@+id/rectangle_3"
+        app:layout_constraintStart_toStartOf="@+id/rectangle_3"
+        app:layout_constraintTop_toTopOf="@+id/rectangle_3" />
+    <Button
+        android:id="@+id/payButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Pay with stripe"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pago"
+        android:layout_marginTop="100dp"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

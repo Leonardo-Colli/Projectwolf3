@@ -15,6 +15,14 @@
         android:theme="@style/Theme.ProjectWolf3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".TransferenciaBancaria"
+            android:exported="true"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name=".MenuPagoActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
             android:name=".GraficaActivity"
             android:exported="true"
             android:theme="@style/Theme.Design.Light.NoActionBar" />

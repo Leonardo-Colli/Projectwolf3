@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Balance = findViewById(R.id.balance_banner);
         Balance.setOnClickListener(view -> {
-            Intent numbersIntent = new Intent(MainActivity.this, BalanceTotal.class);
+            Intent numbersIntent = new Intent(MainActivity.this, MenuPagoActivity.class);
             startActivity(numbersIntent);
         });
         ImageView profile = findViewById(R.id.button_profile);

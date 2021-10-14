@@ -21,10 +21,12 @@ public class VariablesBD extends AppCompatActivity {
     public double bal, btc_p0, eth_p0, alt_p0, btc_amt, eth_amt, alt_amt,
             btc_vol, eth_vol, alt_vol, initial_amount, inversion;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         enviardatos();
+
 
     }
 
@@ -49,7 +51,7 @@ public class VariablesBD extends AppCompatActivity {
                 alt_amt = value.getLong("alt_amt").doubleValue();
                 initial_amount = value.getLong("initial_amount").doubleValue();
 
-                Intent intents = new Intent(VariablesBD.this,card.class);
+                Intent intents = new Intent(VariablesBD.this,TransferenciaBancaria.class);
                 intents.putExtra("btc_p0", btc_p0);
                 intents.putExtra("eth_p0", eth_p0);
                 intents.putExtra("alt_p0", alt_p0);
