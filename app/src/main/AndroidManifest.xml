@@ -15,11 +15,15 @@
         android:theme="@style/Theme.ProjectWolf3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".PopupActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.TemaPopup" />
+        <activity
             android:name=".TransferenciaBancaria"
             android:exported="true"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity
-            android:name=".MenuPagoActivity"
+            android:name=".DepositoActivity"
             android:exported="true"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity

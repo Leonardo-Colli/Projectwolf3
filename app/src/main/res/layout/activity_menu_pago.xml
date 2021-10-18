@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuPagoActivity">
+    tools:context=".DepositoActivity">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -101,12 +101,13 @@
             app:layout_constraintVertical_bias="0.369" />
         |
     </LinearLayout>
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Número de orden"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
@@ -115,7 +116,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:text="123456789123456789123"
         app:layout_constraintEnd_toEndOf="parent"
@@ -127,9 +128,9 @@
         android:id="@+id/rectangle_37"
         android:layout_width="match_parent"
         android:layout_height="42dp"
-        android:layout_marginTop="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/rectangle_37_shape"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:layout_editor_absoluteX="30dp" />
@@ -138,7 +139,7 @@
         android:id="@+id/rectangle_38"
         android:layout_width="match_parent"
         android:layout_height="42dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/rectangle_37_shape"
@@ -219,38 +220,30 @@
         app:layout_constraintTop_toTopOf="@+id/rectangle_37" />
 
     <View
-        android:id="@+id/rectangle_3"
+        android:id="@+id/btnComofunciona"
         android:layout_width="233dp"
         android:layout_height="33dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
         android:alpha="0.40000000596046"
         android:background="@drawable/rectangle_23_ek1_shape"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rectangle_38" />
+        app:layout_constraintTop_toBottomOf="@+id/rectangle_38"
+        app:layout_constraintVertical_bias="0.996" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="¿Cómo funciona?"
-        app:layout_constraintBottom_toBottomOf="@+id/rectangle_3"
-        app:layout_constraintEnd_toEndOf="@+id/rectangle_3"
-        app:layout_constraintStart_toStartOf="@+id/rectangle_3"
-        app:layout_constraintTop_toTopOf="@+id/rectangle_3" />
-    <Button
-        android:id="@+id/payButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Pay with stripe"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toBottomOf="@+id/btnComofunciona"
+        app:layout_constraintEnd_toEndOf="@+id/btnComofunciona"
+        app:layout_constraintStart_toStartOf="@+id/btnComofunciona"
+        app:layout_constraintTop_toTopOf="@+id/btnComofunciona" />
+
 
     <TextView
         android:id="@+id/textView10"
@@ -262,5 +255,187 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/Terminos"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:alpha="0.80000001192093"
+        android:background="@drawable/rectangle_terminos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rectangle_38" />
+    <TextView
+        android:id="@+id/t_rminos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="Roboto"
+        android:text="@string/t_rminos_string"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/Terminos"
+        app:layout_constraintStart_toStartOf="@+id/Terminos"
+        app:layout_constraintTop_toTopOf="@+id/Terminos" />
+
+    <View
+        android:id="@+id/terminosC"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="8dp"
+        android:alpha="0.80000001192093"
+        android:background="@drawable/descripcionterminos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rectangle_38" />
+
+    <TextView
+        android:id="@+id/txtbienvenido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="Bienvenido"
+        android:textColor="@color/white"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/terminosC"
+        app:layout_constraintStart_toStartOf="@+id/terminosC"
+        app:layout_constraintTop_toTopOf="@+id/terminosC"
+        app:layout_constraintVertical_bias="0.074" />
+
+    <ImageView
+        android:id="@+id/mostrarT"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_mostrar"
+        app:layout_constraintBottom_toBottomOf="@+id/Terminos"
+        app:layout_constraintEnd_toEndOf="@+id/Terminos"
+        app:layout_constraintTop_toTopOf="@+id/Terminos" />
+    <ImageView
+        android:id="@+id/ocultarT"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_ocultar"
+        app:layout_constraintBottom_toBottomOf="@+id/Terminos"
+        app:layout_constraintEnd_toEndOf="@+id/Terminos"
+        app:layout_constraintTop_toTopOf="@+id/Terminos" />
+
+    <TextView
+        android:id="@+id/txtP1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="11dp"
+        android:text='En el campo de concepto escribir la palabra "Pago"'
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/txtbienvenido" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="8dp"
+        android:layout_height="7dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="14dp"
+        app:layout_constraintStart_toStartOf="@+id/terminosC"
+        app:layout_constraintTop_toBottomOf="@+id/txtbienvenido"
+        app:srcCompat="@drawable/ic_listado" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="8dp"
+        android:layout_height="7dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/terminosC"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:srcCompat="@drawable/ic_listado" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="8dp"
+        android:layout_height="7dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="@+id/terminosC"
+        app:layout_constraintTop_toBottomOf="@+id/imageView1"
+        app:srcCompat="@drawable/ic_listado" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="8dp"
+        android:layout_height="7dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="@+id/terminosC"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:srcCompat="@drawable/ic_listado" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="8dp"
+        android:layout_height="7dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="72dp"
+        app:layout_constraintStart_toStartOf="@+id/terminosC"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:srcCompat="@drawable/ic_listado" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="3dp"
+        android:text="No se aceptan transferencia de terceros"
+        android:textColor="@color/white"
+        android:textSize="11dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView1"
+        app:layout_constraintTop_toBottomOf="@+id/txtP1" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="308dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="3dp"
+        android:text="Al colocar la orden acepta que en caso de que transfiera desde un tercero, el dinero no se rembolsa"
+        android:textColor="@color/white"
+        android:textSize="11dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="303dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="3dp"
+        android:text="Al realizar la transferencia/depósito por favor suba el comprobante de pago; al ser reflejado el depósito y recibir el comprobante se libera el activo"
+        android:textColor="@color/white"
+        android:textSize="11dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="306dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="3dp"
+        android:text="Al realizar una inversión en esta aplicación, usted declara bajo juramento que sus fondos proceden de actividades legales y de légitimo carácter mercantil, lo cual puede ser corroborado por los organismos competentes y no tienen relación alguna con actividades o acciones ilicitas"
+        android:textColor="@color/white"
+        android:textSize="11dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

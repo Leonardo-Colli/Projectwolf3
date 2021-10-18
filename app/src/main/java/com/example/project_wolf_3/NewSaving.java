@@ -93,23 +93,38 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
 
     public void EnviarDatos() {
         String plazo = ahorro_plz.getText().toString();
-        if(TextUtils.isEmpty(plazo)){
+        if (TextUtils.isEmpty(plazo)) {
             Toast.makeText(NewSaving.this, "Error! El plazo es necesario", Toast.LENGTH_SHORT).show();
             return;
         }
         String amount = ahorro_amt.getText().toString();
-        if(TextUtils.isEmpty(amount)){
+        if (TextUtils.isEmpty(amount)) {
             Toast.makeText(NewSaving.this, "Error! El monto es necesario", Toast.LENGTH_SHORT).show();
             return;
         }
-       // int amt = Integer.parseInt(amount);
-        //int plz = Integer.parseInt(plazo);
-        Intent intent = new Intent(NewSaving.this,card.class);
-        intent.putExtra("ahorro_plz", plazo);
-        intent.putExtra("ahorro_amt", amount);
-        startActivity(intent);
-    }
-
+        if (Integer.parseInt(plazo) < 6) {
+            Toast.makeText(NewSaving.this, "Error! Plazo mínimo: 6 meses", Toast.LENGTH_SHORT).show();
+            return;
+        } 
+        else if (Integer.parseInt(plazo) > 36) {
+            Toast.makeText(NewSaving.this, "Error! Plazo máximo: 3 años", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        // Filter amount of payment
+        if (Integer.parseInt(amount) < 100) {
+                Toast.makeText(NewSaving.this, "Error! Monto mínimo: $100", Toast.LENGTH_SHORT).show();
+                return;
+            } else if (Integer.parseInt(amount) > 100000) {
+                Toast.makeText(NewSaving.this, "Error! Monto máximo: $100,000", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            // int amt = Integer.parseInt(amount);
+            //int plz = Integer.parseInt(plazo);
+            Intent intent = new Intent(NewSaving.this, card.class);
+            intent.putExtra("ahorro_plz", plazo);
+            intent.putExtra("ahorro_amt", amount);
+            startActivity(intent);
+        }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

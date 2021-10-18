@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +20,7 @@
             android:textSize="18sp"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />}
         <TextView
             android:id="@+id/name_ek1"
             android:layout_width="match_parent"
@@ -60,17 +60,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Tiempo restante"
+            android:text="Tiempo restante 24 hrs"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
@@ -120,10 +118,9 @@
                 app:layout_constraintVertical_bias="0.369" />
             |
         </LinearLayout>
-
         <View
             android:id="@+id/rectangle_3"
-            android:layout_width="233dp"
+            android:layout_width="260dp"
             android:layout_height="33dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="8dp"
@@ -133,7 +130,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
         <ImageView
             android:id="@+id/linea_2"
             android:layout_width="6.03dp"
@@ -144,17 +140,15 @@
             app:layout_constraintBottom_toBottomOf="@+id/rectangle_3"
             app:layout_constraintStart_toStartOf="@+id/rectangle_3"
             app:layout_constraintTop_toTopOf="@+id/rectangle_3" />
-
         <TextView
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:text="@string/transferencia_bancaria_string"
+            android:text="@string/dep_sito_en_oxxo_string"
             app:layout_constraintBottom_toBottomOf="@+id/rectangle_3"
             app:layout_constraintStart_toStartOf="@+id/rectangle_3"
             app:layout_constraintTop_toTopOf="@+id/rectangle_3" />
-
         <View
             android:id="@+id/rectangle_37"
             android:layout_width="match_parent"
@@ -165,19 +159,17 @@
             android:background="@drawable/rectangle_37_shape"
             app:layout_constraintTop_toBottomOf="@+id/rectangle_3"
             tools:layout_editor_absoluteX="0dp" />
-
         <TextView
             android:id="@+id/textView13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="18dp"
-            android:text="Datos de Transferencia"
+            android:text="Datos para depósito"
             app:layout_constraintBottom_toBottomOf="@+id/rectangle_37"
             app:layout_constraintEnd_toEndOf="@+id/rectangle_37"
             app:layout_constraintStart_toStartOf="@+id/rectangle_37"
             app:layout_constraintTop_toTopOf="@+id/rectangle_37" />
-
         <View
             android:id="@+id/rectangle_nombre"
             android:layout_width="match_parent"
@@ -189,17 +181,39 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             />
-
         <TextView
             android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Nombre"
+            android:text="Número de Tarjeta"
             app:layout_constraintBottom_toBottomOf="@+id/rectangle_nombre"
             app:layout_constraintStart_toStartOf="@+id/rectangle_nombre"
             app:layout_constraintTop_toTopOf="@+id/rectangle_nombre" />
 
+        <TextView
+            android:id="@+id/txtnombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:text="4242 4242 4242 4242"
+            app:layout_constraintBottom_toBottomOf="@+id/rectangle_nombre"
+            app:layout_constraintEnd_toEndOf="@+id/rectangle_nombre"
+            app:layout_constraintHorizontal_bias="0.536"
+            app:layout_constraintStart_toEndOf="@+id/textView14"
+            app:layout_constraintTop_toTopOf="@+id/rectangle_nombre"
+            app:layout_constraintVertical_bias="0.478"
+            />
+        <ImageView
+            android:id="@+id/copiarNumero"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/copiar"
+            app:layout_constraintBottom_toBottomOf="@+id/rectangle_nombre"
+            app:layout_constraintEnd_toEndOf="@+id/rectangle_nombre"
+            app:layout_constraintTop_toTopOf="@+id/rectangle_nombre" />
         <View
             android:id="@+id/rectangle_cuenta"
             android:layout_width="match_parent"
@@ -210,97 +224,28 @@
             tools:layout_editor_absoluteX="16dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"/>
-
         <TextView
             android:id="@+id/textView15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Número de Cuenta"
+            android:text="Banco"
             app:layout_constraintBottom_toBottomOf="@+id/rectangle_cuenta"
             app:layout_constraintStart_toStartOf="@+id/rectangle_cuenta"
             app:layout_constraintTop_toTopOf="@+id/rectangle_cuenta" />
-
-        <View
-            android:id="@+id/rectangle_banco"
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/rectangle_37_shape_white"
-            app:layout_constraintTop_toBottomOf="@+id/rectangle_cuenta"
-            tools:layout_editor_absoluteX="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"/>
-
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Banco"
-            app:layout_constraintBottom_toBottomOf="@+id/rectangle_banco"
-            app:layout_constraintStart_toStartOf="@+id/rectangle_banco"
-            app:layout_constraintTop_toTopOf="@+id/rectangle_banco" />
-
-        <View
-            android:id="@+id/rectangle_concepto"
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/rectangle_37_shape_white"
-            app:layout_constraintTop_toBottomOf="@+id/rectangle_banco"
-            tools:layout_editor_absoluteX="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"/>
-
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Concepto de Pago"
-            app:layout_constraintBottom_toBottomOf="@+id/rectangle_concepto"
-            app:layout_constraintStart_toStartOf="@+id/rectangle_concepto"
-            app:layout_constraintTop_toTopOf="@+id/rectangle_concepto" />
-
-        <TextView
-            android:id="@+id/txtnombre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:text="Angel Leonardo Colli Ku"
-            app:layout_constraintBottom_toBottomOf="@+id/rectangle_nombre"
-            app:layout_constraintEnd_toEndOf="@+id/rectangle_nombre"
-            app:layout_constraintHorizontal_bias="0.536"
-            app:layout_constraintStart_toEndOf="@+id/textView14"
-            app:layout_constraintTop_toTopOf="@+id/rectangle_nombre"
-            app:layout_constraintVertical_bias="0.478"
-            />
-
-        <ImageView
-            android:id="@+id/copiarName"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/copiar"
-            app:layout_constraintBottom_toBottomOf="@+id/rectangle_nombre"
-            app:layout_constraintEnd_toEndOf="@+id/rectangle_nombre"
-            app:layout_constraintTop_toTopOf="@+id/rectangle_nombre" />
 
         <TextView
             android:id="@+id/txtcuenta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:text="123456789987456321"
+            android:layout_marginStart="144dp"
+            android:text="Bancomer"
             app:layout_constraintBottom_toBottomOf="@+id/rectangle_cuenta"
             app:layout_constraintStart_toEndOf="@+id/textView15"
             app:layout_constraintTop_toTopOf="@+id/rectangle_cuenta"
             app:layout_constraintVertical_bias="0.478" />
-
         <ImageView
-            android:id="@+id/copiarCuenta"
+            android:id="@+id/copiarBanco"
             android:layout_width="10dp"
             android:layout_height="10dp"
             android:layout_marginEnd="16dp"
@@ -310,48 +255,7 @@
             app:layout_constraintTop_toTopOf="@+id/rectangle_cuenta"
             app:layout_constraintVertical_bias="0.409" />
 
-        <ImageView
-            android:id="@+id/copiarBanco"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/copiar"
-            app:layout_constraintBottom_toBottomOf="@+id/rectangle_banco"
-            app:layout_constraintEnd_toEndOf="@+id/rectangle_banco"
-            app:layout_constraintTop_toTopOf="@+id/rectangle_banco"
-            app:layout_constraintVertical_bias="0.409" />
 
-        <ImageView
-            android:id="@+id/copiarConcepto"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/copiar"
-            app:layout_constraintBottom_toBottomOf="@+id/rectangle_concepto"
-            app:layout_constraintEnd_toEndOf="@+id/rectangle_concepto"
-            app:layout_constraintTop_toTopOf="@+id/rectangle_concepto"
-            app:layout_constraintVertical_bias="0.409" />
-
-        <TextView
-            android:id="@+id/txtbanco"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="108dp"
-            android:text="BBVA"
-            app:layout_constraintBottom_toBottomOf="@+id/rectangle_banco"
-            app:layout_constraintStart_toEndOf="@+id/textView16"
-            app:layout_constraintTop_toTopOf="@+id/rectangle_banco"
-            app:layout_constraintVertical_bias="0.478" />
-
-        <TextView
-            android:id="@+id/txtconcepto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:text="Pago"
-            app:layout_constraintBottom_toBottomOf="@+id/rectangle_concepto"
-            app:layout_constraintStart_toEndOf="@+id/textView17"
-            app:layout_constraintTop_toTopOf="@+id/rectangle_concepto" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnRegresar"
@@ -359,18 +263,19 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="28dp"
             app:elevation="8dp"
             app:fab_addButtonColorPressed="@color/teal_700"
             app:fab_colorNormal="#88007A"
             app:fab_icon="@drawable/ic_backarrow"
             app:fab_size="normal"
-            app:layout_constraintBottom_toTopOf="@+id/btnNotificar"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.976"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rectangle_concepto"
-            app:layout_constraintVertical_bias="1.0">
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_cuenta"
+            app:layout_constraintVertical_bias="0.867">
+
 
         </com.getbase.floatingactionbutton.FloatingActionButton>
 
@@ -412,7 +317,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rectangle_concepto"
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_cuenta"
             app:layout_constraintVertical_bias="1.0" />
         <TextView
             android:id="@+id/btnListo"
@@ -430,8 +335,8 @@
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.483"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.483"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

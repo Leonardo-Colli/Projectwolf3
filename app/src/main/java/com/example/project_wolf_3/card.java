@@ -23,13 +23,15 @@ public class card extends AppCompatActivity {
     private RetrofitInterface retrofitInterface;
     private String BASE_URL ="http://10.0.2.2:3000";
     Double price;
-    TextView amountText;
+    TextView amountText, bienvenido;
     String cantidad, plazo;
     CardInputWidget cardInputWidget;
     Button payButton;
+    View cuerpo,comofunciona;
+    ImageView mostrarT,ocultarT;
 
 
-    ImageView btnTransferencia;
+    ImageView btnTransferencia, btnDeposito;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +41,12 @@ public class card extends AppCompatActivity {
         cardInputWidget = findViewById(R.id.cardInputWidget);
         payButton = findViewById(R.id.payButton);
         btnTransferencia = findViewById(R.id.Transferencia);
+        btnDeposito = findViewById(R.id.DepositoOxxo);
+        cuerpo = findViewById(R.id.terminosC);
+        mostrarT = findViewById(R.id.mostrarT);
+        ocultarT = findViewById(R.id.ocultarT);
+        bienvenido = findViewById(R.id.txtbienvenido);
+        comofunciona = findViewById(R.id.btnComofunciona);
 
         Bundle bundle = this.getIntent().getExtras();
         cantidad = (bundle.getString("ahorro_amt"));
@@ -46,6 +54,27 @@ public class card extends AppCompatActivity {
         amountText.setText(cantidad);
         price = Double.valueOf(cantidad);
 
+        cuerpo.setVisibility(View.GONE);
+        bienvenido.setVisibility(View.GONE);
+        ocultarT.setVisibility(View.GONE);
+        mostrarT.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              cuerpo.setVisibility(View.VISIBLE);
+              bienvenido.setVisibility(View.VISIBLE);
+              mostrarT.setVisibility(View.GONE);
+              ocultarT.setVisibility(View.VISIBLE);
+          }
+        });
+        ocultarT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mostrarT.setVisibility(View.VISIBLE);
+                cuerpo.setVisibility(View.GONE);
+                bienvenido.setVisibility(View.GONE);
+                ocultarT.setVisibility(View.GONE);
+            }
+        });
 
         btnTransferencia.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +87,19 @@ public class card extends AppCompatActivity {
 
             }
         });
+        btnDeposito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(card.this,DepositoActivity.class);
+                startActivity(intent);
+            }
+        });
 
+        comofunciona.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(card.this, PopupActivity.class));
+            }
+        });
     }
 }

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    tools:context=".PopupActivity"
+    android:background="@drawable/esquinas_redondeadas"
+    android:layout_centerInParent="true"
+    >
+
+
+    <RelativeLayout
+        android:id="@+id/page_frame_1_ek1"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:id="@+id/rectangle_40"
+            android:layout_width="match_parent"
+            android:layout_height="112dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="10dp"
+            android:alpha="0.40000000596046"
+            android:background="#D0CED6" />
+
+        <View
+            android:id="@+id/rectangle_41"
+            android:layout_width="match_parent"
+            android:layout_height="112dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="136dp"
+            android:layout_marginEnd="10dp"
+            android:alpha="0.40000000596046"
+            android:background="#D0CED6" />
+
+        <View
+            android:id="@+id/rectangle_42"
+            android:layout_width="match_parent"
+            android:layout_height="112dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="255dp"
+            android:layout_marginEnd="10dp"
+            android:alpha="0.40000000596046"
+            android:background="#D0CED6" />
+
+        <ImageView
+            android:id="@+id/pagaricono_1"
+            android:layout_width="60dp"
+            android:layout_height="63dp"
+            android:layout_alignStart="@+id/rectangle_41"
+            android:layout_alignTop="@+id/rectangle_41"
+            android:layout_alignBottom="@+id/rectangle_41"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginBottom="23dp"
+            android:contentDescription="pagaricono_1"
+            android:src="@drawable/pagaricono_1" />
+
+        <ImageView
+            android:id="@+id/invericono_1"
+            android:layout_width="57dp"
+            android:layout_height="42dp"
+            android:layout_alignStart="@+id/rectangle_42"
+            android:layout_alignTop="@+id/rectangle_42"
+            android:layout_alignBottom="@+id/rectangle_42"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginBottom="34dp"
+            android:contentDescription="invericono_1"
+            android:src="@drawable/invericono_1" />
+
+        <TextView
+            android:id="@+id/genera_tu_inversi_n"
+            android:layout_width="132dp"
+            android:layout_height="26dp"
+            android:layout_marginLeft="119dp"
+            android:layout_marginTop="26dp"
+            android:fontFamily="Roboto"
+            android:text="@string/genera_tu_inversi_n_string"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/verifica_tu_inversi_n"
+            android:layout_width="135dp"
+            android:layout_height="26dp"
+            android:layout_marginLeft="118dp"
+            android:layout_marginTop="266dp"
+            android:fontFamily="Roboto"
+            android:text="@string/verifica_tu_inversi_n_string"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/realiza_el_pago"
+            android:layout_width="107dp"
+            android:layout_height="26dp"
+            android:layout_marginLeft="132dp"
+            android:layout_marginTop="145dp"
+            android:fontFamily="Roboto"
+            android:text="@string/realiza_el_pago_string"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/realiza_el_pago_a_trav_s_de_los_m_todos_sugeridos__completa_la_transacci_n_y_sube_tu_comprobante_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/rectangle_41"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="97dp"
+            android:layout_marginTop="174dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toEndOf="@+id/pagaricono_1"
+            android:fontFamily="Roboto"
+            android:text="@string/realiza_el_pago_a_trav_s_de_los_m_todos_sugeridos__completa_la_transacci_n_y_sube_tu_comprobante__string"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/efectua_una_inversi_n_y_genera_tu_n_mero_de_orden"
+            android:layout_width="222dp"
+            android:layout_height="39.5dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="97dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toEndOf="@+id/transfericon_1"
+            android:fontFamily="Roboto"
+            android:text="@string/efectua_una_inversi_n_y_genera_tu_n_mero_de_orden_string"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/en_un_lapso_m_ximo_de_24_hrs_se_ver__reflejada_tu_inversi_n__ahora__puedes_seguir_disfrutando_de_la_aplicaci_n_"
+            android:layout_width="wrap_content"
+            android:layout_height="69.5dp"
+            android:layout_alignEnd="@+id/rectangle_42"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="97dp"
+            android:layout_marginTop="289dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toEndOf="@+id/invericono_1"
+            android:fontFamily="Roboto"
+            android:text="@string/en_un_lapso_m_ximo_de_24_hrs_se_ver__reflejada_tu_inversi_n__ahora__puedes_seguir_disfrutando_de_la_aplicaci_n__string"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:id="@+id/transfericon_1"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignStart="@+id/rectangle_40"
+            android:layout_alignTop="@+id/rectangle_40"
+            android:layout_alignBottom="@+id/rectangle_40"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="39dp"
+            android:layout_marginBottom="27dp"
+            android:contentDescription="transfericon_1"
+            android:src="@drawable/transfericon_1" />
+
+    </RelativeLayout>
+
+</LinearLayout>

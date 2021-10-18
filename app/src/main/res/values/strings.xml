@@ -227,6 +227,12 @@
     <string name="title_activity_logros">Logros</string>
 
     <string name="transferencia_bancaria_string">Transferencia Bancaria</string>
-    <string name="dep_sito_en_oxxo_string">Deposito en OXXO</string>
-
+    <string name="dep_sito_en_oxxo_string">Deposito</string>
+    <string name="t_rminos_string">Términos</string>
+    <string name="genera_tu_inversi_n_string">Genera tu inversión</string>
+    <string name="verifica_tu_inversi_n_string">Verifica tu inversión</string>
+    <string name="realiza_el_pago_string">Realiza el pago </string>
+    <string name="realiza_el_pago_a_trav_s_de_los_m_todos_sugeridos__completa_la_transacci_n_y_sube_tu_comprobante__string">Realiza el pago a través de los métodos sugeridos. Completa la transacción y sube tu comprobante.</string>
+    <string name="efectua_una_inversi_n_y_genera_tu_n_mero_de_orden_string">Efectua una inversión y genera tu número de orden</string>
+    <string name="en_un_lapso_m_ximo_de_24_hrs_se_ver__reflejada_tu_inversi_n__ahora__puedes_seguir_disfrutando_de_la_aplicaci_n__string">En un lapso mximo de 24 hrs se ver reflejada tu inversión. Ahora, puedes seguir disfrutando de la aplicación.</string>
 </resources>
