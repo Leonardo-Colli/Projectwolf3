@@ -1,5 +1,7 @@
 package com.example.project_wolf_3;
 
+import static java.lang.Double.valueOf;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -19,8 +22,28 @@ import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.okhttp.FormEncodingBuilder;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
+import okhttp3.FormBody;
+import retrofit2.Retrofit;
 
 public class NewSaving extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
 
     EditText ahorro_amt, ahorro_plz;
     TextView save;
@@ -33,6 +56,9 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
     NavigationView navigationView;
     ImageView menuIcon;
     DrawerLayout drawerLayout;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +80,7 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
         menuIcon = findViewById(R.id.menu_icon);
 
         navigationDrawer();
+
 
 
         save.setOnClickListener(new View.OnClickListener() {
@@ -118,13 +145,17 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
                 Toast.makeText(NewSaving.this, "Error! Monto máximo: $100,000", Toast.LENGTH_SHORT).show();
                 return;
             }
-            // int amt = Integer.parseInt(amount);
+            //int amt = Integer.parseInt(amount);
+
             //int plz = Integer.parseInt(plazo);
             Intent intent = new Intent(NewSaving.this, card.class);
-            intent.putExtra("ahorro_plz", plazo);
-            intent.putExtra("ahorro_amt", amount);
+            intent.putExtra("ahorro_plz", plazo);intent.putExtra("ahorro_amt", amount);
             startActivity(intent);
+
+
         }
+
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

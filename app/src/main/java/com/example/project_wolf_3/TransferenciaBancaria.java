@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +30,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
+import retrofit2.Retrofit;
+
 public class TransferenciaBancaria extends AppCompatActivity {
     TextView nombre,cuenta,banco,concepto,btn,btnNotificar,amountText,btnListo;
 
@@ -42,7 +50,22 @@ public class TransferenciaBancaria extends AppCompatActivity {
     public double inversionTotal, balanceTotal;
     String cantidad, plazo;
     Double price;
+    VideoView videoView;
 
+    private RetrofitInterface myApi;
+    CompositeDisposable compositeDisposable = new CompositeDisposable();
+
+    @Override
+    protected void onStop() {
+        compositeDisposable.clear();
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        compositeDisposable.clear();
+        super.onDestroy();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +83,7 @@ public class TransferenciaBancaria extends AppCompatActivity {
         Ccuenta = findViewById(R.id.copiarCuenta);
         CBanco = findViewById(R.id.copiarBanco);
         Cconcepto = findViewById(R.id.copiarConcepto);
+        videoView = findViewById(R.id.videoView);
 
 
 
@@ -72,6 +96,10 @@ public class TransferenciaBancaria extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         userID = mAuth.getCurrentUser().getUid();
+
+        //init Api
+        Retrofit retrofit = RetrofitClient.getInstance();
+        myApi = retrofit.create(RetrofitInterface.class);
 
         Intent data = getIntent();
         fundId = data.getStringExtra("id");
@@ -188,7 +216,7 @@ public class TransferenciaBancaria extends AppCompatActivity {
                         btnListo.setVisibility(View.VISIBLE);  //esconde botón.
 
                     }
-                }, 10000); //10 segundos;
+                }, 8000); //10 segundos;
 
 
             }
@@ -196,13 +224,38 @@ public class TransferenciaBancaria extends AppCompatActivity {
         btnListo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TransferenciaBancaria.this, MainActivity.class);
-                startActivity(intent);
+                String user="Leo";
+                float price = Integer.parseInt(cantidad);
+                float amount1 = Integer.parseInt(cantidad);
+                int installments =Integer.parseInt(plazo);
+                int transactionid = 12345;
+                compositeDisposable.add(myApi.registroDatos(user,price, amount1, installments, transactionid)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Consumer<String>() {
+                            @Override
+                            public void accept(String s) throws Exception {
+                                Toast.makeText(TransferenciaBancaria.this, ""+s, Toast.LENGTH_SHORT).show();
+                            }
+                        }));
+                /*String path = "android.resource://"+getPackageName()+"/"+R.raw.transaccion;
+                Uri uri = Uri.parse(path);
+                videoView.setVideoURI(uri);
+                videoView.setVisibility(View.VISIBLE);
+                videoView.requestFocus();
+                videoView.start();*/
+
+
             }
         });
 
     }
-
+    public void video(){
+       //
+        //videoView.setVideoURI(Uri.parse(path));
+        videoView.setVisibility(View.VISIBLE);
+        videoView.start();
+    }
     public void onSaveNote(){
         Date plz_dt = Calendar.getInstance().getTime();
 
