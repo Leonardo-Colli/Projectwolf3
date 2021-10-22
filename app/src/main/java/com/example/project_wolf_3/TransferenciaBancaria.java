@@ -16,6 +16,7 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -23,12 +24,16 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -42,8 +47,8 @@ public class TransferenciaBancaria extends AppCompatActivity {
     ImageView CNombre,Ccuenta,CBanco,Cconcepto;
 
     FirebaseAuth mAuth;
-    private FirebaseFirestore db;
-    String userID, fundId;
+    String userID, fundId, fullname, username;
+    FirebaseFirestore db;
 
     public double bal, btc_p0, eth_p0, alt_p0, btc_amt, eth_amt, alt_amt,
             btc_vol, eth_vol, alt_vol, initial_amount, inversion;
@@ -51,6 +56,7 @@ public class TransferenciaBancaria extends AppCompatActivity {
     String cantidad, plazo;
     Double price;
     VideoView videoView;
+
 
     private RetrofitInterface myApi;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
@@ -224,20 +230,31 @@ public class TransferenciaBancaria extends AppCompatActivity {
         btnListo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String user="Leo";
-                float price = Integer.parseInt(cantidad);
-                float amount1 = Integer.parseInt(cantidad);
-                int installments =Integer.parseInt(plazo);
-                int transactionid = 12345;
-                compositeDisposable.add(myApi.registroDatos(user,price, amount1, installments, transactionid)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Consumer<String>() {
-                            @Override
-                            public void accept(String s) throws Exception {
-                                Toast.makeText(TransferenciaBancaria.this, ""+s, Toast.LENGTH_SHORT).show();
-                            }
-                        }));
+
+                db.collection("users").document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()){
+                            username = documentSnapshot.getString("username");
+                        }
+                        int longitud = 10;
+                        String cadena = cadenaAleatoria(longitud);
+                        float price = Integer.parseInt(cantidad);
+                        float amount1 = Integer.parseInt(cantidad);
+                        int installments =Integer.parseInt(plazo);
+                        String transactionid = cadena;
+                        compositeDisposable.add(myApi.registroDatos(username,price, amount1, installments, transactionid)
+                                .subscribeOn(Schedulers.io())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe(new Consumer<String>() {
+                                    @Override
+                                    public void accept(String s) throws Exception {
+                                        Toast.makeText(TransferenciaBancaria.this, ""+s, Toast.LENGTH_SHORT).show();
+                                    }
+                                }));
+                    }
+                });
+
                 /*String path = "android.resource://"+getPackageName()+"/"+R.raw.transaccion;
                 Uri uri = Uri.parse(path);
                 videoView.setVideoURI(uri);
@@ -249,6 +266,22 @@ public class TransferenciaBancaria extends AppCompatActivity {
             }
         });
 
+    }
+    public static String cadenaAleatoria(int longitud) {
+        // El banco de caracteres
+        String banco = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        // La cadena en donde iremos agregando un carácter aleatorio
+        String cadena = "";
+        for (int x = 0; x < longitud; x++) {
+            int indiceAleatorio = numeroAleatorioEnRango(0, banco.length() - 1);
+            char caracterAleatorio = banco.charAt(indiceAleatorio);
+            cadena += caracterAleatorio;
+        }
+        return cadena;
+    }
+    public static int numeroAleatorioEnRango(int minimo, int maximo) {
+        // nextInt regresa en rango pero con límite superior exclusivo, por eso sumamos 1
+        return ThreadLocalRandom.current().nextInt(minimo, maximo + 1);
     }
     public void video(){
        //

@@ -21,7 +21,7 @@ public interface RetrofitInterface {
                               @Field("price") Float price,
                               @Field("amount") Float amount,
                               @Field("installments") int installments,
-                              @Field("transactionid") int transactionid);
+                              @Field("transactionid") String transactionid);
 
 
   //  @POST("/btc")
