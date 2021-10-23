@@ -17,7 +17,8 @@ import retrofit2.http.POST;
 public interface RetrofitInterface {
     @POST("transactions")
     @FormUrlEncoded
-    Observable<String> registroDatos (@Field("user") String user,
+    Observable<String> registroDatos (@Field("name") String name,
+                              @Field("user") String user,
                               @Field("price") Float price,
                               @Field("amount") Float amount,
                               @Field("installments") int installments,

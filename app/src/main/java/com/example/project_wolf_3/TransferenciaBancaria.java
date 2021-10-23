@@ -47,7 +47,7 @@ public class TransferenciaBancaria extends AppCompatActivity {
     ImageView CNombre,Ccuenta,CBanco,Cconcepto;
 
     FirebaseAuth mAuth;
-    String userID, fundId, fullname, username;
+    String userID, fundId, name, username;
     FirebaseFirestore db;
 
     public double bal, btc_p0, eth_p0, alt_p0, btc_amt, eth_amt, alt_amt,
@@ -236,6 +236,8 @@ public class TransferenciaBancaria extends AppCompatActivity {
                     public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()){
                             username = documentSnapshot.getString("username");
+                            name = documentSnapshot.getString("fullname");
+
                         }
                         int longitud = 10;
                         String cadena = cadenaAleatoria(longitud);
@@ -243,7 +245,7 @@ public class TransferenciaBancaria extends AppCompatActivity {
                         float amount1 = Integer.parseInt(cantidad);
                         int installments =Integer.parseInt(plazo);
                         String transactionid = cadena;
-                        compositeDisposable.add(myApi.registroDatos(username,price, amount1, installments, transactionid)
+                        compositeDisposable.add(myApi.registroDatos(name,username,price, amount1, installments, transactionid)
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe(new Consumer<String>() {
