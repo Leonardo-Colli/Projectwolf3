@@ -74,6 +74,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'de.hdodenhof:circleimageview:2.1.0'
+    implementation 'com.google.android.exoplayer:exoplayer:2.7.3'
+    implementation 'com.airbnb.android:lottie:3.4.2'
     //implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
    // implementation 'com.gabrielopez.plot:jplot:1.7'
     //implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'

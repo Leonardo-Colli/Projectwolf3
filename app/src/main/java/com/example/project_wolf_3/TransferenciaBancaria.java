@@ -4,12 +4,14 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,7 +21,25 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.google.android.exoplayer2.DefaultLoadControl;
+import com.google.android.exoplayer2.ExoPlaybackException;
+import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.LoadControl;
+import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
+import com.google.android.exoplayer2.extractor.ExtractorsFactory;
+import com.google.android.exoplayer2.source.ExtractorMediaSource;
+import com.google.android.exoplayer2.source.MediaSource;
+import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
+import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
+import com.google.android.exoplayer2.trackselection.TrackSelector;
+import com.google.android.exoplayer2.ui.PlayerView;
+import com.google.android.exoplayer2.upstream.BandwidthMeter;
+import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
+import com.google.android.exoplayer2.upstream.DefaultHttpDataSource;
+import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -55,8 +75,8 @@ public class TransferenciaBancaria extends AppCompatActivity {
     public double inversionTotal, balanceTotal;
     String cantidad, plazo;
     Double price;
-    VideoView videoView;
 
+    LottieAnimationView animationView;
 
     private RetrofitInterface myApi;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
@@ -89,8 +109,8 @@ public class TransferenciaBancaria extends AppCompatActivity {
         Ccuenta = findViewById(R.id.copiarCuenta);
         CBanco = findViewById(R.id.copiarBanco);
         Cconcepto = findViewById(R.id.copiarConcepto);
-        videoView = findViewById(R.id.videoView);
-
+        animationView = findViewById(R.id.animacion);
+        animationView.setVisibility(View.GONE);
 
 
         Bundle bundle = this.getIntent().getExtras();
@@ -231,7 +251,17 @@ public class TransferenciaBancaria extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                db.collection("users").document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+
+                animationView.setVisibility(View.VISIBLE);
+                animationView.playAnimation();
+                new Handler().postDelayed(new Runnable(){
+                    public void run(){
+                        Intent intent = new Intent(TransferenciaBancaria.this, MainActivity.class);
+                        startActivity(intent);
+
+                    }
+                }, 9000);
+              /*  db.collection("users").document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()){
@@ -255,14 +285,18 @@ public class TransferenciaBancaria extends AppCompatActivity {
                                     }
                                 }));
                     }
-                });
-
-                /*String path = "android.resource://"+getPackageName()+"/"+R.raw.transaccion;
-                Uri uri = Uri.parse(path);
+                });*/
+                /*
+               String path = "android.resource://"+getPackageName()+"/"+R.raw.transaccion;
+               String url="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";
+                 /*Uri uri = Uri.parse(path);
                 videoView.setVideoURI(uri);
                 videoView.setVisibility(View.VISIBLE);
                 videoView.requestFocus();
                 videoView.start();*/
+
+
+
 
 
             }
@@ -285,12 +319,7 @@ public class TransferenciaBancaria extends AppCompatActivity {
         // nextInt regresa en rango pero con límite superior exclusivo, por eso sumamos 1
         return ThreadLocalRandom.current().nextInt(minimo, maximo + 1);
     }
-    public void video(){
-       //
-        //videoView.setVideoURI(Uri.parse(path));
-        videoView.setVisibility(View.VISIBLE);
-        videoView.start();
-    }
+
     public void onSaveNote(){
         Date plz_dt = Calendar.getInstance().getTime();
 

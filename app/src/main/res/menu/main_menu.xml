@@ -20,6 +20,10 @@
             android:title="Estrategias"
             android:icon="@drawable/ic_estrategias"/>
         <item
+            android:id="@+id/nav_fondos"
+            android:title="Fondeos"
+            android:icon="@drawable/ic_estrategias"/>
+        <item
             android:id="@+id/nav_guiadeuso"
             android:title="Guia de uso"
             android:icon="@drawable/ic_mas"/>

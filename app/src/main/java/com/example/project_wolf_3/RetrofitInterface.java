@@ -1,5 +1,6 @@
 package com.example.project_wolf_3;
 
+import com.example.project_wolf_3.model.Posts;
 import com.example.project_wolf_3.model.PrecioRespuesta;
 
 import java.util.HashMap;
@@ -28,6 +29,7 @@ public interface RetrofitInterface {
   //  @POST("/btc")
    // Call<Void> executeBuy(@Body HashMap<String, Double> map);
 
-    @GET("precios")
-    Call<PrecioRespuesta> obtenerListaPrecio();
+
+    @GET("transactions")
+    Call<List<Posts>> getPosts();
 }

@@ -13,6 +13,7 @@
     <color name="dark_green">#285000</color>
     <color name="Fondo_menu">#050212</color>
     <color name="warning">#B33A3A</color>
+    <color name="rojo">#D30F0F</color>
 
     <color name="cuadromostrar">#AB5C00</color>
     <!-- Text color for the details of the earthquake in the list item -->

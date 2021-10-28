@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class PrecioRespuesta {
 
-    private ArrayList<Precio> results;
+    private ArrayList<Posts> results;
 
-    public ArrayList<Precio> getResults() {
+    public ArrayList<Posts> getResults() {
         return results;
     }
 
-    public void setResults(ArrayList<Precio> results) {
+    public void setResults(ArrayList<Posts> results) {
         this.results = results;
     }
 }

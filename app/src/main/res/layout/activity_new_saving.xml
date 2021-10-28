@@ -196,7 +196,7 @@
             app:layout_constraintTop_toBottomOf="@+id/rectangle_23" />
 
         <TextView
-            android:id="@+id/_1_00"
+            android:id="@+id/comisionE1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -242,7 +242,7 @@
             app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />
 
         <TextView
-            android:id="@+id/_109_00"
+            android:id="@+id/Total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -342,16 +342,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-        <View
-            android:id="@+id/rectangle_2"
-            android:layout_width="51dp"
-            android:layout_height="21dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginTop="32dp"
-            android:alpha="0.40000000596046"
-            android:background="@drawable/fondos_estrategias"
-            app:layout_constraintEnd_toStartOf="@+id/rectangle3"
-            app:layout_constraintTop_toBottomOf="@+id/rectangle_23" />
 
         <View
             android:id="@+id/rectangle3"
@@ -365,7 +355,7 @@
             app:layout_constraintTop_toBottomOf="@+id/rectangle_23" />
 
         <TextView
-            android:id="@+id/_3_00"
+            android:id="@+id/costoE1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"

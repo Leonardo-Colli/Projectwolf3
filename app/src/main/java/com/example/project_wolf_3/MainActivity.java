@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Balance = findViewById(R.id.balance_banner);
         Balance.setOnClickListener(view -> {
-            Intent numbersIntent = new Intent(MainActivity.this, DepositoActivity.class);
+            Intent numbersIntent = new Intent(MainActivity.this, BalanceTotal.class);
             startActivity(numbersIntent);
         });
         ImageView profile = findViewById(R.id.button_profile);
@@ -207,6 +207,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_balance:
                 Intent numbersIntent = new Intent(MainActivity.this, BalanceTotal.class);
                 startActivity(numbersIntent);
+                break;
+            case R.id.nav_fondos:
+                Intent fondosIntent = new Intent(MainActivity.this, TablaEstatus.class);
+                startActivity(fondosIntent);
                 break;
             case R.id.nav_inversiones:
                 Intent inversionesIntent = new Intent(MainActivity.this, MainActivity.class);

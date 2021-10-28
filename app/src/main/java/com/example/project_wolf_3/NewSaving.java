@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,9 +55,11 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
     double bal, btc_p0, eth_p0, alt_p0, btc_amt, eth_amt, alt_amt,
         btc_vol, eth_vol, alt_vol, initial_amount;
 
+    TextView comision1;
     NavigationView navigationView;
     ImageView menuIcon;
     DrawerLayout drawerLayout;
+    Switch E1;
 
 
 
@@ -67,6 +71,8 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
         ahorro_amt = findViewById(R.id.monto);
         ahorro_plz = findViewById(R.id.plazos);
         save = findViewById(R.id.btnSave);
+        E1 = findViewById(R.id.switch1);
+        comision1 = findViewById(R.id.comisionE1);
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -80,6 +86,8 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
         menuIcon = findViewById(R.id.menu_icon);
 
         navigationDrawer();
+
+
 
 
 
@@ -151,6 +159,7 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
             Intent intent = new Intent(NewSaving.this, card.class);
             intent.putExtra("ahorro_plz", plazo);intent.putExtra("ahorro_amt", amount);
             startActivity(intent);
+
 
 
         }
