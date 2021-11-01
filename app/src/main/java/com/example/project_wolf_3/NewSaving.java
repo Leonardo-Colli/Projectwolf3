@@ -55,11 +55,12 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
     double bal, btc_p0, eth_p0, alt_p0, btc_amt, eth_amt, alt_amt,
         btc_vol, eth_vol, alt_vol, initial_amount;
 
-    TextView comision1;
+    TextView comision1,Totalc;
     NavigationView navigationView;
     ImageView menuIcon;
     DrawerLayout drawerLayout;
     Switch E1;
+    public double total=0,c1,co1;
 
 
 
@@ -73,6 +74,7 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
         save = findViewById(R.id.btnSave);
         E1 = findViewById(R.id.switch1);
         comision1 = findViewById(R.id.comisionE1);
+        Totalc = findViewById(R.id.Total);
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -87,9 +89,19 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
 
         navigationDrawer();
 
+        E1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    comisiones();
+                }else{
+                    comision1.setText("0.00");
+                    total = 0;
+                    Totalc.setText(""+ahorro_amt.getText());
+                }
 
-
-
+            }
+        });
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,7 +116,19 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
 
         });
     }
-
+    private void comisiones(){
+        if (TextUtils.isEmpty(ahorro_amt.getText())) {
+            comision1.setText("0.00");
+            return;
+        }else{
+             c1 = Double.parseDouble(String.valueOf(ahorro_amt.getText()));
+             co1 = (c1 * 3) / 100;
+            comision1.setText("" + co1);
+            total = c1 + co1;
+            Totalc.setText(""+total);
+            return;
+        }
+    }
     private void navigationDrawer() {
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
@@ -156,9 +180,17 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
             //int amt = Integer.parseInt(amount);
 
             //int plz = Integer.parseInt(plazo);
+            String totals = String.valueOf(total);
             Intent intent = new Intent(NewSaving.this, card.class);
-            intent.putExtra("ahorro_plz", plazo);intent.putExtra("ahorro_amt", amount);
-            startActivity(intent);
+            if (total != 0) {
+                intent.putExtra("ahorro_plz", plazo);
+                intent.putExtra("ahorro_amt", totals);
+
+            }else{
+                intent.putExtra("ahorro_plz", plazo);
+                intent.putExtra("ahorro_amt", amount);
+            }
+        startActivity(intent);
 
 
 
