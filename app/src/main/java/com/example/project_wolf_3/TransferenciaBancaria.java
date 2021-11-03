@@ -22,6 +22,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.project_wolf_3.model.Post;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlaybackException;
@@ -49,6 +55,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.ListenerRegistration;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -59,6 +69,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class TransferenciaBancaria extends AppCompatActivity {
@@ -77,9 +90,11 @@ public class TransferenciaBancaria extends AppCompatActivity {
     Double price;
 
     LottieAnimationView animationView;
+    private RequestQueue queue;
 
     private RetrofitInterface myApi;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
+
 
     @Override
     protected void onStop() {
@@ -122,6 +137,8 @@ public class TransferenciaBancaria extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         userID = mAuth.getCurrentUser().getUid();
+
+        queue = Volley.newRequestQueue(this);
 
         //init Api
         Retrofit retrofit = RetrofitClient.getInstance();
@@ -242,7 +259,7 @@ public class TransferenciaBancaria extends AppCompatActivity {
                         btnListo.setVisibility(View.VISIBLE);  //esconde botón.
 
                     }
-                }, 8000); //10 segundos;
+                }, 8000); //8 segundos;
 
 
             }
@@ -251,7 +268,7 @@ public class TransferenciaBancaria extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
+                createPost();
                 animationView.setVisibility(View.VISIBLE);
                 animationView.playAnimation();
                 new Handler().postDelayed(new Runnable(){
@@ -261,48 +278,47 @@ public class TransferenciaBancaria extends AppCompatActivity {
 
                     }
                 }, 9000);
-              /*  db.collection("users").document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
-                        if (documentSnapshot.exists()){
-                            username = documentSnapshot.getString("username");
-                            name = documentSnapshot.getString("fullname");
-
-                        }
-                        int longitud = 10;
-                        String cadena = cadenaAleatoria(longitud);
-                        float price = Integer.parseInt(cantidad);
-                        float amount1 = Integer.parseInt(cantidad);
-                        int installments =Integer.parseInt(plazo);
-                        String transactionid = cadena;
-                        compositeDisposable.add(myApi.registroDatos(name,username,price, amount1, installments, transactionid)
-                                .subscribeOn(Schedulers.io())
-                                .observeOn(AndroidSchedulers.mainThread())
-                                .subscribe(new Consumer<String>() {
-                                    @Override
-                                    public void accept(String s) throws Exception {
-                                        Toast.makeText(TransferenciaBancaria.this, ""+s, Toast.LENGTH_SHORT).show();
-                                    }
-                                }));
-                    }
-                });*/
-                /*
-               String path = "android.resource://"+getPackageName()+"/"+R.raw.transaccion;
-               String url="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";
-                 /*Uri uri = Uri.parse(path);
-                videoView.setVideoURI(uri);
-                videoView.setVisibility(View.VISIBLE);
-                videoView.requestFocus();
-                videoView.start();*/
-
-
-
-
 
             }
         });
 
     }
+
+    private void createPost(){
+    db.collection("users").document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        @Override
+        public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
+            if (documentSnapshot.exists()){
+                username = documentSnapshot.getString("username");
+                name = documentSnapshot.getString("fullname");
+            }
+            int longitud = 10;
+            String cadena = cadenaAleatoria(longitud);
+            float price = Integer.parseInt(cantidad);
+            float amount1 = Integer.parseInt(cantidad);
+            int installments =Integer.parseInt(plazo);
+            String transactionid = cadena;
+            Call<Post> call = myApi.createPost(""+name,""+username,price, amount1, installments, ""+transactionid);
+            call.enqueue(new Callback<Post>() {
+                @Override
+                public void onResponse(Call<Post> call, Response<Post> response) {
+                    if (!response.isSuccessful()){
+                        Toast.makeText(TransferenciaBancaria.this, "Code: "+response.code(), Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    Post postResponse = response.body();
+                }
+
+                @Override
+                public void onFailure(Call<Post> call, Throwable t) {
+
+                }
+            });
+        }
+    });
+
+}
+
     public static String cadenaAleatoria(int longitud) {
         // El banco de caracteres
         String banco = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
@@ -315,6 +331,7 @@ public class TransferenciaBancaria extends AppCompatActivity {
         }
         return cadena;
     }
+
     public static int numeroAleatorioEnRango(int minimo, int maximo) {
         // nextInt regresa en rango pero con límite superior exclusivo, por eso sumamos 1
         return ThreadLocalRandom.current().nextInt(minimo, maximo + 1);
