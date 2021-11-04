@@ -10,17 +10,25 @@ public class Post {
     private Float amount;
     private int installments;
     private String transactionid;
+    private String status;
 
-    public Post(String name, String user, Float price, Float amount, int installments, String transactionid) {
+    public Post(String name, String user, Float price, Float amount, int installments, String transactionid, String status) {
         this.name = name;
         this.user = user;
         this.price = price;
         this.amount = amount;
         this.installments = installments;
         this.transactionid = transactionid;
+        this.status = status;
     }
 
+    public String getStatus() {
+        return status;
+    }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getName() {
         return name;

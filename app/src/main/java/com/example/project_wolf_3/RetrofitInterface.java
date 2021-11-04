@@ -24,7 +24,8 @@ public interface RetrofitInterface {
                            @Field("price") Float price,
                            @Field("amount") Float amount,
                            @Field("installments") int installments,
-                           @Field("transactionid") String transactionid);
+                           @Field("transactionid") String transactionid,
+                           @Field("status") String status);
 
 
     @GET("transactions/{id}")

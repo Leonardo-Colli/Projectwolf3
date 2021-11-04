@@ -57,6 +57,7 @@ public class TablaEstatus extends AppCompatActivity {
                 Retiros.setBackgroundColor(Color.parseColor("#D30F0F"));
                 mJsonText.setText("");
                 mJsonTextCantidad.setText("");
+                mJsonTextEstatus.setText("");
                 funduserid();
                 //getPosts();
                 Fondeos.setEnabled(false);
@@ -72,6 +73,7 @@ public class TablaEstatus extends AppCompatActivity {
                 Retiros.setBackgroundColor(Color.parseColor("#BABABA"));
                 mJsonText.setText("");
                 mJsonTextCantidad.setText("");
+                mJsonTextEstatus.setText("");
                 funduserid();
                 //getPosts();
                 Fondeos.setEnabled(true);
@@ -108,9 +110,11 @@ public class TablaEstatus extends AppCompatActivity {
                 for(Posts post: postsList){
                     String Fecha=post.getDate() +"\n";
                     String fecha_user = Fecha.substring(0, Math.min(Fecha.length(), 10))+"\n"+"\n";
-                    String Cantidad =post.getAmount()+"\n"+"\n";
+                    String Cantidad =post.getAmount()+" MXN"+"\n"+"\n";
+                    String Estatus = post.getStatus()+"\n"+"\n";
                     mJsonText.append(fecha_user);
                     mJsonTextCantidad.append(Cantidad);
+                    mJsonTextEstatus.append(Estatus);
                 }
             }
 
@@ -120,45 +124,4 @@ public class TablaEstatus extends AppCompatActivity {
             }
         });
     }
-   /* private void getPosts(){
-
-        db.collection("users").document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
-                    username = documentSnapshot.getString("username");
-                }
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://10.0.2.2:8080/api/transactions/9981869271/")
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-                RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);
-                Call<List<Posts>> call = retrofitInterface.getPosts();
-                call.enqueue(new Callback<List<Posts>>() {
-                    @Override
-                    public void onResponse(Call<List<Posts>> call, Response<List<Posts>> response) {
-                        if (!response.isSuccessful()){
-                            mJsonText.setText("Codigo: "+ response.code());
-                            return;
-                        }
-                        List<Posts> postsList = response.body();
-                        for(Posts post: postsList){
-                            String Fecha=post.getDate() +"\n";
-                            String fecha_user = Fecha.substring(0, Math.min(Fecha.length(), 10))+"\n"+"\n";
-                            String Cantidad =post.getAmount()+"\n"+"\n";
-                            mJsonText.append(fecha_user);
-                            mJsonTextCantidad.append(Cantidad);
-                        }
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<List<Posts>> call, Throwable t) {
-                        mJsonText.setText(t.getMessage());
-                    }
-                });
-            }
-        });
-
-    }*/
 }

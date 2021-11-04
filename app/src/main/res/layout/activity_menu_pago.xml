@@ -4,7 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DepositoActivity">
+    tools:context=".card"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:id="@+id/menupincipal"
+    android:theme="@style/Theme.Design.Light.NoActionBar">
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/nav_view"
+        app:headerLayout="@layout/header"
+        android:theme="@style/navigationTheme"
+        app:menu="@menu/main_menu"
+        android:layout_gravity="start"
+        android:background="@color/cardview_light_background"
+        />
+
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -125,7 +140,7 @@
 
 
     <View
-        android:id="@+id/rectangle_37"
+        android:id="@+id/rctTransferencia"
         android:layout_width="match_parent"
         android:layout_height="42dp"
         android:layout_marginStart="8dp"
@@ -143,7 +158,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/rectangle_37_shape"
-        app:layout_constraintTop_toBottomOf="@+id/rectangle_37"
+        app:layout_constraintTop_toBottomOf="@+id/rctTransferencia"
         tools:layout_editor_absoluteX="30dp" />
 
     <TextView
@@ -155,9 +170,9 @@
         android:text="@string/transferencia_bancaria_string"
         android:textColor="@color/_bg__frame_1_ek2_color"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/rectangle_37"
-        app:layout_constraintStart_toStartOf="@+id/rectangle_37"
-        app:layout_constraintTop_toTopOf="@+id/rectangle_37" />
+        app:layout_constraintBottom_toBottomOf="@+id/rctTransferencia"
+        app:layout_constraintStart_toStartOf="@+id/rctTransferencia"
+        app:layout_constraintTop_toTopOf="@+id/rctTransferencia" />
 
     <TextView
         android:id="@+id/dep_sito_en_oxxo"
@@ -193,9 +208,9 @@
         android:layout_marginEnd="16dp"
         android:contentDescription="ic_backarrow_2"
         android:src="@drawable/ic_backarrow_1"
-        app:layout_constraintBottom_toBottomOf="@+id/rectangle_37"
-        app:layout_constraintEnd_toEndOf="@+id/rectangle_37"
-        app:layout_constraintTop_toTopOf="@+id/rectangle_37" />
+        app:layout_constraintBottom_toBottomOf="@+id/rctTransferencia"
+        app:layout_constraintEnd_toEndOf="@+id/rctTransferencia"
+        app:layout_constraintTop_toTopOf="@+id/rctTransferencia" />
 
     <ImageView
         android:id="@+id/linea_1"
@@ -215,9 +230,9 @@
         android:layout_marginStart="8dp"
         android:contentDescription="linea_2"
         android:src="@drawable/linea_1"
-        app:layout_constraintBottom_toBottomOf="@+id/rectangle_37"
-        app:layout_constraintStart_toStartOf="@+id/rectangle_37"
-        app:layout_constraintTop_toTopOf="@+id/rectangle_37" />
+        app:layout_constraintBottom_toBottomOf="@+id/rctTransferencia"
+        app:layout_constraintStart_toStartOf="@+id/rctTransferencia"
+        app:layout_constraintTop_toTopOf="@+id/rctTransferencia" />
 
     <View
         android:id="@+id/btnComofunciona"

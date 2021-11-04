@@ -20,6 +20,7 @@ import android.widget.VideoView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.android.volley.Request;
@@ -47,6 +48,7 @@ import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -88,6 +90,10 @@ public class TransferenciaBancaria extends AppCompatActivity {
     public double inversionTotal, balanceTotal;
     String cantidad, plazo;
     Double price;
+
+    NavigationView navigationView;
+    ImageView menuIcon;
+    DrawerLayout drawerLayout;
 
     LottieAnimationView animationView;
     private RequestQueue queue;
@@ -298,12 +304,13 @@ public class TransferenciaBancaria extends AppCompatActivity {
             float amount1 = Integer.parseInt(cantidad);
             int installments =Integer.parseInt(plazo);
             String transactionid = cadena;
-            Call<Post> call = myApi.createPost(""+name,""+username,price, amount1, installments, ""+transactionid);
+            String status="Pendiente";
+            Call<Post> call = myApi.createPost(name,username,price, amount1, installments, transactionid, status);
             call.enqueue(new Callback<Post>() {
                 @Override
                 public void onResponse(Call<Post> call, Response<Post> response) {
                     if (!response.isSuccessful()){
-                        Toast.makeText(TransferenciaBancaria.this, "Code: "+response.code(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TransferenciaBancaria.this, "Pago exitoso!", Toast.LENGTH_SHORT).show();
                         return;
                     }
                     Post postResponse = response.body();
@@ -311,7 +318,7 @@ public class TransferenciaBancaria extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<Post> call, Throwable t) {
-
+                    Toast.makeText(TransferenciaBancaria.this, "Error: "+t, Toast.LENGTH_SHORT).show();
                 }
             });
         }

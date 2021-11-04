@@ -3,7 +3,7 @@ package com.example.project_wolf_3.model;
 public class Posts {
 
     private String date;
-    private String estatus;
+    private String status;
     private double amount;
 
     public String getDate() {
@@ -14,12 +14,12 @@ public class Posts {
         this.date = date;
     }
 
-    public String getEstatus() {
-        return estatus;
+    public String getStatus() {
+        return status;
     }
 
-    public void setEstatus(String estatus) {
-        this.estatus = estatus;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public double getAmount() {

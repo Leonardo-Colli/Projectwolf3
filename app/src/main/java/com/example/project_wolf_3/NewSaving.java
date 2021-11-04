@@ -57,6 +57,7 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
 
     TextView comision1,Totalc;
     NavigationView navigationView;
+    ImageView profileImage;
     ImageView menuIcon;
     DrawerLayout drawerLayout;
     Switch E1;
@@ -88,6 +89,11 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
         menuIcon = findViewById(R.id.menu_icon);
 
         navigationDrawer();
+        ImageView profile = findViewById(R.id.button_profile);
+        profile.setOnClickListener(view -> {
+            Intent colorsIntent = new Intent(NewSaving.this, UserProfile.class);
+            startActivity(colorsIntent);
+        });
 
         E1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

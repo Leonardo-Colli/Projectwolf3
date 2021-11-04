@@ -35,9 +35,7 @@
             android:name=".GraficaActivity"
             android:exported="true"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
-        <activity
-            android:name=".CheckoutActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+
         <activity
             android:name=".FundBalance"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
