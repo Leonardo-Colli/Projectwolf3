@@ -92,6 +92,7 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
     public double inversionTotal, balanceTotal;
     String cantidad, plazo;
     Double price;
+    public String cadena;
 
     NavigationView navigationView;
     ImageView menuIcon;
@@ -170,6 +171,8 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
             startActivity(numbersIntent);
 
         });
+        int longitud = 10;
+        cadena ="TD-"+cadenaAleatoria(longitud);
 
         if(fundId != null) {
             Bundle bundles = this.getIntent().getExtras();
@@ -259,21 +262,18 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
                 // Defino los Strings Email, Asunto y Mensaje con la función putExtra
                 intent.putExtra(Intent.EXTRA_EMAIL,
                         new String[] { enviarcorreo });
-                intent.putExtra(Intent.EXTRA_SUBJECT, enviarasunto);
+                intent.putExtra(Intent.EXTRA_SUBJECT, cadena);
                 intent.putExtra(Intent.EXTRA_TEXT, enviarmensaje);
 
                 // Establezco el tipo de Intent
                 intent.setType("message/rfc822");
 
                 // Lanzo el selector de cliente de Correo
-                startActivity(
-                        Intent
-                                .createChooser(intent,
-                                        "Elije un cliente de Correo:"));
+                startActivity(Intent.createChooser(intent, "Elije un cliente de Correo:"));
                 btn.setVisibility(View.GONE);
+
                 new Handler().postDelayed(new Runnable(){
                     public void run(){
-
                         btnListo.setVisibility(View.VISIBLE);  //esconde botón.
 
                     }
@@ -310,8 +310,7 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
                 username = documentSnapshot.getString("username");
                 name = documentSnapshot.getString("fullname");
             }
-            int longitud = 10;
-            String cadena = cadenaAleatoria(longitud);
+
             double price = Double.parseDouble(cantidad);
             double amount1 = Double.parseDouble(cantidad);
             int installments =Integer.parseInt(plazo);
