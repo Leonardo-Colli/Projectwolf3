@@ -312,8 +312,8 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
             }
             int longitud = 10;
             String cadena = cadenaAleatoria(longitud);
-            float price = Integer.parseInt(cantidad);
-            float amount1 = Integer.parseInt(cantidad);
+            double price = Double.parseDouble(cantidad);
+            double amount1 = Double.parseDouble(cantidad);
             int installments =Integer.parseInt(plazo);
             String transactionid = cadena;
             String status="Pendiente";

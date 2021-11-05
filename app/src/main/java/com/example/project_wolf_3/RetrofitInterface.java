@@ -21,8 +21,8 @@ public interface RetrofitInterface {
     @FormUrlEncoded
     Call<Post> createPost (@Field("name") String name,
                            @Field("user") String user,
-                           @Field("price") Float price,
-                           @Field("amount") Float amount,
+                           @Field("price") Double price,
+                           @Field("amount") Double amount,
                            @Field("installments") int installments,
                            @Field("transactionid") String transactionid,
                            @Field("status") String status);
