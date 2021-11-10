@@ -2,13 +2,15 @@
 <resources>
 
     <style name="navigationTheme">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/poppinsmedium</item>
         <!-- color del texto e icono seleccionado-->
-        <item name="colorPrimary">@color/yellow</item>
+        <item name="colorPrimary">@color/white</item>
         <!-- Fondo  al seleccionar-->
-        <item name="colorControlHighlight">@color/Fondo_menu</item>
+        <item name="colorControlHighlight">@color/yellow</item>
+        <item name="colorSecondary">@color/yellow</item>
     </style>
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-
     </style>
 <style name="AppTheme.TemaPopup">
     <item name="android:windowIsFloating">true</item>

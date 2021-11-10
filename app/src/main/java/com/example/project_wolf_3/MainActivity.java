@@ -1,6 +1,7 @@
 package com.example.project_wolf_3;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.menupincipal);
         navigationView = findViewById(R.id.nav_view);
         menuIcon = findViewById(R.id.menu_icon);
+
         //toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
@@ -165,6 +167,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // navigationView.setBackgroundColor(getResources().getColor(R.color.Fondo_menu));
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_inversiones);
+        navigationView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.white)));
 
         menuIcon.setOnClickListener(new View.OnClickListener() {
             @Override

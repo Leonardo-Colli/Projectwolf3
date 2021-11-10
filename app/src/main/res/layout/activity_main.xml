@@ -14,8 +14,11 @@
         app:headerLayout="@layout/header"
         android:theme="@style/navigationTheme"
         app:menu="@menu/main_menu"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:itemBackground="@drawable/drawer_background_selector"
         android:layout_gravity="start"
-        android:background="@color/cardview_light_background"
+        android:background="@color/Fondo_menu"
       />
 <RelativeLayout
     android:layout_width="match_parent"
