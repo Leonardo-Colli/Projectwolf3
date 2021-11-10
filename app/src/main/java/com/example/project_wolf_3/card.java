@@ -16,6 +16,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.stripe.android.view.CardInputWidget;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 import retrofit2.Retrofit;
 
 public class card extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -23,18 +25,16 @@ public class card extends AppCompatActivity implements NavigationView.OnNavigati
     // 10.0.2.2 is the Android emulator's alias to localhost
     // 192.168.1.6 If you are testing in real device with usb connected to same network then use your IP address
     Double price;
-    TextView amountText, bienvenido;
+    TextView amountText, bienvenido, NumeroOrden;
     String cantidad, plazo;
     Button payButton;
-    View cuerpo,comofunciona, rctTransferencia;
-    ImageView mostrarT,ocultarT;
-
-
-    ImageView btnTransferencia, btnDeposito;
+    View cuerpo,comofunciona, btnTranferencia,btnDeposito, rctTerminos;
+    TextView MTerninos, OTerminos;
 
     NavigationView navigationView;
     ImageView menuIcon;
     DrawerLayout drawerLayout;
+    public String cadena;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +43,15 @@ public class card extends AppCompatActivity implements NavigationView.OnNavigati
 
         amountText = findViewById(R.id.amount_id);
         payButton = findViewById(R.id.payButton);
-        btnTransferencia = findViewById(R.id.Transferencia);
-        rctTransferencia = findViewById(R.id.rctTransferencia);
-        btnDeposito = findViewById(R.id.DepositoOxxo);
+        btnTranferencia = findViewById(R.id.rctTransferencia);
+        btnDeposito = findViewById(R.id.depositoOxxo);
+        rctTerminos = findViewById(R.id.Terminos);
         cuerpo = findViewById(R.id.terminosC);
-        mostrarT = findViewById(R.id.mostrarT);
-        ocultarT = findViewById(R.id.ocultarT);
         bienvenido = findViewById(R.id.txtbienvenido);
         comofunciona = findViewById(R.id.btnComofunciona);
+        MTerninos = findViewById(R.id.t_rminos);
+        OTerminos = findViewById(R.id.t_rminos_ocultar);
+        NumeroOrden = findViewById(R.id.numero_orden);
 
         Bundle bundle = this.getIntent().getExtras();
         cantidad = (bundle.getString("ahorro_amt"));
@@ -60,7 +61,7 @@ public class card extends AppCompatActivity implements NavigationView.OnNavigati
 
         cuerpo.setVisibility(View.GONE);
         bienvenido.setVisibility(View.GONE);
-        ocultarT.setVisibility(View.GONE);
+        OTerminos.setVisibility(View.GONE);
 
         drawerLayout = findViewById(R.id.menupincipal);
         navigationView = findViewById(R.id.nav_view);
@@ -73,40 +74,37 @@ public class card extends AppCompatActivity implements NavigationView.OnNavigati
             startActivity(colorsIntent);
         });
 
-        mostrarT.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-              cuerpo.setVisibility(View.VISIBLE);
-              bienvenido.setVisibility(View.VISIBLE);
-              mostrarT.setVisibility(View.GONE);
-              ocultarT.setVisibility(View.VISIBLE);
-          }
-        });
-        ocultarT.setOnClickListener(new View.OnClickListener() {
+        int longitud = 10;
+        cadena ="TD-"+cadenaAleatoria(longitud);
+        NumeroOrden.setText("Número de orden: "+cadena);
+
+        MTerninos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mostrarT.setVisibility(View.VISIBLE);
+                cuerpo.setVisibility(View.VISIBLE);
+                bienvenido.setVisibility(View.VISIBLE);
+                MTerninos.setVisibility(View.GONE);
+                OTerminos.setVisibility(View.VISIBLE);
+            }
+        });
+        OTerminos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MTerninos.setVisibility(View.VISIBLE);
                 cuerpo.setVisibility(View.GONE);
                 bienvenido.setVisibility(View.GONE);
-                ocultarT.setVisibility(View.GONE);
+                OTerminos.setVisibility(View.GONE);
             }
         });
 
-        btnTransferencia.setOnClickListener(new View.OnClickListener() {
+
+        btnTranferencia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intents = new Intent(card.this,TransferenciaBancaria.class);
                 intents.putExtra("ahorro_amt", cantidad);
                 intents.putExtra("ahorro_plz", plazo);
-                startActivity(intents);
-            }
-        });
-        rctTransferencia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intents = new Intent(card.this,TransferenciaBancaria.class);
-                intents.putExtra("ahorro_amt", cantidad);
-                intents.putExtra("ahorro_plz", plazo);
+                intents.putExtra("numero_orden", cadena);
                 startActivity(intents);
             }
         });
@@ -114,6 +112,9 @@ public class card extends AppCompatActivity implements NavigationView.OnNavigati
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(card.this,DepositoActivity.class);
+                intent.putExtra("ahorro_amt", cantidad);
+                intent.putExtra("ahorro_plz", plazo);
+                intent.putExtra("numero_orden", cadena);
                 startActivity(intent);
             }
         });
@@ -125,6 +126,23 @@ public class card extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
+    }
+    public static String cadenaAleatoria(int longitud) {
+        // El banco de caracteres
+        String banco = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        // La cadena en donde iremos agregando un carácter aleatorio
+        String cadena = "";
+        for (int x = 0; x < longitud; x++) {
+            int indiceAleatorio = numeroAleatorioEnRango(0, banco.length() - 1);
+            char caracterAleatorio = banco.charAt(indiceAleatorio);
+            cadena += caracterAleatorio;
+        }
+        return cadena;
+    }
+
+    public static int numeroAleatorioEnRango(int minimo, int maximo) {
+        // nextInt regresa en rango pero con límite superior exclusivo, por eso sumamos 1
+        return ThreadLocalRandom.current().nextInt(minimo, maximo + 1);
     }
     private void navigationDrawer() {
         navigationView.bringToFront();

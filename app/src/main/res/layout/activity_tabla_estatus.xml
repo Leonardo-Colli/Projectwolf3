@@ -10,6 +10,16 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
     android:theme="@style/Theme.Design.Light.NoActionBar">
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/nav_view"
+        app:headerLayout="@layout/header"
+        android:theme="@style/navigationTheme"
+        app:menu="@menu/main_menu"
+        android:layout_gravity="start"
+        android:background="@color/cardview_light_background"
+        />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"

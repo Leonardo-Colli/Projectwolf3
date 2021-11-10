@@ -3,7 +3,7 @@ package com.example.project_wolf_3.model;
 public class Posts {
 
     private String date;
-    private String status;
+    private int isConfirmed;
     private double amount;
 
     public String getDate() {
@@ -14,12 +14,12 @@ public class Posts {
         this.date = date;
     }
 
-    public String getStatus() {
-        return status;
+    public int getIsConfirmed() {
+        return isConfirmed;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setIsConfirmed(int isConfirmed) {
+        this.isConfirmed = isConfirmed;
     }
 
     public double getAmount() {

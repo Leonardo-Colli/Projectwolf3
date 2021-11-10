@@ -117,25 +117,17 @@
         |
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:text="Número de orden"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        android:id="@+id/numero_orden"
+        android:layout_width="match_parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:text="123456789123456789123"
+        android:text="Número de orden"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
@@ -147,7 +139,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/rectangle_37_shape"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/numero_orden"
         tools:layout_editor_absoluteX="30dp" />
 
     <View
@@ -163,54 +155,38 @@
 
     <TextView
         android:id="@+id/transferencia_bancaria"
-        android:layout_width="156dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="20dp"
+        android:drawableEnd="@drawable/ic_backarrow_1"
         android:fontFamily="Roboto"
         android:text="@string/transferencia_bancaria_string"
         android:textColor="@color/_bg__frame_1_ek2_color"
+        android:textAlignment="viewStart"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/rctTransferencia"
         app:layout_constraintStart_toStartOf="@+id/rctTransferencia"
-        app:layout_constraintTop_toTopOf="@+id/rctTransferencia" />
+        app:layout_constraintTop_toTopOf="@+id/rctTransferencia"
+        app:layout_constraintVertical_bias="0.478" />
 
     <TextView
-        android:id="@+id/dep_sito_en_oxxo"
-        android:layout_width="127dp"
+        android:id="@+id/depositoOxxo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="Roboto"
         android:text="@string/dep_sito_en_oxxo_string"
+        android:drawableEnd="@drawable/ic_backarrow_1"
         android:textColor="@color/_bg__frame_1_ek2_color"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/rectangle_38"
         app:layout_constraintStart_toStartOf="@+id/rectangle_38"
         app:layout_constraintTop_toTopOf="@+id/rectangle_38" />
 
-    <ImageView
-        android:id="@+id/DepositoOxxo"
-        android:layout_width="19dp"
-        android:layout_height="19dp"
-        android:layout_marginEnd="16dp"
-        android:contentDescription="ic_backarrow_1"
-        android:src="@drawable/ic_backarrow_1"
-        app:layout_constraintBottom_toBottomOf="@+id/rectangle_38"
-        app:layout_constraintEnd_toEndOf="@+id/rectangle_38"
-
-        app:layout_constraintTop_toTopOf="@+id/rectangle_38" />
-
-    <ImageView
-        android:id="@+id/Transferencia"
-        android:layout_width="19dp"
-        android:layout_height="19dp"
-        android:layout_marginEnd="16dp"
-        android:contentDescription="ic_backarrow_2"
-        android:src="@drawable/ic_backarrow_1"
-        app:layout_constraintBottom_toBottomOf="@+id/rctTransferencia"
-        app:layout_constraintEnd_toEndOf="@+id/rctTransferencia"
-        app:layout_constraintTop_toTopOf="@+id/rctTransferencia" />
 
     <ImageView
         android:id="@+id/linea_1"
@@ -285,10 +261,28 @@
         app:layout_constraintTop_toBottomOf="@+id/rectangle_38" />
     <TextView
         android:id="@+id/t_rminos"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:fontFamily="Roboto"
+        android:textAlignment="viewStart"
+        android:drawableEnd="@drawable/ic_mostrar"
+        android:text="@string/t_rminos_string"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/Terminos"
+        app:layout_constraintStart_toStartOf="@+id/Terminos"
+        app:layout_constraintTop_toTopOf="@+id/Terminos" />
+    <TextView
+        android:id="@+id/t_rminos_ocultar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="Roboto"
+        android:textAlignment="viewStart"
+        android:drawableEnd="@drawable/ic_ocultar"
         android:text="@string/t_rminos_string"
         android:textColor="@color/white"
         android:textSize="13sp"
@@ -323,24 +317,6 @@
         app:layout_constraintTop_toTopOf="@+id/terminosC"
         app:layout_constraintVertical_bias="0.074" />
 
-    <ImageView
-        android:id="@+id/mostrarT"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="8dp"
-        android:src="@drawable/ic_mostrar"
-        app:layout_constraintBottom_toBottomOf="@+id/Terminos"
-        app:layout_constraintEnd_toEndOf="@+id/Terminos"
-        app:layout_constraintTop_toTopOf="@+id/Terminos" />
-    <ImageView
-        android:id="@+id/ocultarT"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="8dp"
-        android:src="@drawable/ic_ocultar"
-        app:layout_constraintBottom_toBottomOf="@+id/Terminos"
-        app:layout_constraintEnd_toEndOf="@+id/Terminos"
-        app:layout_constraintTop_toTopOf="@+id/Terminos" />
 
     <TextView
         android:id="@+id/txtP1"

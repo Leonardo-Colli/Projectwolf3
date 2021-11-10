@@ -150,6 +150,7 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
         Bundle bundle = this.getIntent().getExtras();
         cantidad = (bundle.getString("ahorro_amt"));
         plazo = bundle.getString("ahorro_plz");
+        cadena = bundle.getString("numero_orden");
         amountText.setText(cantidad);
         price = Double.valueOf(cantidad);
 
@@ -171,8 +172,6 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
             startActivity(numbersIntent);
 
         });
-        int longitud = 10;
-        cadena ="TD-"+cadenaAleatoria(longitud);
 
         if(fundId != null) {
             Bundle bundles = this.getIntent().getExtras();
@@ -253,49 +252,49 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
             public void onClick(View view)
             {
                 String enviarcorreo = "savvytechmail@gmail.com";
-                String enviarasunto = "Pago";
                 String enviarmensaje = "Anexo mi comprobante de Pago";
 
                 // Defino mi Intent y hago uso del objeto ACTION_SEND
                 Intent intent = new Intent(Intent.ACTION_SEND);
 
                 // Defino los Strings Email, Asunto y Mensaje con la función putExtra
-                intent.putExtra(Intent.EXTRA_EMAIL,
-                        new String[] { enviarcorreo });
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[] { enviarcorreo });
                 intent.putExtra(Intent.EXTRA_SUBJECT, cadena);
                 intent.putExtra(Intent.EXTRA_TEXT, enviarmensaje);
 
                 // Establezco el tipo de Intent
                 intent.setType("message/rfc822");
 
-                // Lanzo el selector de cliente de Correo
-                startActivity(Intent.createChooser(intent, "Elije un cliente de Correo:"));
-                btn.setVisibility(View.GONE);
+                try {
+                    // Lanzo el selector de cliente de Correo
+                    startActivity(Intent.createChooser(intent, "Elije un cliente de Correo:"));
+                    btn.setVisibility(View.GONE);
+                    new Handler().postDelayed(new Runnable(){
+                        public void run(){
+                            btnListo.setVisibility(View.VISIBLE);  //esconde botón.
+                        }
+                    }, 8000); //8 segundos;
 
-                new Handler().postDelayed(new Runnable(){
-                    public void run(){
-                        btnListo.setVisibility(View.VISIBLE);  //esconde botón.
-
-                    }
-                }, 8000); //8 segundos;
-
-
+                }catch (Exception ex){
+                    Toast.makeText(TransferenciaBancaria.this, "ERROR"+ ex, Toast.LENGTH_SHORT).show();
+                }
             }
         });
         btnListo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                onSaveNote();
                 createPost();
                 animationView.setVisibility(View.VISIBLE);
                 animationView.playAnimation();
+
                 new Handler().postDelayed(new Runnable(){
                     public void run(){
                         Intent intent = new Intent(TransferenciaBancaria.this, MainActivity.class);
                         startActivity(intent);
-
                     }
-                }, 9000);
+                }, 6000);
 
             }
         });
@@ -315,8 +314,9 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
             double amount1 = Double.parseDouble(cantidad);
             int installments =Integer.parseInt(plazo);
             String transactionid = cadena;
-            String status="Pendiente";
-            Call<Post> call = myApi.createPost(name,username,price, amount1, installments, transactionid, status);
+            String firebaseSavingId = cadena;
+            int isConfirmed = 0;
+            Call<Post> call = myApi.createPost(name,username,price, amount1, installments, transactionid, isConfirmed, firebaseSavingId );
             call.enqueue(new Callback<Post>() {
                 @Override
                 public void onResponse(Call<Post> call, Response<Post> response) {
@@ -336,24 +336,6 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
     });
 
 }
-
-    public static String cadenaAleatoria(int longitud) {
-        // El banco de caracteres
-        String banco = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-        // La cadena en donde iremos agregando un carácter aleatorio
-        String cadena = "";
-        for (int x = 0; x < longitud; x++) {
-            int indiceAleatorio = numeroAleatorioEnRango(0, banco.length() - 1);
-            char caracterAleatorio = banco.charAt(indiceAleatorio);
-            cadena += caracterAleatorio;
-        }
-        return cadena;
-    }
-
-    public static int numeroAleatorioEnRango(int minimo, int maximo) {
-        // nextInt regresa en rango pero con límite superior exclusivo, por eso sumamos 1
-        return ThreadLocalRandom.current().nextInt(minimo, maximo + 1);
-    }
 
     public void onSaveNote(){
         Date plz_dt = Calendar.getInstance().getTime();
@@ -400,8 +382,6 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
                 Toast.makeText(TransferenciaBancaria.this, "Error! Monto máximo: $100,000", Toast.LENGTH_SHORT).show();
             } else {
 
-
-
                 if(bal == 0.0){
                     documentReference.update("first_saving", plz_dt);
                 }
@@ -409,16 +389,16 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
                 //Parameters
 
                 double btc_mix = 0.4;
-                double eth_mix = 0.3;
-                double alt_mix = 0.3;
+                double eth_mix = 0;
+                double alt_mix = 0;
                 double cash_com = 0.03; //comision
                 double exch_com = 0.01; //comision
                 double ref_com = 0.01;
                 double own_com = 0.3;
                 double btc_amt_new = amt * (1 - cash_com) * (1 - exch_com) * btc_mix;
-                double eth_amt_new = amt * (1 - cash_com) * (1 - exch_com) * eth_mix;
-                double alt_amt_new = amt * (1 - cash_com) * (1 - exch_com) * alt_mix;
-                double fin_amt_new = btc_amt_new + eth_amt_new + alt_amt_new;
+              //  double eth_amt_new = amt * (1 - cash_com) * (1 - exch_com) * eth_mix;
+                //double alt_amt_new = amt * (1 - cash_com) * (1 - exch_com) * alt_mix;
+                double fin_amt_new = btc_amt_new; //+ eth_amt_new + alt_amt_new;
 
 
                 if(fundId != null) {
@@ -427,23 +407,23 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
 
 
                     double btc_p0_new = 100000; // cambia
-                    double eth_p0_new = 36300;
-                    double alt_p0_new = 1250; //ada
-                    double final_amount = btc_amt + btc_amt_new + eth_amt + eth_amt_new + alt_amt + alt_amt_new;
+                   // double eth_p0_new = 36300;
+                    //double alt_p0_new = 1250; //ada
+                    double final_amount = btc_amt + btc_amt_new; //+ eth_amt + eth_amt_new + alt_amt + alt_amt_new;
 
                     DocumentReference documentReference1 = db.collection("funds").document(userID).collection("savings").document(fundId);
 
                     documentReference1.update("btc_p0", btc_p0*(1 - mix_new) + btc_p0_new*mix_new);
-                    documentReference1.update("eth_p0", eth_p0*(1 - mix_new) + eth_p0_new*mix_new);
-                    documentReference1.update("alt_p0", alt_p0*(1 - mix_new) + alt_p0_new*mix_new);
+                    //documentReference1.update("eth_p0", eth_p0*(1 - mix_new) + eth_p0_new*mix_new);
+                    //documentReference1.update("alt_p0", alt_p0*(1 - mix_new) + alt_p0_new*mix_new);
 
                     documentReference1.update("btc_amt", btc_amt + btc_amt_new);
-                    documentReference1.update("eth_amt", eth_amt + eth_amt_new);
-                    documentReference1.update("alt_amt", alt_amt + alt_amt_new);
+                    //documentReference1.update("eth_amt", eth_amt + eth_amt_new);
+                    //documentReference1.update("alt_amt", alt_amt + alt_amt_new);
 
                     documentReference1.update("btc_vol", btc_vol + btc_amt_new/btc_p0_new);
-                    documentReference1.update("eth_vol", eth_vol + eth_amt_new/eth_p0_new);
-                    documentReference1.update("alt_vol", alt_vol + alt_amt_new/alt_p0_new);
+                    //documentReference1.update("eth_vol", eth_vol + eth_amt_new/eth_p0_new);
+                    //documentReference1.update("alt_vol", alt_vol + alt_amt_new/alt_p0_new);
 
                     //Esto si cambia
                     documentReference1.update("initial_amount", initial_amount + amt);
@@ -457,9 +437,9 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
                 }else {
 
 
-                    double btc_p0_new = 1000000;
-                    double eth_p0_new = 36000;
-                    double alt_p0_new = 1000;
+                    //double btc_p0_new = 1000000;
+                    //double eth_p0_new = 36000;
+                    //double alt_p0_new = 1000;
 
                     inversionTotal = inversion + amt;
                     documentReference.update("Inversion", inversionTotal);
@@ -471,12 +451,12 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
                     Map<String, Object> saving = new HashMap<>();
                     saving.put("date", plz_dt);
                     saving.put("months", plz);
-                    saving.put("initial_amount", amt);
-                    saving.put("final_amount", fin_amt_new);
-                    saving.put("roi_per", (fin_amt_new - amt) / amt);
-                    saving.put("roi_vol", fin_amt_new - amt);
+                    saving.put("initial_amount", 0);
+                    saving.put("final_amount", 0);
+                    //saving.put("roi_per", (fin_amt_new - amt) / amt);
+                    //saving.put("roi_vol", fin_amt_new - amt);
 
-                    saving.put("btc_mix", btc_mix);
+                   /* saving.put("btc_mix", btc_mix);
                     saving.put("eth_mix", eth_mix);
                     saving.put("alt_mix", alt_mix);
 
@@ -499,15 +479,15 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
                     saving.put("cash_com", cash_com);
                     saving.put("exch_com", exch_com);
                     saving.put("ref_com", ref_com);
-                    saving.put("own_com", own_com);
+                    saving.put("own_com", own_com);*/
 
-                    db.collection("funds").document(userID).collection("savings").document(String.valueOf(plz_dt)).set(saving)
+                    db.collection("funds").document(userID).collection("savings").document(cadena).set(saving)
                             .addOnSuccessListener(aVoid -> Toast.makeText(TransferenciaBancaria.this, "Ahorro Guardado", Toast.LENGTH_SHORT).show())
                             .addOnFailureListener(e -> Toast.makeText(TransferenciaBancaria.this, "Error! Ahorro no guardado", Toast.LENGTH_SHORT).show());
 
                 }
 
-                startActivity(new Intent(getApplicationContext(), TransactionVerif.class));
+               // startActivity(new Intent(getApplicationContext(), TransactionVerif.class));
 
             }
         }

@@ -25,7 +25,8 @@ public interface RetrofitInterface {
                            @Field("amount") Double amount,
                            @Field("installments") int installments,
                            @Field("transactionid") String transactionid,
-                           @Field("status") String status);
+                           @Field("isConfirmed") int status,
+                           @Field("firebaseSavingId") String firebaseSavingId);
 
 
     @GET("transactions/{id}")

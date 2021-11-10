@@ -10,24 +10,34 @@ public class Post {
     private Float amount;
     private int installments;
     private String transactionid;
-    private String status;
+    private int isConfirmed;
+    private String firebaseSavingId;
 
-    public Post(String name, String user, Float price, Float amount, int installments, String transactionid, String status) {
+    public Post(String name, String user, Float price, Float amount, int installments, String transactionid, int isConfirmed, String firebaseSavingId) {
         this.name = name;
         this.user = user;
         this.price = price;
         this.amount = amount;
         this.installments = installments;
         this.transactionid = transactionid;
-        this.status = status;
+        this.isConfirmed = isConfirmed;
+        this.firebaseSavingId = firebaseSavingId;
     }
 
-    public String getStatus() {
-        return status;
+    public String getFirebaseSavingId() {
+        return firebaseSavingId;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setFirebaseSavingId(String firebaseSavingId) {
+        this.firebaseSavingId = firebaseSavingId;
+    }
+
+    public int getIsConfirmed() {
+        return isConfirmed;
+    }
+
+    public void setIsConfirmed(int isConfirmed) {
+        this.isConfirmed = isConfirmed;
     }
 
     public String getName() {

@@ -455,7 +455,7 @@
             android:background="@color/black"
             app:lottie_speed="0.5"
             app:lottie_repeatCount="5"
-            app:lottie_rawRes="@raw/transicion"/>
+            app:lottie_rawRes="@raw/transicion5fps"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

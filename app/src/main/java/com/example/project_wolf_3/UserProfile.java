@@ -108,7 +108,8 @@ public class UserProfile extends AppCompatActivity {
                     phone.setText(username);
 
                     balancetotal = value.getDouble("balance");
-                    balance.setText(String.valueOf(balancetotal));
+                    balance.setText(String.format("$%s", String.format("%,.2f", balancetotal)));
+                    //balance.setText(String.valueOf(balancetotal));
 
                     lada = value.getString("lada");
                     fullname.setText(value.getString("fullname"));
