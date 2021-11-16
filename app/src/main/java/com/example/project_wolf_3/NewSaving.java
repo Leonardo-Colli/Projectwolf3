@@ -187,6 +187,7 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
 
             //int plz = Integer.parseInt(plazo);
             String totals = String.valueOf(total);
+        Double t = Double.valueOf(totals);
             Intent intent = new Intent(NewSaving.this, card.class);
             if (total != 0) {
                 intent.putExtra("ahorro_plz", plazo);

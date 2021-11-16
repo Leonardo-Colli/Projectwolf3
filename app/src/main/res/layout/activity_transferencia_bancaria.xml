@@ -15,9 +15,34 @@
         app:headerLayout="@layout/header"
         android:theme="@style/navigationTheme"
         app:menu="@menu/main_menu"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:itemBackground="@drawable/drawer_background_selector"
         android:layout_gravity="start"
-        android:background="@color/cardview_light_background"
-        />
+        android:background="@color/Fondo_menu">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_height="42dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/poppinsmedium"
+                android:gravity="center"
+                android:background="@drawable/btnlogout"
+                android:text="Cerrar sesión"
+                android:textColor="@drawable/colortextobtnlogout"
+                android:textSize="14sp"
+                android:textAllCaps="false"/>
+        </LinearLayout>
+    </com.google.android.material.navigation.NavigationView>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -395,7 +420,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/botonconfirmar"
+            android:background="@drawable/_rectangle_20_shape"
             android:fontFamily="@font/poppinsmedium"
             android:gravity="center"
             android:text="Confirmar"
@@ -435,7 +460,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/botonconfirmar"
+            android:background="@drawable/_rectangle_20_shape"
             android:fontFamily="@font/poppinsmedium"
             android:gravity="center"
             android:text="Listo"

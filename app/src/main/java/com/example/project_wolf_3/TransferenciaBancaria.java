@@ -366,7 +366,7 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
             Toast.makeText(TransferenciaBancaria.this, "Error! El monto es necesario", Toast.LENGTH_SHORT).show();
             return;
         }
-        int amt = Integer.parseInt(amount);
+        Double amt = Double.valueOf(cantidad);
         int plz = Integer.parseInt(plzo);
         // Filter number of payments
         if(plz < 6) {

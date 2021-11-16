@@ -142,16 +142,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
 
-        FloatingActionButton invest = findViewById(R.id.button_invest);
-        invest.setOnClickListener(view -> {
-            Intent numbersIntent = new Intent(MainActivity.this, NewSaving.class);
-            startActivity(numbersIntent);
 
-        });
 
-        Balance = findViewById(R.id.balance_banner);
+        Balance = findViewById(R.id.new_saving);
         Balance.setOnClickListener(view -> {
-            Intent numbersIntent = new Intent(MainActivity.this, BalanceTotal.class);
+            Intent numbersIntent = new Intent(MainActivity.this, NewSaving.class);
             startActivity(numbersIntent);
         });
         ImageView profile = findViewById(R.id.button_profile);
@@ -211,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent numbersIntent = new Intent(MainActivity.this, BalanceTotal.class);
                 startActivity(numbersIntent);
                 break;
-            case R.id.nav_fondos:
+            case R.id.nav_transaccion:
                 Intent fondosIntent = new Intent(MainActivity.this, TablaEstatus.class);
                 startActivity(fondosIntent);
                 break;

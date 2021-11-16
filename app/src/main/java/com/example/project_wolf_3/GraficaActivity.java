@@ -1,6 +1,7 @@
 package com.example.project_wolf_3;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -63,87 +64,10 @@ public class GraficaActivity extends AppCompatActivity {
         context=this;
         pantalla= (LinearLayout) (findViewById(R.id.grafico));
         preciobtc = findViewById(R.id.preciobtc);
-        obtenerDatos();
-        //inicia();
-        //columna_apil100(pantalla);
+        //obtenerDatos();
+        columna_apil(pantalla);
 
 
-    }
-    public void inicia(){
-        // inicializamos el grafico dinamico ó serie de tiempo
-        plot = new PlotPlanitoXY(context,"xx vs yy","x","y");//el "context" si no esta dentro del hilo UI puede simplemente colocarse this
-        plot.SetEscalaAutomatica(true);// escala automatica si no se coloca true deben definirse los valores maximos de xmin,xmax,y1min,y1max,y2min,y2max
-        plot.SetHD(true);
-
-        String url = "http://10.0.2.2:3050/precios";
-        StringRequest postRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONArray jsonObject = new JSONArray(response);
-                    HashMap<String, Double> listar = new HashMap<>();
-                    ArrayList<Object> listdata = new ArrayList<>();
-                     ArrayList<Double> listvalor = new ArrayList<>();
-                    for (int i=0; i<jsonObject.length(); i++){
-                        String Nombre = jsonObject.getJSONObject(i).getString("nombre");
-                        Double Valor = jsonObject.getJSONObject(i).getDouble("precio");
-                        listar.put(Nombre,Valor);
-                        listdata.add(listar);
-                        listvalor.add(Valor);
-                        preciobtc.setText(String.valueOf(listvalor.get(i)));
-                        //Toast.makeText(getApplicationContext(), "" + listdata.get(j), Toast.LENGTH_SHORT).show();
-                    }
-                    listardata.add(listvalor);
-
-                    //Log.e(TAG, "Nombre: "+ listdata);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Error: "+ error.getMessage() );
-            }
-        });
-
-        Volley.newRequestQueue(this).add(postRequest);
-
-        timer = new Timer();
-        TimerTask task = new TimerTask()
-        {
-            /* se inicia un hilo en paralelo para ejecutar la tarea asincrona podria usarse tambien la clase AnsycTask y usar su
-               su hilo especifico para acceder a la UI */
-            @Override
-            public void run()
-            {
-                //hilo para comunicarse con la UI intefaz de usuario y poder pintar el el LinearLayout "pantalla"
-                runOnUiThread(new Runnable()
-                {
-                    @Override
-                    public void run()
-                    {
-                        pantalla.removeAllViews();
-                        Xd=new float[i+1]; Xd[0]=3.4f;
-                        Yd=new float[i+1];
-                        X[i]=i-20;
-                        Y[i]=(i-20)*(i-20);
-                        for (int j = 0; j < Xd.length; j++) {
-                            Xd[j]= X[j];
-                            Yd[j] =Y[j];
-                        }
-                        for (int k=0; k<listardata.size(); k++) {
-                            preciobtc.setText(String.valueOf( listardata.get(k)));
-                            //Toast.makeText(getApplicationContext(), "" + listardata.get(k), Toast.LENGTH_SHORT).show();
-                        }
-                        plot.SetSerie1(Xd,Yd,"graph1",5,true);// el true indica que unira los puntos con recta
-                        pantalla.addView(plot);
-                        i=i+1;
-                    }//hilo2
-                });//hilo para acceder a la intefaz grafica
-            }//hilo1
-        };
-        timer.schedule(task, 1000, 200);// el timer se ejecura despues de 1000ms=1seg de haber precionando el boton "plot2d" y se repite cada 200ms
     }
 
     public void columna(View v){
@@ -190,16 +114,16 @@ public class GraficaActivity extends AppCompatActivity {
 
     public void columna_apil(View v){
         String x[]={"lunes","martes","miercoles","jueves","viernes","sabado","domingo"};
-        String Acota[]={"jeans","shorts","shoes"};
-        double y[][]={{2 ,3,1},//y[7]{3]  defina un array de 7 grupos con 3 columnas  puede ser de y[n][m] con n,m cualquier entero
-                {5 ,2,5},
-                {1,3,2},
-                {0 ,3,1},
-                {2 ,4,-1},
-                {2 ,0,-1},
-                {2 ,1,-1}};
+        String Acota[]={"Inversión inicial","Inversion Actual"};
+        double y[][]={{200 ,310},//y[7]{3]  defina un array de 7 grupos con 3 columnas  puede ser de y[n][m] con n,m cualquier entero
+                {500 ,520},
+                {100,120},
+                {100 ,120},
+                {200 ,220},
+                {200 ,220},
+                {2000 ,2100}};
 
-        ColumnaApilada=new PlotBarritas(this,"Gráfico de Columnas Agrupadas","articulos vendidos por dia");
+        ColumnaApilada=new PlotBarritas(this,"Balance General","");
 
         //personalizacion de grafico
         ColumnaApilada.ColumnaApilada(x,y,Acota);
@@ -210,6 +134,7 @@ public class GraficaActivity extends AppCompatActivity {
         //puede elegirse el color hasta la pila 44 si es mayor sera generado aleatoriamente
 
         pantalla.removeAllViews();
+
         pantalla.addView(ColumnaApilada);
     }
 
@@ -217,15 +142,15 @@ public class GraficaActivity extends AppCompatActivity {
 
     public void columna_apil100(View v){
         String x[]={"lunes","martes","miercoles","jueves","viernes","sabado","domingo"};
-        String Acota[]={"jeans","shorts","shoes"};
-        double y[][]={{2 ,3,1},//y[7]{3]  defina un array de 7 grupos con 3 columnas  puede ser de y[n][m] con n,m cualquier entero
-                {5 ,2,5},
-                {1,3,2},
-                {0 ,3,1},
-                {2 ,4,-1},
-                {2 ,0,-1},
-                {2 ,1,-1}};
-        ColumnaApilada100=new PlotBarritas(this,"Gráfico de Columnas Agrupadas","articulos vendidos por dia");
+        String Acota[]={"Inversión inicial","Inversion Actual"};
+        double y[][]={{100 ,120},//y[7]{3]  defina un array de 7 grupos con 3 columnas  puede ser de y[n][m] con n,m cualquier entero
+                {500 ,520},
+                {100,120},
+                {100 ,120},
+                {200 ,220},
+                {200 ,220},
+                {2000 ,2100}};
+        ColumnaApilada100=new PlotBarritas(this,"Balance General","");
 
         //personalizacion de grafico
         ColumnaApilada100.ColumnaApilada100(x,y,Acota);
@@ -237,67 +162,6 @@ public class GraficaActivity extends AppCompatActivity {
         pantalla.addView(ColumnaApilada100);
     }
 
-    private void obtenerDatos(){
-        String url = "http://10.0.2.2:3050/precios";
-        StringRequest postRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONArray jsonObject = new JSONArray(response);
-                    HashMap<String, Double> listar = new HashMap<>();
-                    ArrayList<Object> listdata = new ArrayList<>();
-                    ArrayList<Double> listvalor = new ArrayList<>();
-                    for (int i=0; i<jsonObject.length(); i++){
-                        String Nombre = jsonObject.getJSONObject(i).getString("nombre");
-                        Double Valor = jsonObject.getJSONObject(i).getDouble("precio");
-                        listar.put(Nombre,Valor);
-                        listdata.add(listar);
-                        listvalor.add(Valor);
-                        preciobtc.setText(String.valueOf(listvalor.get(i)));
-                            //Toast.makeText(getApplicationContext(), "" + listdata.get(j), Toast.LENGTH_SHORT).show();
-                    }
-                    listardata.add(listdata);
-
-                    //Log.e(TAG, "Nombre: "+ listdata);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Error: "+ error.getMessage() );
-            }
-        });
-        Volley.newRequestQueue(this).add(postRequest);
-    }
-/*    private void obtenerDatos() {
-        RetrofitInterface service = retrofit.create(RetrofitInterface.class);
-        Call<PrecioRespuesta> precioRespuestaCall = service.obtenerListaPrecio();
-
-        precioRespuestaCall.enqueue(new Callback<PrecioRespuesta>() {
-            @Override
-            public void onResponse(Call<PrecioRespuesta> call, Response<PrecioRespuesta> response) {
-                if (response.isSuccessful()){
-                    PrecioRespuesta precioRespuesta = response.body();
-                    ArrayList<Precio> listaPrecio = precioRespuesta.getResults();
-                    for (int i = 0; i<listaPrecio.size(); i++){
-                        Precio p = listaPrecio.get(i);
-                        Log.i(TAG, "Precio: "+ p.getNombre());
-                    }
 
 
-                }else{
-                    Log.e(TAG, " onResponse: " + response.errorBody());
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<PrecioRespuesta> call, Throwable t) {
-                Log.e(TAG, "onFailure: " + t.getMessage());
-            }
-        });
-    }
-*/
 }

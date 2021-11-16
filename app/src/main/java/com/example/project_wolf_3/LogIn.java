@@ -43,7 +43,7 @@ public class LogIn extends AppCompatActivity {
         mAuth.setLanguageCode("es");
 
         if(mAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            startActivity(new Intent(getApplicationContext(), BalanceTotal.class));
             finish();
 
         }
@@ -108,7 +108,7 @@ public class LogIn extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             if(task.isSuccessful()){
                 Toast.makeText(LogIn.this, "Registro Exitoso", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), BalanceTotal.class));
             } else{
                 Toast.makeText(LogIn.this, "Error: " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);

@@ -1,5 +1,6 @@
 package com.example.project_wolf_3;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -30,7 +31,16 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+
+
 import com.squareup.picasso.Picasso;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+import com.juang.jplot.PlotBarritas;
+import com.juang.jplot.PlotPastelito;
+import com.juang.jplot.PlotPlanitoXY;
 
 public class FundBalance extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private TextView mEmptyStateTextView;
@@ -45,6 +55,7 @@ public class FundBalance extends AppCompatActivity implements NavigationView.OnN
     ImageView menuIcon;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
+    Context context;
 
 
     @Override
@@ -68,6 +79,8 @@ public class FundBalance extends AppCompatActivity implements NavigationView.OnN
         mFirestoreList = findViewById(R.id.list);
 
         navigationDrawer();
+
+
 
         progressBar.setVisibility(View.GONE);
         if(userID != null){
@@ -106,7 +119,6 @@ public class FundBalance extends AppCompatActivity implements NavigationView.OnN
                     holder.Ganancia.setText(String.format("$%s", String.format("%,.2f", model.getRoi_vol())));
                     holder.Fecha.setText(String.valueOf(model.getDate()));
 
-
                 }
             };
             mFirestoreList.setHasFixedSize(true);
@@ -126,6 +138,7 @@ public class FundBalance extends AppCompatActivity implements NavigationView.OnN
             finish();
 
         });
+
 
     }
 
@@ -180,6 +193,7 @@ public class FundBalance extends AppCompatActivity implements NavigationView.OnN
         private TextView Ganancia;
         private TextView Fecha;
         private TextView Retorno;
+        GraphView graph;
 
 
         public TransactionViewHolder(@NonNull View itemView) {
@@ -191,6 +205,15 @@ public class FundBalance extends AppCompatActivity implements NavigationView.OnN
             Inversion = itemView.findViewById(R.id.Inversion);
             Ganancia = itemView.findViewById(R.id.Ganancia);
             Fecha = itemView.findViewById(R.id.date);
+             graph= itemView.findViewById(R.id.graph);
+            LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
+                    new DataPoint(0, 100),
+                    new DataPoint(1, 500),
+                    new DataPoint(2, 300),
+                    new DataPoint(3, 200),
+                    new DataPoint(4, 600)
+            });
+            graph.addSeries(series);
 
 
         }

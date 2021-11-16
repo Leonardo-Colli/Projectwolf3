@@ -87,12 +87,7 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
             Intent colorsIntent = new Intent(BalanceTotal.this, UserProfile.class);
             startActivity(colorsIntent);
         });
-        FloatingActionButton invest = findViewById(R.id.btnRegresar);
-        invest.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            finish();
 
-        });
     }
 
     private void navigationDrawer() {

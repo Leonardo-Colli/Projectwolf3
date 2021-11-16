@@ -18,8 +18,31 @@
         app:itemTextColor="@color/white"
         app:itemBackground="@drawable/drawer_background_selector"
         android:layout_gravity="start"
-        android:background="@color/Fondo_menu"
-      />
+        android:background="@color/Fondo_menu">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_height="42dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/poppinsmedium"
+                android:gravity="center"
+                android:background="@drawable/btnlogout"
+                android:text="Cerrar sesión"
+                android:textColor="@drawable/colortextobtnlogout"
+                android:textSize="14sp"
+                android:textAllCaps="false"/>
+        </LinearLayout>
+    </com.google.android.material.navigation.NavigationView>
+
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -62,7 +85,7 @@
             android:layout_marginTop="14dp"
             android:layout_marginEnd="14dp"
             android:contentDescription="vector"
-            android:src="@drawable/ic_perfilinicial" />
+            android:src="@drawable/ic_portafolio" />
 
         <TextView
             android:id="@+id/name_ek1"
@@ -95,25 +118,9 @@
 
     </RelativeLayout>
 
-    <com.getbase.floatingactionbutton.FloatingActionButton
-        android:id="@+id/button_invest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="9dp"
-        android:layout_marginRight="9dp"
-        android:layout_marginBottom="53dp"
-        android:background="@drawable/degradado"
-        app:fab_colorNormal="@color/purple_700"
-        app:fab_icon="@drawable/ic_baseline_add_24"
-        app:fab_size="normal">
-
-    </com.getbase.floatingactionbutton.FloatingActionButton>
 
     <TextView
-        android:id="@+id/balance_banner"
+        android:id="@+id/new_saving"
         android:layout_width="match_parent"
         android:layout_height="42dp"
         android:layout_alignParentBottom="true"
@@ -123,7 +130,7 @@
         android:background="@drawable/_rectangle_20_shape"
         android:fontFamily="@font/poppinsmedium"
         android:gravity="center"
-        android:text="Balance"
+        android:text="Nueva inversión"
         android:textColor="@color/white"
         android:textSize="20sp" />
 

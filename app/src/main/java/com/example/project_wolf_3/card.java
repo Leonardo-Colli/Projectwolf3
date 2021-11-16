@@ -27,7 +27,6 @@ public class card extends AppCompatActivity implements NavigationView.OnNavigati
     Double price;
     TextView amountText, bienvenido, NumeroOrden;
     String cantidad, plazo;
-    Button payButton;
     View cuerpo,comofunciona, btnTranferencia,btnDeposito, rctTerminos;
     TextView MTerninos, OTerminos;
 
@@ -42,7 +41,6 @@ public class card extends AppCompatActivity implements NavigationView.OnNavigati
         setContentView(R.layout.activity_menu_pago);
 
         amountText = findViewById(R.id.amount_id);
-        payButton = findViewById(R.id.payButton);
         btnTranferencia = findViewById(R.id.rctTransferencia);
         btnDeposito = findViewById(R.id.depositoOxxo);
         rctTerminos = findViewById(R.id.Terminos);

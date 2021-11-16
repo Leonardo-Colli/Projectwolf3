@@ -156,7 +156,7 @@ public class TablaEstatus extends AppCompatActivity implements NavigationView.On
     private void navigationDrawer() {
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setCheckedItem(R.id.nav_fondos);
+        navigationView.setCheckedItem(R.id.nav_transaccion);
         menuIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

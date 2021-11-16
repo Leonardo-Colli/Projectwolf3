@@ -13,19 +13,20 @@
         <item
             android:id="@+id/nav_inversiones"
             android:title="Inversiones"
-            android:icon="@drawable/ic_inversionescheck"/>
+            android:icon="@drawable/ic_inversiones"/>
 
         <item
             android:id="@+id/nav_estrategias"
             android:title="Estrategias"
-            android:icon="@drawable/ic_estrategias"/>
+            android:icon="@drawable/ic_estrategias_2"/>
         <item
-            android:id="@+id/nav_fondos"
-            android:title="Fondeos"
-            android:icon="@drawable/ic_estrategias"/>
+            android:id="@+id/nav_transaccion"
+            android:title="Transacciones"
+            android:icon="@drawable/ic_transaccion"/>
         <item
             android:id="@+id/nav_guiadeuso"
             android:title="Guia de uso"
             android:icon="@drawable/ic_mas"/>
     </group>
+
 </menu>
