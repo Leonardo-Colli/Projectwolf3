@@ -179,7 +179,6 @@
     <string name="mxn_ek1_string">mxn</string>
     <string name="pagar_string">Pagar</string>
     <string name="name_ek5_string">NAME</string>
-    <string name="pasarela_de_pago_string">Pasarela de Pago</string>
     <string name="cvc_string">CVC </string>
     <string name="c_p__string">C.P. </string>
     <string name="nombre_ek1_string">Nombre </string>
@@ -234,5 +233,5 @@
     <string name="realiza_el_pago_string">Realiza el pago </string>
     <string name="realiza_el_pago_a_trav_s_de_los_m_todos_sugeridos__completa_la_transacci_n_y_sube_tu_comprobante__string">Realiza el pago a través de los métodos sugeridos. Completa la transacción y sube tu comprobante.</string>
     <string name="efectua_una_inversi_n_y_genera_tu_n_mero_de_orden_string">Efectua una inversión y genera tu número de orden</string>
-    <string name="en_un_lapso_m_ximo_de_24_hrs_se_ver__reflejada_tu_inversi_n__ahora__puedes_seguir_disfrutando_de_la_aplicaci_n__string">En un lapso mximo de 24 hrs se ver reflejada tu inversión. Ahora, puedes seguir disfrutando de la aplicación.</string>
+    <string name="en_un_lapso_m_ximo_de_24_hrs_se_ver__reflejada_tu_inversi_n__ahora__puedes_seguir_disfrutando_de_la_aplicaci_n__string">En un lapso máximo de 24 hrs se verá reflejada tu inversión. Ahora, puedes seguir disfrutando de la aplicación.</string>
 </resources>

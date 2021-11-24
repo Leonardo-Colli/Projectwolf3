@@ -13,6 +13,7 @@ public class Post {
     private int isConfirmed;
     private String firebaseSavingId;
 
+
     public Post(String name, String user, Float price, Float amount, int installments, String transactionid, int isConfirmed, String firebaseSavingId) {
         this.name = name;
         this.user = user;

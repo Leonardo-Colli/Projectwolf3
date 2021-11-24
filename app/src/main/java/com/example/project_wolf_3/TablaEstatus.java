@@ -75,8 +75,11 @@ public class TablaEstatus extends AppCompatActivity implements NavigationView.On
         Fondeos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fondeos.setBackgroundColor(Color.parseColor("#BABABA"));
-                Retiros.setBackgroundColor(Color.parseColor("#D30F0F"));
+
+                Fondeos.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_transacciones_active));
+                Fondeos.setTextColor(getResources().getColor(R.color.white));
+                Retiros.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_transacciones));
+                Retiros.setTextColor(getResources().getColor(R.color.black));
                 mJsonText.setText("");
                 mJsonTextCantidad.setText("");
                 mJsonTextEstatus.setText("");
@@ -91,8 +94,10 @@ public class TablaEstatus extends AppCompatActivity implements NavigationView.On
         Retiros.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fondeos.setBackgroundColor(Color.parseColor("#FF018786"));
-                Retiros.setBackgroundColor(Color.parseColor("#BABABA"));
+                Fondeos.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_transacciones));
+                Fondeos.setTextColor(getResources().getColor(R.color.black));
+                Retiros.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_transacciones_active));
+                Retiros.setTextColor(getResources().getColor(R.color.white));
                 mJsonText.setText("");
                 mJsonTextCantidad.setText("");
                 mJsonTextEstatus.setText("");
@@ -117,8 +122,8 @@ public class TablaEstatus extends AppCompatActivity implements NavigationView.On
     }
     private void find(String codigo){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/api/")
-                //.baseUrl("http://192.168.1.81:8080/api/")
+                //.baseUrl("http://10.0.2.2:8080/api/")
+                .baseUrl("http://192.168.1.81:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);

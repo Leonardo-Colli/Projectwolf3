@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project_wolf_3.model.FundModel;
+import com.example.project_wolf_3.model.Posts;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -43,7 +45,7 @@ import com.juang.jplot.PlotPastelito;
 import com.juang.jplot.PlotPlanitoXY;
 
 public class FundBalance extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    private TextView mEmptyStateTextView;
+    private TextView btnRetiro;
     private FirebaseFirestore firebaseFirestore;
     private RecyclerView mFirestoreList;
     private FirestoreRecyclerAdapter adapter;
@@ -56,45 +58,56 @@ public class FundBalance extends AppCompatActivity implements NavigationView.OnN
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     Context context;
-
+    private Posts itemDetail;
+    private TextView Balance;
+    private TextView Inversion;
+    private TextView Ganancia;
+    private TextView Fecha;
+    private TextView Retorno;
+    private double inversionR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
-
-        ProgressBar progressBar = findViewById(R.id.loading_indicator);
-        mEmptyStateTextView = findViewById(R.id.empty_view);
-
+        setContentView(R.layout.activity_fund_balance);
         drawerLayout = findViewById(R.id.menupincipal);
         navigationView = findViewById(R.id.nav_view);
         menuIcon = findViewById(R.id.menu_icon);
 
-        Intent data = getIntent();
-        fundId = data.getStringExtra("id");
+
         mAuth = FirebaseAuth.getInstance();
         userID = mAuth.getCurrentUser().getUid();
 
         firebaseFirestore = FirebaseFirestore.getInstance();
-        mFirestoreList = findViewById(R.id.list);
+
 
         navigationDrawer();
+        Inversion = findViewById(R.id.Inversion);
+        Retorno = findViewById(R.id.retorno);
+        Balance = findViewById(R.id.Balance);
+        Ganancia = findViewById(R.id.Ganancia);
+        Fecha = findViewById(R.id.date);
+        btnRetiro = findViewById(R.id.new_retiro);
 
+        itemDetail = (Posts) getIntent().getExtras().getSerializable("itemDetail");
+        Inversion.setText(String.format("$%s", String.format("%,.2f", itemDetail.getAmount())));
+        inversionR = itemDetail.getAmount();
+        Fecha.setText(itemDetail.getDate());
+        Ganancia.setText(String.format("$%s", String.format("%,.2f", itemDetail.getGananciap())));
 
-
-        progressBar.setVisibility(View.GONE);
+//        progressBar.setVisibility(View.GONE);
         if(userID != null){
             profileImage = navigationView.getHeaderView(0).findViewById(R.id.user_image_nav);
-            progressBar.setVisibility(View.GONE);
             storageReference = FirebaseStorage.getInstance().getReference();
             StorageReference profileRef = storageReference.child("users/"+mAuth.getCurrentUser().getUid()+"/profile.jpg");
             profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-                    Picasso.get().load(uri).into(profileImage);
+                   Picasso.get().load(uri).into(profileImage);
                 }
             });
-            Query query = firebaseFirestore.collection("funds")
+
+           /* Query query = firebaseFirestore.collection("funds")
                     .document(userID).collection("savings").whereEqualTo(FieldPath.documentId(), fundId);
             //Query query = firebaseFirestore.collection("users/" + id  + "/Citas/");//.whereEqualTo("id", 1);
             //Recycler Options
@@ -123,20 +136,28 @@ public class FundBalance extends AppCompatActivity implements NavigationView.OnN
             };
             mFirestoreList.setHasFixedSize(true);
             mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
-            mFirestoreList.setAdapter(adapter);
+            mFirestoreList.setAdapter(adapter);*/
 
         }
 
-        ImageView profile = findViewById(R.id.button_profile);
+        ImageView profile = findViewById(R.id.profileimg);
         profile.setOnClickListener(view -> {
-            Intent colorsIntent = new Intent(FundBalance.this, UserProfile.class);
+            Intent colorsIntent = new Intent(FundBalance.this, MainActivity.class);
             startActivity(colorsIntent);
         });
         FloatingActionButton invest = findViewById(R.id.btnRegresar);
         invest.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            startActivity(new Intent(getApplicationContext(), BalanceTotal.class));
             finish();
 
+        });
+        btnRetiro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FundBalance.this,RetirosActivity.class);
+                intent.putExtra("CantidadR",inversionR);
+                startActivity(intent);
+            }
         });
 
 
@@ -186,48 +207,6 @@ public class FundBalance extends AppCompatActivity implements NavigationView.OnN
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
-    static class TransactionViewHolder extends RecyclerView.ViewHolder {
-
-        private TextView Balance;
-        private TextView Inversion;
-        private TextView Ganancia;
-        private TextView Fecha;
-        private TextView Retorno;
-        GraphView graph;
 
 
-        public TransactionViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            //Titulo = itemView.findViewById(R.id.titulo);
-            Retorno = itemView.findViewById(R.id.retorno);
-            Balance = itemView.findViewById(R.id.Balance);
-            Inversion = itemView.findViewById(R.id.Inversion);
-            Ganancia = itemView.findViewById(R.id.Ganancia);
-            Fecha = itemView.findViewById(R.id.date);
-             graph= itemView.findViewById(R.id.graph);
-            LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
-                    new DataPoint(0, 100),
-                    new DataPoint(1, 500),
-                    new DataPoint(2, 300),
-                    new DataPoint(3, 200),
-                    new DataPoint(4, 600)
-            });
-            graph.addSeries(series);
-
-
-        }
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        adapter.stopListening();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        adapter.startListening();
-    }
 }

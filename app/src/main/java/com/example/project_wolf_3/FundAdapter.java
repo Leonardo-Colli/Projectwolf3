@@ -9,12 +9,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project_wolf_3.model.FundModel;
+import com.example.project_wolf_3.model.Posts;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FundAdapter extends FirestoreRecyclerAdapter<FundModel, FundAdapter.TransactionViewHolder> {
 
@@ -33,13 +41,13 @@ public class FundAdapter extends FirestoreRecyclerAdapter<FundModel, FundAdapter
     @Override
     protected void onBindViewHolder(@NonNull TransactionViewHolder holder, int position, @NonNull FundModel model) {
         holder.roi_vol.setText(String.format("$%s", String.format("%,.2f", model.getRoi_vol())));
-        holder.initial_amount.setText(String.format("$%s", String.format("%,.2f", model.getInitial_amount())));
+        //holder.initial_amount.setText(String.format("$%s", String.format("%,.2f", model.getInitial_amount())));
         holder.final_amount.setText(String.format("$%s", String.format("%,.2f", model.getFinal_amount())));
 
         //Double value = 54013.3600 + model.getRoi_vol();
         //holder.roi_vol.setText(String.valueOf("$ " +value));
 
-       holder.roi_per.setText(String.format("%s%%", String.format("%,.2f", model.getRoi_per()*100)));
+      // holder.roi_per.setText(String.format("%s%%", String.format("%,.2f", model.getRoi_per()*100)));
         if(model.getDate() != null) {
             Date date_raw = model.getDate();
             SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");
@@ -58,8 +66,6 @@ public class FundAdapter extends FirestoreRecyclerAdapter<FundModel, FundAdapter
 
 
         private final TextView roi_vol;
-        private final TextView roi_per;
-        private final TextView initial_amount;
         private final TextView final_amount;
         private final TextView date;
 
@@ -67,8 +73,6 @@ public class FundAdapter extends FirestoreRecyclerAdapter<FundModel, FundAdapter
             super(itemView);
 
             roi_vol = itemView.findViewById(R.id.roi_volume);
-            roi_per = itemView.findViewById(R.id.roi_percentage);
-            initial_amount = itemView.findViewById(R.id.price_zero);
             final_amount = itemView.findViewById(R.id.price_current);
             date = itemView.findViewById(R.id.date_zero);
 
@@ -79,6 +83,7 @@ public class FundAdapter extends FirestoreRecyclerAdapter<FundModel, FundAdapter
                     listener.onItemClick(getSnapshots().getSnapshot(position), position);
                 }
             });
+
         }
 
     }

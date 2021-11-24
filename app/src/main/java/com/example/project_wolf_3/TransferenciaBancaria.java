@@ -161,8 +161,8 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
         queue = Volley.newRequestQueue(this);
 
         //init Api
-        Retrofit retrofit = RetrofitClient.getInstance();
-        myApi = retrofit.create(RetrofitInterface.class);
+        RetrofitInterface retrofit = RetrofitClient.getInstance();
+        myApi = retrofit;
 
         Intent data = getIntent();
         fundId = data.getStringExtra("id");

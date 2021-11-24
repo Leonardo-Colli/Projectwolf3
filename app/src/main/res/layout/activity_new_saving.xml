@@ -56,9 +56,9 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="14dp"
             android:contentDescription="vector"
-            android:src="@drawable/ic_perfilinicial"
+            android:src="@drawable/ic_portafolio"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,7 +72,7 @@
             android:fontFamily="Roboto"
             android:gravity="center"
             android:text="@string/nueva_inversión_ek3_string"
-            android:textColor="@color/ganancia_color"
+            android:textColor="@color/purple_500"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -106,20 +106,21 @@
 
 
             <TextView
-                android:layout_width="350dp"
+                android:layout_width="310dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_weight="0.75"
                 android:fontFamily="@font/poppinsmedium"
-                android:text="Número de meses: "
+                android:text="Meses: "
+                android:textColor="@color/black"
                 android:textSize="18sp" />
-
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/plazos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginEnd="30dp"
                 android:drawableEnd="@drawable/ic_plazos"
                 android:fontFamily="@font/poppinsmedium"
                 android:gravity="center"
@@ -158,12 +159,13 @@
 
             <TextView
                 android:id="@+id/textView4"
-                android:layout_width="374dp"
+                android:layout_width="310dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_weight="0.75"
                 android:fontFamily="@font/poppinsmedium"
                 android:text="Monto de ahorro:"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
                 tools:layout_editor_absoluteX="0dp" />
@@ -180,6 +182,7 @@
                 android:hint="@string/min_amount"
                 android:inputType="numberSigned"
                 android:textSize="18sp"
+                android:layout_marginEnd="30dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
@@ -208,33 +211,30 @@
             android:id="@+id/comisi_n_"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="100dp"
             android:layout_marginEnd="300dp"
+            android:layout_marginStart="30dp"
             android:fontFamily="Roboto"
             android:text="@string/comisión__string"
             android:textColor="@color/ganancia_color"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/rectangle_3"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rectangle_23" />
+            app:layout_constraintStart_toStartOf="@+id/rectangle_3"
+            app:layout_constraintTop_toTopOf="@+id/rectangle_3" />
 
         <TextView
             android:id="@+id/comisionE1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="96dp"
+            android:layout_marginEnd="30dp"
             android:drawableStart="@drawable/ic_pesos"
             android:fontFamily="Roboto"
             android:text="0.00"
             android:textColor="@color/ganancia_color"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.223"
-            app:layout_constraintStart_toEndOf="@+id/comisi_n_"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintBottom_toBottomOf="@+id/rectangle_3"
+            app:layout_constraintEnd_toEndOf="@+id/rectangle_3"
+            app:layout_constraintTop_toTopOf="@+id/rectangle_3" />
 
         <View
             android:id="@+id/rectangle_4"
@@ -254,33 +254,30 @@
             android:id="@+id/monto_total_"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="32dp"
             android:layout_marginEnd="300dp"
+            android:layout_marginStart="30dp"
             android:fontFamily="Roboto"
             android:text="@string/monto_total__string"
             android:textColor="@color/ganancia_color"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/rectangle_4"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />
+            app:layout_constraintStart_toStartOf="@+id/rectangle_4"
+            app:layout_constraintTop_toTopOf="@+id/rectangle_4" />
 
         <TextView
             android:id="@+id/Total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginEnd="30dp"
+            android:drawableStart="@drawable/ic_pesos"
             android:fontFamily="Roboto"
             android:text="0.00"
-            android:drawableStart="@drawable/ic_pesos"
             android:textColor="@color/ganancia_color"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.213"
-            app:layout_constraintStart_toEndOf="@+id/monto_total_"
-            app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />
+            app:layout_constraintBottom_toBottomOf="@+id/rectangle_4"
+            app:layout_constraintEnd_toEndOf="@+id/rectangle_4"
+            app:layout_constraintTop_toTopOf="@+id/rectangle_4" />
 
         <TextView
             android:id="@+id/btnSave"
@@ -337,9 +334,11 @@
             android:id="@+id/switch1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:checked="false"
+            app:layout_constraintEnd_toStartOf="@+id/rectangle3"
             app:layout_constraintStart_toEndOf="@+id/rectangle"
             app:layout_constraintTop_toBottomOf="@+id/rectangle_23" />
 
@@ -347,8 +346,8 @@
             android:id="@+id/rectangle"
             android:layout_width="81dp"
             android:layout_height="21dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="28dp"
             android:alpha="0.40000000596046"
             android:background="@drawable/fondos_estrategias"
             app:layout_constraintStart_toStartOf="parent"
@@ -358,23 +357,23 @@
             android:id="@+id/stop_loss"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="39dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center"
             android:fontFamily="Roboto"
+            android:gravity="center"
             android:text="@string/stop_loss_string"
             android:textColor="@color/ganancia_color"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintBottom_toBottomOf="@+id/rectangle"
+            app:layout_constraintEnd_toEndOf="@+id/rectangle"
+            app:layout_constraintStart_toStartOf="@+id/rectangle"
+            app:layout_constraintTop_toTopOf="@+id/rectangle" />
 
 
         <View
             android:id="@+id/rectangle3"
             android:layout_width="51dp"
             android:layout_height="21dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="70dp"
             android:alpha="0.40000000596046"
             android:background="@drawable/fondos_estrategias"
             app:layout_constraintEnd_toEndOf="parent"
@@ -384,14 +383,14 @@
             android:id="@+id/costoE1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="39dp"
             android:fontFamily="Roboto"
             android:text="3%"
             android:textColor="@color/ganancia_color"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintBottom_toBottomOf="@+id/rectangle3"
+            app:layout_constraintEnd_toEndOf="@+id/rectangle3"
+            app:layout_constraintStart_toStartOf="@+id/rectangle3"
+            app:layout_constraintTop_toTopOf="@+id/rectangle3" />
 
         <TextView
             android:id="@+id/name_ek1"
@@ -416,7 +415,7 @@
             android:layout_width="34dp"
             android:layout_height="30dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="Darker Grotesque"
             android:src="@drawable/ic_menuimg"
             android:textColor="@color/name_color"

@@ -97,7 +97,7 @@
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/rectangle_23_ek1_shape"
         android:orientation="horizontal"
@@ -160,12 +160,13 @@
         android:id="@+id/rctTransferencia"
         android:layout_width="match_parent"
         android:layout_height="42dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/rectangle_37_shape"
-        app:layout_constraintTop_toBottomOf="@+id/numero_orden"
-        tools:layout_editor_absoluteX="30dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numero_orden" />
 
     <View
         android:id="@+id/rectangle_38"
@@ -265,12 +266,14 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
         android:text="Pago"
-        android:layout_marginTop="100dp"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
     <View
         android:id="@+id/Terminos"
@@ -320,14 +323,13 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="53dp"
         android:layout_marginEnd="8dp"
         android:alpha="0.80000001192093"
-        android:background="@drawable/descripcionterminos"
+        android:background="@drawable/fondo_rec_balance"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rectangle_38" />
+        app:layout_constraintTop_toBottomOf="@+id/Terminos" />
 
     <TextView
         android:id="@+id/txtbienvenido"
@@ -335,7 +337,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="Bienvenido"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="@+id/terminosC"
         app:layout_constraintStart_toStartOf="@+id/terminosC"
@@ -351,7 +353,7 @@
         android:layout_marginTop="8dp"
         android:textSize="11dp"
         android:text='En el campo de concepto escribir la palabra "Pago"'
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/txtbienvenido" />
 
@@ -406,52 +408,52 @@
         app:srcCompat="@drawable/ic_listado" />
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/txtp2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="3dp"
         android:text="No se aceptan transferencia de terceros"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="11dp"
         app:layout_constraintStart_toEndOf="@+id/imageView1"
         app:layout_constraintTop_toBottomOf="@+id/txtP1" />
 
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/txtp3"
         android:layout_width="308dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="3dp"
         android:text="Al colocar la orden acepta que en caso de que transfiera desde un tercero, el dinero no se rembolsa"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="11dp"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+        app:layout_constraintTop_toBottomOf="@+id/txtp2" />
 
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/txtp4"
         android:layout_width="303dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="3dp"
         android:text="Al realizar la transferencia/depósito por favor suba el comprobante de pago; al ser reflejado el depósito y recibir el comprobante se libera el activo"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="11dp"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+        app:layout_constraintTop_toBottomOf="@+id/txtp3" />
 
     <TextView
-        android:id="@+id/textView24"
+        android:id="@+id/txtp5"
         android:layout_width="306dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="3dp"
         android:text="Al realizar una inversión en esta aplicación, usted declara bajo juramento que sus fondos proceden de actividades legales y de légitimo carácter mercantil, lo cual puede ser corroborado por los organismos competentes y no tienen relación alguna con actividades o acciones ilicitas"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="11dp"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+        app:layout_constraintTop_toBottomOf="@+id/txtp4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

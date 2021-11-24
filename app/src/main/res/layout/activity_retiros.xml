@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RetirosActivity"
+    android:id="@+id/menupincipal">
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/nav_view"
+        app:headerLayout="@layout/header"
+        android:theme="@style/navigationTheme"
+        app:menu="@menu/main_menu"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:itemBackground="@drawable/drawer_background_selector"
+        android:layout_gravity="start"
+        android:background="@color/Fondo_menu">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_height="42dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/poppinsmedium"
+                android:gravity="center"
+                android:background="@drawable/btnlogout"
+                android:text="Cerrar sesión"
+                android:textColor="@drawable/colortextobtnlogout"
+                android:textSize="14sp"
+                android:textAllCaps="false"/>
+        </LinearLayout>
+    </com.google.android.material.navigation.NavigationView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/menu_icon"
+            android:layout_width="27dp"
+            android:layout_height="19dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="Darker Grotesque"
+            android:src="@drawable/ic_menuimg"
+            android:textColor="@color/name_color"
+            android:textSize="18sp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/name_ek1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="120dp"
+            android:fontFamily="Darker Grotesque"
+            android:gravity="center"
+            android:text="@string/name_ek1_string"
+            android:textColor="@color/name_color"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/profileimg"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="vector"
+            android:src="@drawable/ic_portafolio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/balance_ek12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="88dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="Roboto"
+            android:gravity="center"
+            android:text="Retiro"
+            android:textColor="@color/ganancia_color"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fullname"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/rectangle_12_shape"
+            android:hint="Nombre del beneficiario"
+            android:paddingLeft="10dp"
+            android:textSize="14dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/balance_ek12"
+            tools:targetApi="jelly_bean" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/CLABE"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rectangle_12_shape"
+            android:fontFamily="@font/poppinsmedium"
+            android:hint="Número de tarjeta, cuenta o CLABE"
+            android:inputType="phone"
+            android:paddingLeft="10dp"
+            android:textSize="14dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fullname"
+            tools:targetApi="jelly_bean" />
+        <View
+            android:id="@+id/rectangle_23"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="30dp"
+            android:alpha="0.40000000596046"
+            android:background="@drawable/rectangle_23_ek1_shape"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/rectangle_23"
+            app:layout_constraintTop_toTopOf="@+id/rectangle_23"
+            tools:layout_editor_absoluteX="10dp">
+
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="310dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_weight="0.75"
+                android:fontFamily="@font/poppinsmedium"
+                android:text="Monto de retiro:"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                tools:layout_editor_absoluteX="0dp" />
+
+
+            <TextView
+                android:id="@+id/monto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/ic_pesos"
+                android:fontFamily="@font/poppinsmedium"
+                android:gravity="center"
+                android:hint="@string/min_amount"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nueva_inversi_n_ek3"
+                app:layout_constraintVertical_bias="0.369" />
+
+        </LinearLayout>
+
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnRegresar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            app:elevation="8dp"
+            app:fab_addButtonColorPressed="@color/teal_700"
+            app:fab_colorNormal="#88007A"
+            app:fab_icon="@drawable/ic_backarrow"
+            app:fab_size="normal"
+            app:layout_constraintBottom_toTopOf="@+id/new_retiro"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        </com.getbase.floatingactionbutton.FloatingActionButton>
+
+        <TextView
+            android:id="@+id/new_retiro"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/_rectangle_20_shape"
+            android:fontFamily="@font/poppinsmedium"
+            android:gravity="center"
+            android:text="Confirmar"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CLABE" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

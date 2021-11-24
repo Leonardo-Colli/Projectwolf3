@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="376dp"
     tools:context=".PopupActivity"
     android:background="@drawable/esquinas_redondeadas"
     android:layout_centerInParent="true"
@@ -13,43 +13,43 @@
     <RelativeLayout
         android:id="@+id/page_frame_1_ek1"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="376dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent">
 
         <View
             android:id="@+id/rectangle_40"
             android:layout_width="match_parent"
             android:layout_height="112dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:alpha="0.40000000596046"
-            android:background="#D0CED6" />
+            android:background="@drawable/popup_fondo" />
 
         <View
             android:id="@+id/rectangle_41"
             android:layout_width="match_parent"
             android:layout_height="112dp"
+            android:layout_below="@+id/rectangle_40"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="136dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:alpha="0.40000000596046"
-            android:background="#D0CED6" />
+            android:background="@drawable/popup_fondo" />
 
         <View
             android:id="@+id/rectangle_42"
             android:layout_width="match_parent"
             android:layout_height="112dp"
+            android:layout_below="@+id/rectangle_41"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="255dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:alpha="0.40000000596046"
-            android:background="#D0CED6" />
+            android:background="@drawable/popup_fondo" />
 
         <ImageView
             android:id="@+id/pagaricono_1"
@@ -143,7 +143,7 @@
         <TextView
             android:id="@+id/en_un_lapso_m_ximo_de_24_hrs_se_ver__reflejada_tu_inversi_n__ahora__puedes_seguir_disfrutando_de_la_aplicaci_n_"
             android:layout_width="wrap_content"
-            android:layout_height="69.5dp"
+            android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/rectangle_42"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="97dp"
@@ -169,5 +169,4 @@
             android:src="@drawable/transfericon_1" />
 
     </RelativeLayout>
-
 </LinearLayout>

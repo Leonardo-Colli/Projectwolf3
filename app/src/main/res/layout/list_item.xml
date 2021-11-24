@@ -1,29 +1,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:paddingEnd="16dp"
-    android:paddingLeft="16dp"
+    android:layout_height="100dp"
+    android:orientation="vertical"
+    android:paddingTop="0dp"
+    android:paddingEnd="10dp"
+    android:paddingLeft="10dp"
     android:paddingRight="16dp"
-    android:paddingStart="16dp">
+    android:paddingStart="10dp">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:orientation="horizontal">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="100dp">
 
-        <ImageView
-            android:id="@+id/rectangle_24"
-            android:layout_width="391dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="5dp"
-            android:contentDescription="rectangle_24"
-             android:src="@drawable/rectangle_29" />
+            <ImageView
+                android:id="@+id/rectangle_24"
+                android:layout_width="391dp"
+                android:layout_height="100dp"
+                android:contentDescription="rectangle_24"
+                android:src="@drawable/fondo_inversiones" />
 
 
             <RelativeLayout
@@ -38,119 +38,91 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginStart="19dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginBottom="61dp"
                     android:layout_toEndOf="@+id/roi_percentage"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:textAllCaps="false"
                     android:textColor="@color/textPrimary"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     tools:text="Fecha: Mar 4, 2021" />
 
-                <TextView
-                    android:id="@+id/price_zero"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginBottom="40dp"
-                    android:layout_toEndOf="@+id/roi_percentage"
-                    android:ellipsize="end"
-                    android:textAllCaps="false"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="14sp"
-                    tools:text="$0" />
 
                 <TextView
                     android:id="@+id/roi_percentage"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
                     android:layout_alignParentBottom="true"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="25dp"
-                    android:background="@drawable/elipse_naranja"
-                    android:fontFamily="sans-serif-medium"
-                    android:gravity="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="12sp"
-                    tools:text="0.0%" />
-
-                <TextView
-                    android:id="@+id/roi_volume"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginBottom="40dp"
-                    android:layout_toEndOf="@+id/price_zero"
-                    android:textColor="@color/____3_97_color"
-                    android:textSize="14sp"
-                    tools:text="$0" />
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="21dp"
+                    android:layout_marginBottom="29dp"
+                    android:background="@drawable/ic_bitcoin" />
 
                 <TextView
                     android:id="@+id/price_current"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginBottom="40dp"
+                    android:layout_toEndOf="@+id/textViewInversion"
+                    android:fontFamily="@font/chinese_msyh"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    tools:text="$1000" />
+
+                <TextView
+                    android:id="@+id/roi_volume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="2dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="40dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginBottom="40dp"
-                    android:layout_toEndOf="@+id/roi_volume"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="14sp"
-                    tools:text="$0" />
+                    android:layout_toEndOf="@+id/TextViewGanancia"
+                    android:fontFamily="@font/chinese_msyh"
+                    android:textColor="@color/____3_97_color"
+                    android:textSize="16dp"
+                    tools:text="$100" />
 
                 <TextView
                     android:id="@+id/textViewInversion"
-                    android:layout_width="60dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="22dp"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginStart="17dp"
+                    android:layout_marginStart="5dp"
                     android:layout_marginLeft="89dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="40dp"
                     android:layout_toEndOf="@+id/roi_percentage"
                     android:fontFamily="Roboto"
                     android:gravity="center"
-                    android:text="@string/inversión_ek1_string"
-                    android:textColor="@color/ganancia_color"
-                    android:textSize="12sp" />
+                    android:text="Balance"
+                    android:textColor="@color/purple_500"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/TextViewGanancia"
-                    android:layout_width="60dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="22dp"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginLeft="89dp"
-                    android:layout_marginBottom="12dp"
-                    android:layout_toEndOf="@+id/textViewInversion"
+                    android:layout_marginBottom="40dp"
+                    android:layout_toEndOf="@+id/price_current"
                     android:fontFamily="Roboto"
                     android:gravity="center"
                     android:text="@string/ganancia_ek4_string"
-                    android:textColor="@color/ganancia_color"
-                    android:textSize="12sp" />
+                    android:textColor="@color/purple_500"
+                    android:textSize="14sp" />
 
-                <TextView
-                    android:layout_width="60dp"
-                    android:layout_height="22dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="13dp"
-                    android:layout_marginLeft="89dp"
-                    android:layout_marginBottom="12dp"
-                    android:layout_toEndOf="@+id/TextViewGanancia"
-                    android:fontFamily="Roboto"
-                    android:gravity="center"
-                    android:text="@string/balance_ek2_string"
-                    android:textColor="@color/ganancia_color"
-                    android:textSize="12sp" />
 
             </RelativeLayout>
 </RelativeLayout>

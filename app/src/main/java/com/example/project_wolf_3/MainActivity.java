@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +21,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project_wolf_3.model.FundModel;
+import com.example.project_wolf_3.model.InvModel;
+import com.example.project_wolf_3.model.Posts;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,7 +41,15 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.Date;
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RecyclerAdapter.RecyclerItemClick {
 
 
     private static final int EARTHQUAKE_LOADER_ID = 1;
@@ -60,11 +72,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     String userID;
     String username;
-    FundAdapter adapter;
+    //FundAdapter adapter;
     StorageReference storageReference;
     FirebaseAuth fAuth;
     FirebaseFirestore db;
-    private RecyclerView mFirestoreList;
+   // private RecyclerView mFirestoreList;
+    private RecyclerView rvLista;
+    private RetrofitClient retrofitClient;
+
+    private List<Posts> items;
+    private RecyclerAdapter adapter;
+    private RetrofitInterface retrofitApiService;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,75 +106,88 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //setSupportActionBar(toolbar);
 
         navigationDrawer();
+        rvLista = findViewById(R.id.list);
+        retrofitApiService = RetrofitClient.getInstance();
 
-        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-        mFirestoreList = findViewById(R.id.list);
-        FirebaseUser user = fAuth.getCurrentUser();
-        if(userID != null){
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        rvLista.setLayoutManager(manager);
+        funduserid();
+
+        if(userID != null) {
             profileImage = navigationView.getHeaderView(0).findViewById(R.id.user_image_nav);
             progressBar.setVisibility(View.GONE);
             storageReference = FirebaseStorage.getInstance().getReference();
-            StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
+            StorageReference profileRef = storageReference.child("users/" + fAuth.getCurrentUser().getUid() + "/profile.jpg");
             profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
                     Picasso.get().load(uri).into(profileImage);
                 }
             });
-
-            //Query
-            Query query = firebaseFirestore.collection("funds/" + userID + "/savings/");
-
-            //Recycler Options
-            FirestoreRecyclerOptions<FundModel> options = new FirestoreRecyclerOptions.Builder<FundModel>()
-                    .setQuery(query, FundModel.class)
-                    .build();
-
-            adapter = new FundAdapter(options);
-            mFirestoreList.setHasFixedSize(true);
-            mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
-            mFirestoreList.setAdapter(adapter);
-            adapter.setOnItemClickListener(new FundAdapter.onItemClickListener() {
-                @Override
-                public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-                    String docId = documentSnapshot.getId();
-                    Intent doc = new Intent(getApplicationContext(), FundBalance.class);
-                    doc.putExtra("id", docId);
-                    startActivity(doc);
-                }
-            });
-            DocumentReference documentReference = db.collection("users").document(userID);
-            ListenerRegistration listenerRegistration = documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-                @Override
-                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException e) {
-
-                    assert value != null;
-                    TextView txtV_Username = (TextView) navigationView.getHeaderView(0).findViewById(R.id.user_name);
-                    txtV_Username.setText(value.getString("fullname"));
-
-                }
-                });
-
-        } else {
-            progressBar.setVisibility(View.GONE);
-            mEmptyStateTextView.setText("Conexión no disponible");
         }
-
-
-
 
         Balance = findViewById(R.id.new_saving);
         Balance.setOnClickListener(view -> {
             Intent numbersIntent = new Intent(MainActivity.this, NewSaving.class);
             startActivity(numbersIntent);
         });
-        ImageView profile = findViewById(R.id.button_profile);
+        ImageView profile = findViewById(R.id.profileimg);
         profile.setOnClickListener(view -> {
-            Intent colorsIntent = new Intent(MainActivity.this, UserProfile.class);
+            Intent colorsIntent = new Intent(MainActivity.this, MainActivity.class);
             startActivity(colorsIntent);
+        });
+        FloatingActionButton invest = findViewById(R.id.btnRegresar);
+        invest.setOnClickListener(view -> {
+            Intent numbersIntent = new Intent(MainActivity.this, BalanceTotal.class);
+            startActivity(numbersIntent);
+
         });
 
     }
+
+
+    public void funduserid(){
+        db.collection("users").document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()) {
+                    username = documentSnapshot.getString("username");
+                }
+                getItemsSQL(username);
+            }
+        });
+    }
+    private void getItemsSQL(String codigo){
+        retrofitApiService.find(codigo).enqueue(new Callback<List<Posts>>() {
+            @Override
+            public void onResponse(Call<List<Posts>> call, Response<List<Posts>> response) {
+                items = response.body();
+                if (items==null){
+                    Toast.makeText(MainActivity.this, "Realiza una inversion", Toast.LENGTH_SHORT).show();
+                }else{
+
+                    adapter = new RecyclerAdapter(items, MainActivity.this);
+                    rvLista.setAdapter(adapter);
+                }
+                return;
+            }
+
+            @Override
+            public void onFailure(Call<List<Posts>> call, Throwable t) {
+                Toast.makeText(MainActivity.this, "Error: "+"Revise su conexión a internet e intente de nuevo", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+    @Override
+    public void itemClick(Posts item) {
+        Intent intent = new Intent(this, FundBalance.class);
+        intent.putExtra("itemDetail", item);
+        startActivity(intent);
+    }
+
+
+
+
 
     private void navigationDrawer() {
         navigationView.bringToFront();
@@ -183,17 +215,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onBackPressed();
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        adapter.stopListening();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        adapter.startListening();
-    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -219,5 +240,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 
 }

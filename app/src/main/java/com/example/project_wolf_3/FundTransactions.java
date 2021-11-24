@@ -144,22 +144,12 @@ public class FundTransactions extends AppCompatActivity {
             super(itemView);
 
             objective = itemView.findViewById(R.id.objective);
-            initial_amount = itemView.findViewById(R.id.price_zero);
+            //initial_amount = itemView.findViewById(R.id.price_zero);
             final_amount = itemView.findViewById(R.id.price_current);
             date = itemView.findViewById(R.id.date_zero);
         }
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        adapter.stopListening();
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        adapter.startListening();
-    }
 
 }

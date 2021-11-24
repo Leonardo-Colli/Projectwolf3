@@ -16,6 +16,10 @@
         android:theme="@style/Theme.ProjectWolf3"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".RetirosActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Design.Light.NoActionBar"/>
+        <activity
             android:name=".TablaEstatus"
             android:exported="true"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
@@ -35,7 +39,6 @@
             android:name=".GraficaActivity"
             android:exported="true"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
-
         <activity
             android:name=".FundBalance"
             android:theme="@style/Theme.Design.Light.NoActionBar" />

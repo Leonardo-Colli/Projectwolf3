@@ -25,7 +25,9 @@ public class card extends AppCompatActivity implements NavigationView.OnNavigati
     // 10.0.2.2 is the Android emulator's alias to localhost
     // 192.168.1.6 If you are testing in real device with usb connected to same network then use your IP address
     Double price;
-    TextView amountText, bienvenido, NumeroOrden;
+    TextView amountText,  NumeroOrden;
+    TextView bienvenido, p1,p2,p3,p4,p5;
+    ImageView i0,i1,i2,i3,i4;
     String cantidad, plazo;
     View cuerpo,comofunciona, btnTranferencia,btnDeposito, rctTerminos;
     TextView MTerninos, OTerminos;
@@ -50,6 +52,16 @@ public class card extends AppCompatActivity implements NavigationView.OnNavigati
         MTerninos = findViewById(R.id.t_rminos);
         OTerminos = findViewById(R.id.t_rminos_ocultar);
         NumeroOrden = findViewById(R.id.numero_orden);
+        p1 = findViewById(R.id.txtP1);
+        p2 = findViewById(R.id.txtp2);
+        p3 = findViewById(R.id.txtp3);
+        p4 = findViewById(R.id.txtp4);
+        p5 = findViewById(R.id.txtp5);
+        i0 = findViewById(R.id.imageView);
+        i1 = findViewById(R.id.imageView1);
+        i2 = findViewById(R.id.imageView2);
+        i3 = findViewById(R.id.imageView3);
+        i4 = findViewById(R.id.imageView4);
 
         Bundle bundle = this.getIntent().getExtras();
         cantidad = (bundle.getString("ahorro_amt"));
@@ -59,6 +71,17 @@ public class card extends AppCompatActivity implements NavigationView.OnNavigati
 
         cuerpo.setVisibility(View.GONE);
         bienvenido.setVisibility(View.GONE);
+        p1.setVisibility(View.GONE);
+        p2.setVisibility(View.GONE);
+        p3.setVisibility(View.GONE);
+        p4.setVisibility(View.GONE);
+        p5.setVisibility(View.GONE);
+        i0.setVisibility(View.GONE);
+        i1.setVisibility(View.GONE);
+        i2.setVisibility(View.GONE);
+        i3.setVisibility(View.GONE);
+        i4.setVisibility(View.GONE);
+
         OTerminos.setVisibility(View.GONE);
 
         drawerLayout = findViewById(R.id.menupincipal);
@@ -83,6 +106,16 @@ public class card extends AppCompatActivity implements NavigationView.OnNavigati
                 bienvenido.setVisibility(View.VISIBLE);
                 MTerninos.setVisibility(View.GONE);
                 OTerminos.setVisibility(View.VISIBLE);
+                p1.setVisibility(View.VISIBLE);
+                p2.setVisibility(View.VISIBLE);
+                p3.setVisibility(View.VISIBLE);
+                p4.setVisibility(View.VISIBLE);
+                p5.setVisibility(View.VISIBLE);
+                i0.setVisibility(View.VISIBLE);
+                i1.setVisibility(View.VISIBLE);
+                i2.setVisibility(View.VISIBLE);
+                i3.setVisibility(View.VISIBLE);
+                i4.setVisibility(View.VISIBLE);
             }
         });
         OTerminos.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +125,16 @@ public class card extends AppCompatActivity implements NavigationView.OnNavigati
                 cuerpo.setVisibility(View.GONE);
                 bienvenido.setVisibility(View.GONE);
                 OTerminos.setVisibility(View.GONE);
+                p1.setVisibility(View.GONE);
+                p2.setVisibility(View.GONE);
+                p3.setVisibility(View.GONE);
+                p4.setVisibility(View.GONE);
+                p5.setVisibility(View.GONE);
+                i0.setVisibility(View.GONE);
+                i1.setVisibility(View.GONE);
+                i2.setVisibility(View.GONE);
+                i3.setVisibility(View.GONE);
+                i4.setVisibility(View.GONE);
             }
         });
 

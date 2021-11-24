@@ -4,219 +4,288 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".FundBalance">
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/balance_ek12"
-        android:layout_width="79dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="Roboto"
-        android:text="@string/balance_ek12_string"
-        android:textColor="@color/ganancia_color"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/rectangle_23_ek2"
-        android:layout_width="384dp"
-        android:layout_height="264dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="12dp"
-        android:alpha="0.40000000596046"
-        android:background="@drawable/rectanglebalance"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/balance_ek12" />
-
-    <TextView
-        android:id="@+id/estrategia"
-        android:layout_width="61dp"
-        android:layout_height="20.5dp"
-        android:layout_marginTop="28dp"
-        android:fontFamily="Roboto"
-        android:text="@string/estrategia_string"
-        android:textColor="@color/ganancia_color"
-        android:textSize="11sp"
-        app:layout_constraintEnd_toStartOf="@+id/stop_loss_ek1"
-        app:layout_constraintHorizontal_bias="0.895"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/balance_ek12" />
-
-    <TextView
-        android:id="@+id/stop_loss_ek1"
+    tools:context=".FundBalance"
+    android:id="@+id/menupincipal">
+    <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
-        android:layout_height="41dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="Roboto"
-        android:text="@string/stop_loss_ek1_string"
-        android:textColor="@color/ganancia_color"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/balance_ek12" />
+        android:layout_height="match_parent"
+        android:id="@+id/nav_view"
+        app:headerLayout="@layout/header"
+        android:theme="@style/navigationTheme"
+        app:menu="@menu/main_menu"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:itemBackground="@drawable/drawer_background_selector"
+        android:layout_gravity="start"
+        android:background="@color/Fondo_menu">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:padding="16dp">
 
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_height="42dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/poppinsmedium"
+                android:gravity="center"
+                android:background="@drawable/btnlogout"
+                android:text="Cerrar sesión"
+                android:textColor="@drawable/colortextobtnlogout"
+                android:textSize="14sp"
+                android:textAllCaps="false"/>
+        </LinearLayout>
+    </com.google.android.material.navigation.NavigationView>
 
-    <View
-        android:id="@+id/estrategiaback"
-        android:layout_width="113dp"
-        android:layout_height="37dp"
-        android:background="@drawable/estrategiabk"
-        app:flow_verticalAlign="center"
-        app:layout_constraintBottom_toTopOf="@+id/Balance"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/balance_ek12"
-        app:layout_constraintVertical_bias="0.454" />
-
-    <View
-        android:id="@+id/ellipse_4_ek1"
-        android:layout_width="78dp"
-        android:layout_height="78dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/ellipse_4_ek1_shape"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/estrategia" />
-
-    <TextView
-        android:id="@+id/retorno"
-        android:layout_width="71dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="36dp"
-        android:fontFamily="Roboto"
-        android:gravity="center"
-        android:text="@string/__3_97__ek1_string"
-        android:textColor="@color/_bg__inversiones_ek2_color"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/ellipse_4_ek1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/estrategia" />
-
-    <TextView
-        android:id="@+id/balance_ek11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:fontFamily="Roboto"
-        android:text="@string/balance_ek11_string"
-        android:textColor="@color/ganancia_color"
-        android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/ellipse_4_ek1"
-        app:layout_constraintTop_toBottomOf="@+id/stop_loss_ek1" />
-
-    <TextView
-        android:id="@+id/Balance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="Roboto"
-        android:text="@string/__96_03_ek1_string"
-        android:textColor="@color/ganancia_color"
-        android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/balance_ek11"
-        app:layout_constraintTop_toBottomOf="@+id/stop_loss_ek1" />
-
-    <TextView
-        android:id="@+id/Inversion"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="24dp"
-        android:fontFamily="Roboto"
-        android:text="@string/___100_00_ek2_string"
-        android:textColor="@color/ganancia_color"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ellipse_4_ek1" />
-
-    <TextView
-        android:id="@+id/inversi_n_ek5"
-        android:layout_width="69dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="56dp"
-        android:fontFamily="Roboto"
-        android:text="@string/inversión_ek5_string"
-        android:textColor="@color/ganancia_color"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ellipse_4_ek1" />
-
-    <TextView
-        android:id="@+id/Ganancia"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="24dp"
-        android:fontFamily="Roboto"
-        android:text="@string/____3_97_ek1_string"
-        android:textColor="@color/____3_97_color"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/Inversion"
-        app:layout_constraintTop_toBottomOf="@+id/ellipse_4_ek1" />
-
-    <TextView
-        android:id="@+id/ganancia_ek5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="56dp"
-        android:fontFamily="Roboto"
-        android:text="@string/ganancia_ek5_string"
-        android:textColor="@color/ganancia_color"
-        android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/Inversion"
-        app:layout_constraintTop_toBottomOf="@+id/ellipse_4_ek1" />
-
-    <TextView
-        android:id="@+id/date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:fontFamily="Roboto"
-        android:text="@string/date__15_septiembre_2021_ek1_string"
-        android:textColor="@color/ganancia_color"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inversi_n_ek5" />
-
-
-    <com.jjoe64.graphview.GraphView
-        android:id="@+id/graph"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="141dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="141dp"
-        android:text="Balance de Inversión"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rectangle_23_ek2" />
+        <ImageView
+            android:id="@+id/menu_icon"
+            android:layout_width="27dp"
+            android:layout_height="19dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="Darker Grotesque"
+            android:src="@drawable/ic_menuimg"
+            android:textColor="@color/name_color"
+            android:textSize="18sp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/name_ek1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="120dp"
+            android:fontFamily="Darker Grotesque"
+            android:gravity="center"
+            android:text="@string/name_ek1_string"
+            android:textColor="@color/name_color"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/profileimg"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="vector"
+            android:src="@drawable/ic_portafolio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+                android:id="@+id/balance_ek12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="88dp"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="Roboto"
+                android:gravity="center"
+                android:text="Balance de Inversión"
+                android:textColor="@color/ganancia_color"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/rectangle_23_ek2"
+            android:layout_width="match_parent"
+            android:layout_height="428dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="12dp"
+            android:alpha="0.40000000596046"
+            android:background="@drawable/fondo_rec_balance"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/balance_ek12" />
+
+        <View
+                android:id="@+id/ellipse_4_ek1"
+                android:layout_width="78dp"
+                android:layout_height="78dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/elipse_balance"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date" />
+
+            <TextView
+                android:id="@+id/retorno"
+                android:layout_width="71dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:fontFamily="Roboto"
+                android:gravity="center"
+                android:text="@string/__3_97__ek1_string"
+                android:textColor="@color/_bg__inversiones_ek2_color"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/ellipse_4_ek1"
+                app:layout_constraintEnd_toEndOf="@+id/ellipse_4_ek1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/ellipse_4_ek1" />
+
+            <TextView
+                android:id="@+id/balance_ek11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="2dp"
+                android:fontFamily="Roboto"
+                android:gravity="center"
+                android:text="@string/balance_ek11_string"
+                android:textColor="@color/purple_500"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/rectangle_23_ek2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/ellipse_4_ek1"
+                app:layout_constraintTop_toBottomOf="@+id/Balance" />
+
+
+            <TextView
+                android:id="@+id/Balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="60dp"
+                android:fontFamily="@font/chinese_msyh"
+                android:letterSpacing="0.15"
+                android:text="@string/__96_03_ek1_string"
+                android:textColor="@color/ganancia_color"
+                android:textSize="30sp"
+                app:layout_constraintStart_toEndOf="@+id/ellipse_4_ek1"
+                app:layout_constraintTop_toTopOf="@+id/rectangle_23_ek2" />
+
+            <TextView
+                android:id="@+id/Inversion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="136dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/chinese_msyh"
+                android:text="@string/___100_00_ek2_string"
+                android:textColor="@color/ganancia_color"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/balance_ek11" />
+
+            <TextView
+                android:id="@+id/inversi_n_ek5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="144dp"
+                android:fontFamily="Roboto"
+                android:text="Inversión"
+                android:textColor="@color/purple_500"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Inversion" />
+
+            <TextView
+                android:id="@+id/Ganancia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="56dp"
+                android:fontFamily="@font/chinese_msyh"
+                android:text="@string/____3_97_ek1_string"
+                android:textColor="@color/____3_97_color"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/rectangle_23_ek2"
+                app:layout_constraintTop_toBottomOf="@+id/balance_ek11" />
+
+            <TextView
+                android:id="@+id/ganancia_ek5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="60dp"
+                android:fontFamily="Roboto"
+                android:text="@string/ganancia_ek5_string"
+                android:textColor="@color/purple_500"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/rectangle_23_ek2"
+                app:layout_constraintTop_toBottomOf="@+id/Ganancia" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="Roboto"
+                android:text="@string/date__15_septiembre_2021_ek1_string"
+                android:textColor="@color/purple_500"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/rectangle_23_ek2" />
+
+            <com.jjoe64.graphview.GraphView
+                android:id="@+id/graph"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inversi_n_ek5" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnRegresar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            app:elevation="8dp"
+            app:fab_addButtonColorPressed="@color/teal_700"
+            app:fab_colorNormal="#88007A"
+            app:fab_icon="@drawable/ic_backarrow"
+            app:fab_size="normal"
+            app:layout_constraintBottom_toTopOf="@+id/new_retiro"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        </com.getbase.floatingactionbutton.FloatingActionButton>
+
+        <TextView
+            android:id="@+id/new_retiro"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/_rectangle_20_shape"
+            android:fontFamily="@font/poppinsmedium"
+            android:gravity="center"
+            android:text="Retirar"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.drawerlayout.widget.DrawerLayout>

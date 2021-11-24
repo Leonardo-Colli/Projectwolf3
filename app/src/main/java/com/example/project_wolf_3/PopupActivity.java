@@ -19,6 +19,12 @@ public class PopupActivity extends AppCompatActivity {
         int ancho = medidasVentana.widthPixels;
         int alto = medidasVentana.heightPixels;
 
-        getWindow().setLayout((int) (ancho * 0.85), (int) (alto * 0.5));
+
+
+        if (alto<1080){
+            getWindow().setLayout((int) (ancho * 0.90), (int) (alto * 0.55));
+        }
+
+
     }
 }
