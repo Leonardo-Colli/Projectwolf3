@@ -12,9 +12,11 @@ public class Post {
     private String transactionid;
     private int isConfirmed;
     private String firebaseSavingId;
+    private int bandera;
 
 
-    public Post(String name, String user, Float price, Float amount, int installments, String transactionid, int isConfirmed, String firebaseSavingId) {
+
+    public Post(String name, String user, Float price, Float amount, int installments, String transactionid, int isConfirmed, String firebaseSavingId, int bandera) {
         this.name = name;
         this.user = user;
         this.price = price;
@@ -23,6 +25,15 @@ public class Post {
         this.transactionid = transactionid;
         this.isConfirmed = isConfirmed;
         this.firebaseSavingId = firebaseSavingId;
+        this.bandera = bandera;
+    }
+
+    public int getBandera() {
+        return bandera;
+    }
+
+    public void setBandera(int bandera) {
+        this.bandera = bandera;
     }
 
     public String getFirebaseSavingId() {

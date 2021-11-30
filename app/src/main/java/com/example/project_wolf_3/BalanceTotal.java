@@ -31,6 +31,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import org.eazegraph.lib.charts.BarChart;
+import org.eazegraph.lib.models.BarModel;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -75,8 +78,29 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
         navigationDrawer();
         flechaD.setVisibility(View.INVISIBLE);
         flechaA.setVisibility(View.INVISIBLE);
-        float m = 410;
-        fondo.getLayoutParams().height = getPixels(fondo,m);
+        double valor = 0;
+        BarChart mBarChart = (BarChart) findViewById(R.id.barGraph);
+        if(valor == 0){
+            mBarChart.addBar(new BarModel("1",2.3f, 0xFFEFEFEF));
+            mBarChart.addBar(new BarModel("2",1.5f,  0xFFEFEFEF));
+            mBarChart.addBar(new BarModel("3",3.3f, 0xFFEFEFEF));
+            mBarChart.addBar(new BarModel("4",1.1f, 0xFFEFEFEF));
+            mBarChart.addBar(new BarModel("5",2.7f, 0xFFEFEFEF));
+            mBarChart.addBar(new BarModel("6",2.f,  0xFFEFEFEF));
+            mBarChart.addBar(new BarModel("7",0.4f, 0xFFEFEFEF));
+            mBarChart.setShowValues(false);
+            mBarChart.startAnimation();
+        }else{
+            mBarChart.addBar(new BarModel("1",2.3f, 0xFF050212));
+            mBarChart.addBar(new BarModel("2",1.5f,  0xFF050212));
+            mBarChart.addBar(new BarModel("3",3.3f, 0xFF501b4e));
+            mBarChart.addBar(new BarModel("4",1.1f, 0xFF050212));
+            mBarChart.addBar(new BarModel("5",2.7f, 0xFF050212));
+            mBarChart.addBar(new BarModel("6",2.f,  0xFF050212));
+            mBarChart.addBar(new BarModel("7",0.4f, 0xFF050212));
+            mBarChart.startAnimation();
+        }
+
 
         profileImage = navigationView.getHeaderView(0).findViewById(R.id.user_image_nav);
 
@@ -113,9 +137,7 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
         });
 
     }
-    int getPixels(View context, float dp) {
-        return (int) (context.getResources().getDisplayMetrics().density * dp + .5f);
-    }
+
     private void navigationDrawer() {
         navigationView.bringToFront();
         // navigationView.setBackgroundColor(getResources().getColor(R.color.Fondo_menu));
@@ -199,6 +221,10 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
             case R.id.nav_balance:
                 Intent numbersIntent = new Intent(BalanceTotal.this, BalanceTotal.class);
                 startActivity(numbersIntent);
+                break;
+            case R.id.nav_transaccion:
+                Intent fondosIntent = new Intent(BalanceTotal.this, TablaEstatus.class);
+                startActivity(fondosIntent);
                 break;
             case R.id.nav_inversiones:
                 Intent inversionesIntent = new Intent(BalanceTotal.this, MainActivity.class);

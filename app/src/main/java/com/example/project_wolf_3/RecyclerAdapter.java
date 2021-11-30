@@ -13,7 +13,9 @@ import com.example.project_wolf_3.model.InvModel;
 import com.example.project_wolf_3.model.Posts;
 import com.google.firebase.firestore.DocumentSnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerHolder> {
@@ -35,6 +37,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         final Posts item = items.get(position);
         holder.roi_vol.setText(String.format("$%s", String.format("%,.2f", item.getGananciap())));
         holder.final_amount.setText(String.format("$%s", String.format("%,.2f", item.getAmount())));
+        Date date_raw = item.getDate();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");
+        holder.date.setText(String.format("Fecha: %s", dateFormat.format(date_raw)));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

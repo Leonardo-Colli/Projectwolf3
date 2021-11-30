@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,6 +45,13 @@ import com.juang.jplot.PlotBarritas;
 import com.juang.jplot.PlotPastelito;
 import com.juang.jplot.PlotPlanitoXY;
 
+import org.eazegraph.lib.charts.ValueLineChart;
+import org.eazegraph.lib.models.ValueLinePoint;
+import org.eazegraph.lib.models.ValueLineSeries;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class FundBalance extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private TextView btnRetiro;
     private FirebaseFirestore firebaseFirestore;
@@ -65,6 +73,8 @@ public class FundBalance extends AppCompatActivity implements NavigationView.OnN
     private TextView Fecha;
     private TextView Retorno;
     private double inversionR;
+    LineGraphSeries<DataPoint> series;
+    ValueLineChart valueLineChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +102,11 @@ public class FundBalance extends AppCompatActivity implements NavigationView.OnN
         itemDetail = (Posts) getIntent().getExtras().getSerializable("itemDetail");
         Inversion.setText(String.format("$%s", String.format("%,.2f", itemDetail.getAmount())));
         inversionR = itemDetail.getAmount();
-        Fecha.setText(itemDetail.getDate());
+
+        Date date_raw = itemDetail.getDate();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");
+        Fecha.setText(String.format("Fecha: %s", dateFormat.format(date_raw)));
+
         Ganancia.setText(String.format("$%s", String.format("%,.2f", itemDetail.getGananciap())));
 
 //        progressBar.setVisibility(View.GONE);
@@ -139,6 +153,19 @@ public class FundBalance extends AppCompatActivity implements NavigationView.OnN
             mFirestoreList.setAdapter(adapter);*/
 
         }
+
+        valueLineChart  = findViewById(R.id.graph);
+        ValueLineSeries series = new ValueLineSeries();
+        series.setColor(0xFF050212);
+        series.addPoint(new ValueLinePoint("Lun",1f));
+        series.addPoint(new ValueLinePoint("Mar",7.0f));
+        series.addPoint(new ValueLinePoint("Mie",3.3f));
+        series.addPoint(new ValueLinePoint("Jue",2.5f));
+        series.addPoint(new ValueLinePoint("Vie",8.0f));
+        series.addPoint(new ValueLinePoint("Sab",1.0f));
+        series.addPoint(new ValueLinePoint("Dom",5.0f));
+        valueLineChart.addSeries(series);
+        valueLineChart.startAnimation();
 
         ImageView profile = findViewById(R.id.profileimg);
         profile.setOnClickListener(view -> {

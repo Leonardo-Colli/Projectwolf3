@@ -1,10 +1,11 @@
 package com.example.project_wolf_3.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Posts implements Serializable {
 
-    private String date;
+    private Date date;
     private int isConfirmed;
     private double amount;
     private double gananciap;
@@ -12,7 +13,7 @@ public class Posts implements Serializable {
     private double price;
     private String user;
 
-    public Posts(String date, int isConfirmed, double amount, double gananciap, double ganancia, double price, String user) {
+    public Posts(Date date, int isConfirmed, double amount, double gananciap, double ganancia, double price, String user) {
         this.date = date;
         this.isConfirmed = isConfirmed;
         this.amount = amount;
@@ -54,11 +55,11 @@ public class Posts implements Serializable {
         this.ganancia = ganancia;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

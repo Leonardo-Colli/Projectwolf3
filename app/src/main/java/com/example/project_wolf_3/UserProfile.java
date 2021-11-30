@@ -120,7 +120,7 @@ public class UserProfile extends AppCompatActivity {
                     email_all = value.getString("email");
                     assert email_all != null;
                     String email_user = email_all.substring(0, Math.min(email_all.length(), 16));
-                    email.setText(email_user);
+                    email.setText(email_all);
 
                     Boolean phone_verif = value.getBoolean("phoneVerif");
                     Log.v("TAG", "phone_verif: " + phone_verif);

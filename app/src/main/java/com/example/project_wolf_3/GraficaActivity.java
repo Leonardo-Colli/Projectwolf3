@@ -38,6 +38,7 @@ public class GraficaActivity extends AppCompatActivity {
     PlotBarritas ColumnaAgrupada;
     PlotBarritas ColumnaApilada;
     PlotBarritas ColumnaApilada100;
+
     public  ArrayList<Object> listardata = new ArrayList<>();
     TextView preciobtc;
     Context context;
