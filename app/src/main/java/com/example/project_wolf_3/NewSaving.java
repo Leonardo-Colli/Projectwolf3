@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,22 +48,21 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
 
 
     EditText ahorro_amt, ahorro_plz;
+    TextView save;
     FirebaseAuth mAuth;
     private FirebaseFirestore db;
     String userID, fundId;
     double bal, btc_p0, eth_p0, alt_p0, btc_amt, eth_amt, alt_amt,
         btc_vol, eth_vol, alt_vol, initial_amount;
 
-    TextView comision1,Totalc,save, StoplossPorcentaje;
+    TextView comision1,Totalc;
     NavigationView navigationView;
     ImageView profileImage;
     ImageView menuIcon;
     DrawerLayout drawerLayout;
     Switch E1;
     public double total=0,c1,co1;
-    SeekBar seekBar;
-    public float valorP,EnviarP;
-    public int bandera;
+
 
 
     @Override
@@ -78,8 +76,6 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
         E1 = findViewById(R.id.switch1);
         comision1 = findViewById(R.id.comisionE1);
         Totalc = findViewById(R.id.Total);
-        seekBar = findViewById(R.id.seekBar);
-        StoplossPorcentaje = findViewById(R.id.txtvalor);
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -91,7 +87,6 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
         drawerLayout = findViewById(R.id.menupincipal);
         navigationView = findViewById(R.id.nav_view);
         menuIcon = findViewById(R.id.menu_icon);
-        StoplossPorcentaje.setText("10/90%");
 
         navigationDrawer();
         ImageView profile = findViewById(R.id.button_profile);
@@ -100,16 +95,12 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
             startActivity(colorsIntent);
         });
 
-
         E1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     comisiones();
-
                 }else{
-                    valorP =0;
-                    bandera = 0;
                     comision1.setText("0.00");
                     total = 0;
                     Totalc.setText(""+ahorro_amt.getText());
@@ -134,33 +125,10 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
     private void comisiones(){
         if (TextUtils.isEmpty(ahorro_amt.getText())) {
             comision1.setText("0.00");
-            valorP = 0;
-            bandera = 0;
             return;
         }else{
              c1 = Double.parseDouble(String.valueOf(ahorro_amt.getText()));
              co1 = (c1 * 3) / 100;
-            seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                @Override
-                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    if (progress>=10){
-                        valorP = progress;
-                        bandera = 1;
-                        StoplossPorcentaje.setText(valorP+"/90%");
-                    }
-
-                }
-
-                @Override
-                public void onStartTrackingTouch(SeekBar seekBar) {
-
-                }
-
-                @Override
-                public void onStopTrackingTouch(SeekBar seekBar) {
-
-                }
-            });
             comision1.setText("" + co1);
             total = c1 + co1;
             Totalc.setText(""+total);
@@ -224,14 +192,10 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
             if (total != 0) {
                 intent.putExtra("ahorro_plz", plazo);
                 intent.putExtra("ahorro_amt", totals);
-                intent.putExtra("E1", valorP);
-                intent.putExtra("B", bandera);
 
             }else{
                 intent.putExtra("ahorro_plz", plazo);
                 intent.putExtra("ahorro_amt", amount);
-                intent.putExtra("E1", valorP);
-                intent.putExtra("B", bandera);
             }
         startActivity(intent);
 

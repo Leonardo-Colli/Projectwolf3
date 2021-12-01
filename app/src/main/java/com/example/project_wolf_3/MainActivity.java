@@ -50,7 +50,18 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RecyclerAdapter.RecyclerItemClick {
-        
+
+
+    private static final int EARTHQUAKE_LOADER_ID = 1;
+
+    private static final String USGS_REQUEST_URL = "https://api.bitso.com/v3/ticker/";
+    String bitsoKey = "whkjNlbaki";
+    String bitsoSecret = "89fceabf4e7e86ba7cbf22a9977beb9f";
+    long nonce = System.currentTimeMillis();
+    String HTTPMethod = "GET";
+    String RequestPath = "/v3/ticker/";
+    String JSONPayload = "";
+    Date pos_fund;
     TextView Balance;
     TextView fullname;
 
@@ -61,11 +72,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     String userID;
     String username;
-
+    //FundAdapter adapter;
     StorageReference storageReference;
     FirebaseAuth fAuth;
     FirebaseFirestore db;
+   // private RecyclerView mFirestoreList;
     private RecyclerView rvLista;
+    private RetrofitClient retrofitClient;
 
     private List<Posts> items;
     private RecyclerAdapter adapter;
@@ -132,6 +145,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+
     public void funduserid(){
         db.collection("users").document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -170,6 +184,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         intent.putExtra("itemDetail", item);
         startActivity(intent);
     }
+
+
+
 
 
     private void navigationDrawer() {

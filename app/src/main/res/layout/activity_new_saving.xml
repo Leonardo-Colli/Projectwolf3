@@ -198,14 +198,14 @@
             android:layout_width="match_parent"
             android:layout_height="47dp"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="88dp"
             android:layout_marginEnd="30dp"
-            android:layout_marginTop="20dp"
             android:alpha="0.40000000596046"
             android:background="@drawable/rectangle_23_ek1_shape"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtvalor" />
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_23" />
 
         <TextView
             android:id="@+id/comisi_n_"
@@ -334,9 +334,11 @@
             android:id="@+id/switch1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="28dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:checked="false"
+            app:layout_constraintEnd_toStartOf="@+id/rectangle3"
             app:layout_constraintStart_toEndOf="@+id/rectangle"
             app:layout_constraintTop_toBottomOf="@+id/rectangle_23" />
 
@@ -344,8 +346,8 @@
             android:id="@+id/rectangle"
             android:layout_width="81dp"
             android:layout_height="21dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="29dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="28dp"
             android:alpha="0.40000000596046"
             android:background="@drawable/fondos_estrategias"
             app:layout_constraintStart_toStartOf="parent"
@@ -366,6 +368,29 @@
             app:layout_constraintTop_toTopOf="@+id/rectangle" />
 
 
+        <View
+            android:id="@+id/rectangle3"
+            android:layout_width="51dp"
+            android:layout_height="21dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="70dp"
+            android:alpha="0.40000000596046"
+            android:background="@drawable/fondos_estrategias"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_23" />
+
+        <TextView
+            android:id="@+id/costoE1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="Roboto"
+            android:text="3%"
+            android:textColor="@color/ganancia_color"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/rectangle3"
+            app:layout_constraintEnd_toEndOf="@+id/rectangle3"
+            app:layout_constraintStart_toStartOf="@+id/rectangle3"
+            app:layout_constraintTop_toTopOf="@+id/rectangle3" />
 
         <TextView
             android:id="@+id/name_ek1"
@@ -398,34 +423,6 @@
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <SeekBar
-            android:id="@+id/seekBar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="26dp"
-            android:layout_weight="1"
-            android:indeterminate="false"
-            android:max="90"
-            android:progress="10"
-            android:progressDrawable="@drawable/seekbar"
-            android:thumb="@drawable/thumb"
-            app:layout_constraintEnd_toStartOf="@+id/txtvalor"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/switch1"
-            app:layout_constraintTop_toBottomOf="@+id/rectangle_23" />
-
-        <TextView
-            android:id="@+id/txtvalor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="26dp"
-            android:layout_marginEnd="30dp"
-            android:text="10/90%"
-            android:textSize="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

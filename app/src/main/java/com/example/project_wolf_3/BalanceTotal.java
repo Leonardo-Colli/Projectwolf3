@@ -32,10 +32,13 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+<<<<<<< HEAD
 import org.eazegraph.lib.charts.BarChart;
 import org.eazegraph.lib.models.BarModel;
 
 import java.util.ArrayList;
+=======
+>>>>>>> parent of 804a2e8 (cambios)
 import java.util.List;
 import java.util.Objects;
 
@@ -85,6 +88,11 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
         navigationDrawer();
         flechaD.setVisibility(View.INVISIBLE);
         flechaA.setVisibility(View.INVISIBLE);
+<<<<<<< HEAD
+=======
+        float m = 410;
+        fondo.getLayoutParams().height = getPixels(fondo,m);
+>>>>>>> parent of 804a2e8 (cambios)
 
         profileImage = navigationView.getHeaderView(0).findViewById(R.id.user_image_nav);
 
@@ -121,7 +129,9 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
         });
 
     }
-
+    int getPixels(View context, float dp) {
+        return (int) (context.getResources().getDisplayMetrics().density * dp + .5f);
+    }
     private void navigationDrawer() {
         navigationView.bringToFront();
         // navigationView.setBackgroundColor(getResources().getColor(R.color.Fondo_menu));
@@ -238,10 +248,6 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
             case R.id.nav_balance:
                 Intent numbersIntent = new Intent(BalanceTotal.this, BalanceTotal.class);
                 startActivity(numbersIntent);
-                break;
-            case R.id.nav_transaccion:
-                Intent fondosIntent = new Intent(BalanceTotal.this, TablaEstatus.class);
-                startActivity(fondosIntent);
                 break;
             case R.id.nav_inversiones:
                 Intent inversionesIntent = new Intent(BalanceTotal.this, MainActivity.class);
