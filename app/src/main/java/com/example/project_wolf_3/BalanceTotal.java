@@ -137,6 +137,7 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
         });
 
     }
+    //version
 
     private void navigationDrawer() {
         navigationView.bringToFront();
