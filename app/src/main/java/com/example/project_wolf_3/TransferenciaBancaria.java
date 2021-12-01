@@ -30,7 +30,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.project_wolf_3.model.EstrategiasModel;
 import com.example.project_wolf_3.model.Post;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.google.android.exoplayer2.DefaultLoadControl;
@@ -94,8 +93,6 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
     String cantidad, plazo;
     Double price;
     public String cadena;
-    public float v1, E1;
-    public int bandera;
 
     NavigationView navigationView;
     ImageView menuIcon;
@@ -154,8 +151,6 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
         cantidad = (bundle.getString("ahorro_amt"));
         plazo = bundle.getString("ahorro_plz");
         cadena = bundle.getString("numero_orden");
-        v1 = bundle.getFloat("E1");
-        bandera = bundle.getInt("B");
         amountText.setText(cantidad);
         price = Double.valueOf(cantidad);
 
@@ -168,7 +163,7 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
         //init Api
         RetrofitInterface retrofit = RetrofitClient.getInstance();
         myApi = retrofit;
-        E1 = (v1/100);
+
         Intent data = getIntent();
         fundId = data.getStringExtra("id");
         FloatingActionButton invest = findViewById(R.id.btnRegresar);
@@ -289,7 +284,7 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
             @Override
             public void onClick(View v) {
 
-                //onSaveNote();
+                onSaveNote();
                 createPost();
                 animationView.setVisibility(View.VISIBLE);
                 animationView.playAnimation();
@@ -321,11 +316,11 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
             String transactionid = cadena;
             String firebaseSavingId = cadena;
             int isConfirmed = 0;
-            Call<Post> call = myApi.createPost(name,username,price, amount1, installments, transactionid, isConfirmed, firebaseSavingId, bandera );
+            Call<Post> call = myApi.createPost(name,username,price, amount1, installments, transactionid, isConfirmed, firebaseSavingId );
             call.enqueue(new Callback<Post>() {
                 @Override
                 public void onResponse(Call<Post> call, Response<Post> response) {
-                    if (response.isSuccessful()){
+                    if (!response.isSuccessful()){
                         Toast.makeText(TransferenciaBancaria.this, "Pago exitoso!", Toast.LENGTH_SHORT).show();
                         return;
                     }
@@ -334,21 +329,6 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
 
                 @Override
                 public void onFailure(Call<Post> call, Throwable t) {
-                    Toast.makeText(TransferenciaBancaria.this, "Error: "+t, Toast.LENGTH_SHORT).show();
-                }
-            });
-            Call<EstrategiasModel> call1 = myApi.estrategiaPost(E1);
-            call1.enqueue(new Callback<EstrategiasModel>() {
-                @Override
-                public void onResponse(Call<EstrategiasModel> call, Response<EstrategiasModel> response) {
-                    if (!response.isSuccessful()){
-                        return;
-                    }
-                    EstrategiasModel postResponse = response.body();
-                }
-
-                @Override
-                public void onFailure(Call<EstrategiasModel> call, Throwable t) {
                     Toast.makeText(TransferenciaBancaria.this, "Error: "+t, Toast.LENGTH_SHORT).show();
                 }
             });

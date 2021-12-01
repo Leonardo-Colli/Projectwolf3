@@ -58,7 +58,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="12dp"
             android:contentDescription="vector"
-            android:src="@drawable/ic_portafolio"
+            android:src="@drawable/ic_perfilinicial"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <TextView

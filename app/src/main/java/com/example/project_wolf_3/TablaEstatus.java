@@ -7,7 +7,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,15 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.project_wolf_3.model.Posts;
-import com.example.project_wolf_3.model.RetirosModel;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -43,15 +38,12 @@ public class TablaEstatus extends AppCompatActivity implements NavigationView.On
     Button Fondeos, Retiros;
 
     FirebaseAuth mAuth;
-    String userID, username;
+    String userID, fundId, name, username;
     FirebaseFirestore db;
-    private FirebaseFirestore firebaseFirestore;
 
     NavigationView navigationView;
-    ImageView menuIcon,profileImage;
+    ImageView menuIcon;
     DrawerLayout drawerLayout;
-    StorageReference storageReference;
-    private RetrofitInterface myApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,27 +64,12 @@ public class TablaEstatus extends AppCompatActivity implements NavigationView.On
         menuIcon = findViewById(R.id.menu_icon);
 
         navigationDrawer();
-
-        mAuth = FirebaseAuth.getInstance();
-        firebaseFirestore = FirebaseFirestore.getInstance();
-        userID = mAuth.getCurrentUser().getUid();
-
-        profileImage = navigationView.getHeaderView(0).findViewById(R.id.user_image_nav);
-
-        storageReference = FirebaseStorage.getInstance().getReference();
-        StorageReference profileRef = storageReference.child("users/"+mAuth.getCurrentUser().getUid()+"/profile.jpg");
-        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(profileImage);
-            }
-        });
-
-        ImageView inversiones = findViewById(R.id.button_profile);
-        inversiones.setOnClickListener(view -> {
-            Intent colorsIntent = new Intent(TablaEstatus.this, MainActivity.class);
+        ImageView profile = findViewById(R.id.button_profile);
+        profile.setOnClickListener(view -> {
+            Intent colorsIntent = new Intent(TablaEstatus.this, UserProfile.class);
             startActivity(colorsIntent);
         });
+
 
 
         Fondeos.setOnClickListener(new View.OnClickListener() {
@@ -124,7 +101,8 @@ public class TablaEstatus extends AppCompatActivity implements NavigationView.On
                 mJsonText.setText("");
                 mJsonTextCantidad.setText("");
                 mJsonTextEstatus.setText("");
-                funduseridRetiros();
+                funduserid();
+                //getPosts();
                 Fondeos.setEnabled(true);
                 Retiros.setEnabled(false);
             }
@@ -139,59 +117,17 @@ public class TablaEstatus extends AppCompatActivity implements NavigationView.On
                     username = documentSnapshot.getString("username");
                 }
                 find(username);
-
-            }
-        });
-    }
-    public void funduseridRetiros(){
-        db.collection("users").document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
-                    username = documentSnapshot.getString("username");
-                }
-                findRetiros(username);
-
-            }
-        });
-    }
-    private void findRetiros(String codigo){
-        Call<List<RetirosModel>> calls = myApi.retirosfind(codigo);
-        calls.enqueue(new Callback<List<RetirosModel>>() {
-            @Override
-            public void onResponse(Call<List<RetirosModel>> call, Response<List<RetirosModel>> response) {
-                if (!response.isSuccessful()){
-                    mJsonText.setText("Codigo: "+ response.code());
-                    return;
-                }
-                List<RetirosModel> postsList = response.body();
-                for(RetirosModel post: postsList){
-                    String Fecha=post.getFecha() +"\n";
-                    String fecha_user = Fecha.substring(0, Math.min(Fecha.length(), 10))+"\n"+"\n";
-                    String Cantidad =post.getTotal()+" MXN"+"\n"+"\n";
-                    if(post.getIsConfirmed() == 0){
-                        mJsonTextEstatus.append("Pendiente"+"\n"+"\n");
-                    }
-                    if (post.getIsConfirmed() == 1){
-                        mJsonTextEstatus.append("Aprobado"+"\n"+"\n");
-                    }
-                    mJsonText.append(fecha_user);
-                    mJsonTextCantidad.append(Cantidad);
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<RetirosModel>> call, Throwable t) {
-
             }
         });
     }
     private void find(String codigo){
-
-        RetrofitInterface retrofit = RetrofitClient.getInstance();
-        myApi = retrofit;
-        Call<List<Posts>> call = myApi.find(codigo);
+        Retrofit retrofit = new Retrofit.Builder()
+                //.baseUrl("http://10.0.2.2:8080/api/")
+                .baseUrl("http://192.168.1.81:8080/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);
+        Call<List<Posts>> call = retrofitInterface.find(codigo);
         call.enqueue(new Callback<List<Posts>>() {
             @Override
             public void onResponse(Call<List<Posts>> call, Response<List<Posts>> response) {
@@ -221,8 +157,6 @@ public class TablaEstatus extends AppCompatActivity implements NavigationView.On
                 mJsonText.setText(t.getMessage());
             }
         });
-
-
     }
     private void navigationDrawer() {
         navigationView.bringToFront();
@@ -255,10 +189,6 @@ public class TablaEstatus extends AppCompatActivity implements NavigationView.On
             case R.id.nav_balance:
                 Intent numbersIntent = new Intent(TablaEstatus.this, BalanceTotal.class);
                 startActivity(numbersIntent);
-                break;
-            case R.id.nav_transaccion:
-                Intent fondosIntent = new Intent(TablaEstatus.this, TablaEstatus.class);
-                startActivity(fondosIntent);
                 break;
             case R.id.nav_inversiones:
                 Intent inversionesIntent = new Intent(TablaEstatus.this, MainActivity.class);

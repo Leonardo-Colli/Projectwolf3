@@ -1,19 +1,23 @@
 package com.example.project_wolf_3.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Posts implements Serializable {
 
-    private Date date;
+    private String date;
     private int isConfirmed;
     private double amount;
     private double gananciap;
     private double ganancia;
     private double price;
     private String user;
+    private String valorbtc;
 
-    public Posts(Date date, int isConfirmed, double amount, double gananciap, double ganancia, double price, String user) {
+<<<<<<< HEAD
+    public Posts(Date date, int isConfirmed, double amount, double gananciap, double ganancia, double price, String user, String valorbtc) {
+=======
+    public Posts(String date, int isConfirmed, double amount, double gananciap, double ganancia, double price, String user) {
+>>>>>>> parent of 804a2e8 (cambios)
         this.date = date;
         this.isConfirmed = isConfirmed;
         this.amount = amount;
@@ -21,6 +25,15 @@ public class Posts implements Serializable {
         this.ganancia = ganancia;
         this.price = price;
         this.user = user;
+        this.valorbtc = valorbtc;
+    }
+
+    public String getValorbtc() {
+        return valorbtc;
+    }
+
+    public void setValorbtc(String valorbtc) {
+        this.valorbtc = valorbtc;
     }
 
     public double getPrice() {
@@ -55,11 +68,11 @@ public class Posts implements Serializable {
         this.ganancia = ganancia;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

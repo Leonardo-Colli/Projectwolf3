@@ -108,7 +108,6 @@
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/drawable-v24/btn_back.xml" value="0.2703125" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/drawable-v24/btn_logout.xml" value="0.14114583333333333" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/drawable-v24/ellipse_shape.xml" value="0.2703125" />
-        <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/drawable-v24/rectangle_12_shape.xml" value="0.1734375" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/drawable/btn_transacciones.xml" value="0.17083333333333334" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/drawable/btn_transacciones_active.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/drawable/btnlogout.xml" value="0.14114583333333333" />
@@ -120,9 +119,6 @@
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/drawable/esquinas_redondeadas.xml" value="0.2703125" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/drawable/grafica1.xml" value="0.17083333333333334" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/drawable/grafica_disable.xml" value="0.17083333333333334" />
-        <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/drawable/rectangle_23_ek1_shape.xml" value="0.2703125" />
-        <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/drawable/seekbar.xml" value="0.2703125" />
-        <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/drawable/thumb.xml" value="0.2703125" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_card.xml" value="0.264" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_checkout.xml" value="0.23324275362318841" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_deposito.xml" value="0.125" />
@@ -134,23 +130,21 @@
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_log_in.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_main.xml" value="0.33692722371967654" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_menu_pago.xml" value="0.38671875" />
-        <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_new_saving.xml" value="0.3893229166666667" />
+        <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_new_saving.xml" value="0.264" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_new_withdrawal.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_phone_verif.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_popup.xml" value="0.264" />
-        <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_retiros.xml" value="0.2886297376093295" />
+        <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_retiros.xml" value="0.264" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_sign_up.xml" value="0.3255208333333333" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_tabla_estatus.xml" value="0.3229166666666667" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_transaction_verif.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_transferencia_bancaria.xml" value="0.17572463768115942" />
-        <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_user_profile.xml" value="0.4" />
+        <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_user_profile.xml" value="0.22780797101449277" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/balance_total.xml" value="0.2" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/frame_1.xml" value="0.12916666666666668" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/header.xml" value="0.23324275362318841" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/item_table_layout.xml" value="0.4756335282651072" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/list_item.xml" value="0.536" />
-        <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/pago.xml" value="0.1546875" />
-        <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/spinner_item.xml" value="0.1546875" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/menu/main_menu.xml" value="0.25416666666666665" />
       </map>
     </option>
