@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,6 +35,7 @@ import com.squareup.picasso.Picasso;
 import org.eazegraph.lib.charts.BarChart;
 import org.eazegraph.lib.models.BarModel;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -51,12 +53,17 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
     StorageReference storageReference;
     TextView balance,gananciap,newsaving;
     double balancetotal;
+    public double Balance;
+    public int number = 7;
+    public int BalanceF[] = new int[7];;
     String userID,username;
     View fondo;
     View G1,G2,G3,G4,G5,G6;
 
     private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth mAuth;
+    private RetrofitInterface retrofitApiService;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.balance_total);
@@ -78,29 +85,6 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
         navigationDrawer();
         flechaD.setVisibility(View.INVISIBLE);
         flechaA.setVisibility(View.INVISIBLE);
-        double valor = 0;
-        BarChart mBarChart = (BarChart) findViewById(R.id.barGraph);
-        if(valor == 0){
-            mBarChart.addBar(new BarModel("1",2.3f, 0xFFEFEFEF));
-            mBarChart.addBar(new BarModel("2",1.5f,  0xFFEFEFEF));
-            mBarChart.addBar(new BarModel("3",3.3f, 0xFFEFEFEF));
-            mBarChart.addBar(new BarModel("4",1.1f, 0xFFEFEFEF));
-            mBarChart.addBar(new BarModel("5",2.7f, 0xFFEFEFEF));
-            mBarChart.addBar(new BarModel("6",2.f,  0xFFEFEFEF));
-            mBarChart.addBar(new BarModel("7",0.4f, 0xFFEFEFEF));
-            mBarChart.setShowValues(false);
-            mBarChart.startAnimation();
-        }else{
-            mBarChart.addBar(new BarModel("1",2.3f, 0xFF050212));
-            mBarChart.addBar(new BarModel("2",1.5f,  0xFF050212));
-            mBarChart.addBar(new BarModel("3",3.3f, 0xFF501b4e));
-            mBarChart.addBar(new BarModel("4",1.1f, 0xFF050212));
-            mBarChart.addBar(new BarModel("5",2.7f, 0xFF050212));
-            mBarChart.addBar(new BarModel("6",2.f,  0xFF050212));
-            mBarChart.addBar(new BarModel("7",0.4f, 0xFF050212));
-            mBarChart.startAnimation();
-        }
-
 
         profileImage = navigationView.getHeaderView(0).findViewById(R.id.user_image_nav);
 
@@ -118,7 +102,7 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
                 balancetotal = value.getDouble("balance");
-                balance.setText(String.format("$%s", String.format("%,.2f", balancetotal)));
+                //balance.setText(String.format("$%s", String.format("%,.2f", balancetotal)));
                 funduserid();
 
             }
@@ -180,22 +164,55 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
                     return;
                 }
                 List<Posts> postsList = response.body();
-                for(Posts post: postsList){
-                    double ganancias = post.getGananciap();
-                    double gananciapor = post.getGanancia();
-                    double porcentaje = gananciapor * 100;
-                    gananciap.setText(String.format("$%s", String.format("%,.2f", ganancias)) + "   "+"(% "+String.format("%s", String.format("%,.2f", porcentaje))+")");
 
-                    if (ganancias<0){
-                        flechaA.setVisibility(View.INVISIBLE);
-                        flechaD.setVisibility(View.VISIBLE);
-                    }else{
-                        if(ganancias>0){
-                            flechaA.setVisibility(View.VISIBLE);
-                            flechaD.setVisibility(View.GONE);
+                for(Posts post: postsList){
+                    for(int i=0; i<BalanceF.length; i++);{
+                        double ganancias = post.getGananciap();
+                        double gananciapor = post.getGanancia();
+                        double porcentaje = gananciapor * 100;
+                        String valorb = post.getValorbtc();
+                        double valorbtc = Double.parseDouble(valorb);
+                        Balance = Balance + post.getAmount();
+                        gananciap.setText(String.format("$%s", String.format("%,.2f", ganancias)) + "   "+"(% "+String.format("%s", String.format("%,.2f", porcentaje))+")");
+                        if (ganancias<0){
+                            flechaA.setVisibility(View.INVISIBLE);
+                            flechaD.setVisibility(View.VISIBLE);
+                        }else{
+                            if(ganancias>0){
+                                flechaA.setVisibility(View.VISIBLE);
+                                flechaD.setVisibility(View.GONE);
+                            }
                         }
                     }
+
                 }
+                balance.setText(String.format("$%s", String.format("%,.2f", Balance)));
+                BarChart mBarChart = (BarChart) findViewById(R.id.barGraph);
+                if(Balance == 0){
+                    mBarChart.addBar(new BarModel("1",2.3f, 0xFFEFEFEF));
+                    mBarChart.addBar(new BarModel("2",1.5f,  0xFFEFEFEF));
+                    mBarChart.addBar(new BarModel("3",3.3f, 0xFFEFEFEF));
+                    mBarChart.addBar(new BarModel("4",1.1f, 0xFFEFEFEF));
+                    mBarChart.addBar(new BarModel("5",2.7f, 0xFFEFEFEF));
+                    mBarChart.addBar(new BarModel("6",2.f,  0xFFEFEFEF));
+                    mBarChart.addBar(new BarModel("7",0.4f, 0xFFEFEFEF));
+                    mBarChart.setShowValues(false);
+                    mBarChart.startAnimation();
+                }
+                for (int i=0; i<BalanceF.length;i++){
+                    if (Balance != 0){
+                        mBarChart.addBar(new BarModel("1",2.3f, 0xFF050212));
+                        mBarChart.addBar(new BarModel("2",1.5f,  0xFF050212));
+                        mBarChart.addBar(new BarModel("3",3.3f, 0xFF501b4e));
+                        mBarChart.addBar(new BarModel("4",1.1f, 0xFF050212));
+                        mBarChart.addBar(new BarModel("5",2.7f, 0xFF050212));
+                        mBarChart.addBar(new BarModel("6",2.f,  0xFF050212));
+                        mBarChart.addBar(new BarModel("7",0.4f, 0xFF050212));
+                        mBarChart.startAnimation();
+                    }
+                }
+
+                //Toast.makeText(BalanceTotal.this, ""+Balance, Toast.LENGTH_LONG).show();
             }
 
             @Override

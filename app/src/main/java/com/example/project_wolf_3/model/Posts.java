@@ -12,8 +12,9 @@ public class Posts implements Serializable {
     private double ganancia;
     private double price;
     private String user;
+    private String valorbtc;
 
-    public Posts(Date date, int isConfirmed, double amount, double gananciap, double ganancia, double price, String user) {
+    public Posts(Date date, int isConfirmed, double amount, double gananciap, double ganancia, double price, String user, String valorbtc) {
         this.date = date;
         this.isConfirmed = isConfirmed;
         this.amount = amount;
@@ -21,6 +22,15 @@ public class Posts implements Serializable {
         this.ganancia = ganancia;
         this.price = price;
         this.user = user;
+        this.valorbtc = valorbtc;
+    }
+
+    public String getValorbtc() {
+        return valorbtc;
+    }
+
+    public void setValorbtc(String valorbtc) {
+        this.valorbtc = valorbtc;
     }
 
     public double getPrice() {
