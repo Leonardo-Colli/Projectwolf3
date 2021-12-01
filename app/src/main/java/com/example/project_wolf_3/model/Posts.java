@@ -1,23 +1,20 @@
 package com.example.project_wolf_3.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Posts implements Serializable {
 
-    private String date;
+    private Date date;
     private int isConfirmed;
     private double amount;
     private double gananciap;
     private double ganancia;
     private double price;
     private String user;
-    private String valorbtc;
+    private float valorbtc;
+    public Posts(Date date, int isConfirmed, double amount, double gananciap, double ganancia, double price, String user, float valorbtc) {
 
-<<<<<<< HEAD
-    public Posts(Date date, int isConfirmed, double amount, double gananciap, double ganancia, double price, String user, String valorbtc) {
-=======
-    public Posts(String date, int isConfirmed, double amount, double gananciap, double ganancia, double price, String user) {
->>>>>>> parent of 804a2e8 (cambios)
         this.date = date;
         this.isConfirmed = isConfirmed;
         this.amount = amount;
@@ -28,13 +25,6 @@ public class Posts implements Serializable {
         this.valorbtc = valorbtc;
     }
 
-    public String getValorbtc() {
-        return valorbtc;
-    }
-
-    public void setValorbtc(String valorbtc) {
-        this.valorbtc = valorbtc;
-    }
 
     public double getPrice() {
         return price;
@@ -68,12 +58,20 @@ public class Posts implements Serializable {
         this.ganancia = ganancia;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
+    }
+
+    public float getValorbtc() {
+        return valorbtc;
+    }
+
+    public void setValorbtc(float valorbtc) {
+        this.valorbtc = valorbtc;
     }
 
     public int getIsConfirmed() {

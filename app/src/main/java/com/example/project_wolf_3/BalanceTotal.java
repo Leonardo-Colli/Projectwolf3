@@ -173,8 +173,7 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
                         double ganancias = post.getGananciap();
                         double gananciapor = post.getGanancia();
                         double porcentaje = gananciapor * 100;
-                        String valorb = post.getValorbtc();
-                        double valorbtc = Double.parseDouble(valorb);
+
                         Balance = Balance + post.getAmount();
                         gananciap.setText(String.format("$%s", String.format("%,.2f", ganancias)) + "   "+"(% "+String.format("%s", String.format("%,.2f", porcentaje))+")");
                         if (ganancias<0){
