@@ -241,6 +241,10 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
                 Intent numbersIntent = new Intent(BalanceTotal.this, BalanceTotal.class);
                 startActivity(numbersIntent);
                 break;
+            case R.id.nav_transaccion:
+                Intent fondosIntent = new Intent(BalanceTotal.this, TablaEstatus.class);
+                startActivity(fondosIntent);
+                break;
             case R.id.nav_inversiones:
                 Intent inversionesIntent = new Intent(BalanceTotal.this, MainActivity.class);
                 startActivity(inversionesIntent);

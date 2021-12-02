@@ -548,6 +548,10 @@ public class TransferenciaBancaria extends AppCompatActivity implements Navigati
                 Intent numbersIntent = new Intent(TransferenciaBancaria.this, BalanceTotal.class);
                 startActivity(numbersIntent);
                 break;
+            case R.id.nav_transaccion:
+                Intent fondosIntent = new Intent(TransferenciaBancaria.this, TablaEstatus.class);
+                startActivity(fondosIntent);
+                break;
             case R.id.nav_inversiones:
                 Intent inversionesIntent = new Intent(TransferenciaBancaria.this, MainActivity.class);
                 startActivity(inversionesIntent);

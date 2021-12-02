@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RetirosActivity"
+    tools:openDrawer="start"
     android:id="@+id/menupincipal">
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
@@ -269,7 +270,7 @@
 
             <TextView
                 android:id="@+id/textView5"
-                android:layout_width="330dp"
+                android:layout_width="310dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_weight="0.75"
@@ -313,7 +314,7 @@
 
             <TextView
                 android:id="@+id/textView6"
-                android:layout_width="330dp"
+                android:layout_width="310dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_weight="0.75"
@@ -365,15 +366,16 @@
             android:layout_height="42dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
             android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/_rectangle_20_shape"
             android:fontFamily="@font/poppinsmedium"
             android:gravity="center"
             android:text="Confirmar"
             android:textColor="@color/white"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="10dp" />
 
         <Spinner
             android:id="@+id/spinner"
@@ -386,5 +388,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/CLABE" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:visibility="gone"
+            android:id="@+id/animacion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            app:lottie_speed="0.5"
+            app:lottie_repeatCount="5"
+            app:lottie_rawRes="@raw/transicion5fps"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

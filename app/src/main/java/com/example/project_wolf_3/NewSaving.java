@@ -246,6 +246,10 @@ public class NewSaving extends AppCompatActivity implements NavigationView.OnNav
                 Intent numbersIntent = new Intent(NewSaving.this, BalanceTotal.class);
                 startActivity(numbersIntent);
                 break;
+            case R.id.nav_transaccion:
+                Intent fondosIntent = new Intent(NewSaving.this, TablaEstatus.class);
+                startActivity(fondosIntent);
+                break;
             case R.id.nav_inversiones:
                 Intent inversionesIntent = new Intent(NewSaving.this, MainActivity.class);
                 startActivity(inversionesIntent);

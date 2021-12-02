@@ -34,8 +34,8 @@ import com.squareup.picasso.Picasso;
 public class UserProfile extends AppCompatActivity {
 
 
-    TextView fullname, balance, rank, verif_phone, verif_email, phone, email, back;
-    Button logout, password, profile;
+    TextView fullname, balance, rank, verif_phone, verif_email, phone, email, back,logout;
+    Button  password, profile;
     String username, lada, email_all;
     Double balancetotal;
 

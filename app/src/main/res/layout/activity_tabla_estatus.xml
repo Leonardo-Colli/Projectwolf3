@@ -50,15 +50,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <ImageView
-            android:id="@+id/button_profile"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
+            android:id="@+id/inversiones"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="12dp"
             android:contentDescription="vector"
-            android:src="@drawable/ic_perfilinicial"
+            android:src="@drawable/ic_portafolio"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <TextView
