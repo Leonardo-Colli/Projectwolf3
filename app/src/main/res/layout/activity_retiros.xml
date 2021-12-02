@@ -78,7 +78,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/profileimg"
+            android:id="@+id/inversiones"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentTop="true"
@@ -141,51 +141,47 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fullname"
             tools:targetApi="jelly_bean" />
+
         <View
-            android:id="@+id/rectangle_23"
+            android:id="@+id/view_total"
             android:layout_width="match_parent"
-            android:layout_height="47dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="24dp"
             android:layout_marginEnd="30dp"
-            android:alpha="0.40000000596046"
-            android:background="@drawable/rectangle_23_ek1_shape"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner" />
+            android:background="@drawable/rectangle_12_shape"
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_23" />
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            app:layout_constraintBottom_toBottomOf="@+id/rectangle_23"
-            app:layout_constraintTop_toTopOf="@+id/rectangle_23"
-            tools:layout_editor_absoluteX="10dp">
+            app:layout_constraintBottom_toBottomOf="@+id/view_total"
+            app:layout_constraintTop_toTopOf="@+id/view_total"
+            tools:layout_editor_absoluteX="67dp">
 
 
             <TextView
-                android:id="@+id/textView4"
-                android:layout_width="310dp"
+                android:id="@+id/textView7"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="10dp"
                 android:layout_weight="0.75"
                 android:fontFamily="@font/poppinsmedium"
-                android:text="Monto de retiro:"
+                android:text="Monto total:"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
                 tools:layout_editor_absoluteX="0dp" />
 
-
             <TextView
-                android:id="@+id/monto"
+                android:id="@+id/Total"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
+                android:layout_marginEnd="10dp"
                 android:layout_weight="1"
                 android:drawableStart="@drawable/ic_pesos"
                 android:fontFamily="@font/poppinsmedium"
@@ -200,7 +196,153 @@
                 app:layout_constraintVertical_bias="0.369" />
 
         </LinearLayout>
+        <View
+            android:id="@+id/rectangle_23"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            android:alpha="0.40000000596046"
+            android:background="@drawable/rectangle_12_shape"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintTop_toTopOf="@+id/rectangle_23"
+            tools:layout_editor_absoluteX="10dp">
+
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="310dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="0.75"
+                android:fontFamily="@font/poppinsmedium"
+                android:text="Monto de retiro:"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                tools:layout_editor_absoluteX="0dp" />
+
+
+            <TextView
+                android:id="@+id/monto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/ic_pesos"
+                android:fontFamily="@font/poppinsmedium"
+                android:gravity="center"
+                android:hint="@string/min_amount"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nueva_inversi_n_ek3"
+                app:layout_constraintVertical_bias="0.369" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            tools:layout_editor_absoluteX="67dp">
+
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="0.75"
+                android:fontFamily="@font/poppinsmedium"
+                android:text="Comisión exchange:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                tools:layout_editor_absoluteX="0dp" />
+
+            <TextView
+                android:id="@+id/Cexchange"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/ic_pesos"
+                android:fontFamily="@font/poppinsmedium"
+                android:gravity="center"
+                android:hint="@string/min_amount"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nueva_inversi_n_ek3"
+                app:layout_constraintVertical_bias="0.369" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            tools:layout_editor_absoluteX="67dp">
+
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="0.75"
+                android:fontFamily="@font/poppinsmedium"
+                android:text="Comisión pasarela:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                tools:layout_editor_absoluteX="0dp" />
+
+            <TextView
+                android:id="@+id/Cpasarela"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/ic_pesos"
+                android:fontFamily="@font/poppinsmedium"
+                android:gravity="center"
+                android:hint="@string/min_amount"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nueva_inversi_n_ek3"
+                app:layout_constraintVertical_bias="0.369" />
+        </LinearLayout>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnRegresar"

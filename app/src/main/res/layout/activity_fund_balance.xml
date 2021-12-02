@@ -244,18 +244,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/rectangle_23_ek2" />
 
-            <com.jjoe64.graphview.GraphView
-                android:id="@+id/graph"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="28dp"
-                android:layout_marginEnd="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inversi_n_ek5" />
-
+        <org.eazegraph.lib.charts.ValueLineChart
+            android:id="@+id/graph"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="30dp"
+            app:egCurveSmoothness="0.4"
+            app:egIndicatorShadowColor="@color/white"
+            app:egLineStroke="0.10dp"
+            app:egLegendTextSize="10dp"
+            app:egShowDecimal="true"
+            app:egShowStandardValue="true"
+            app:egShowValueIndicator="false"
+            app:egUseCubic="true"
+            app:barrierDirection="left"
+            app:egMaxXZoom="10"
+            app:egMaxYZoom="10"
+            android:nestedScrollingEnabled="true"
+            app:egUseOverlapFill="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inversi_n_ek5" />
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnRegresar"
             android:layout_width="wrap_content"

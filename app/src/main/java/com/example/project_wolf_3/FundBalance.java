@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,6 +45,13 @@ import com.juang.jplot.PlotBarritas;
 import com.juang.jplot.PlotPastelito;
 import com.juang.jplot.PlotPlanitoXY;
 
+import org.eazegraph.lib.charts.ValueLineChart;
+import org.eazegraph.lib.models.ValueLinePoint;
+import org.eazegraph.lib.models.ValueLineSeries;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class FundBalance extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private TextView btnRetiro;
     private FirebaseFirestore firebaseFirestore;
@@ -65,6 +73,8 @@ public class FundBalance extends AppCompatActivity implements NavigationView.OnN
     private TextView Fecha;
     private TextView Retorno;
     private double inversionR;
+    LineGraphSeries<DataPoint> series;
+    ValueLineChart valueLineChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +102,11 @@ public class FundBalance extends AppCompatActivity implements NavigationView.OnN
         itemDetail = (Posts) getIntent().getExtras().getSerializable("itemDetail");
         Inversion.setText(String.format("$%s", String.format("%,.2f", itemDetail.getAmount())));
         inversionR = itemDetail.getAmount();
-        Fecha.setText(itemDetail.getDate());
+
+        Date date_raw = itemDetail.getDate();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");
+        Fecha.setText(String.format("Fecha: %s", dateFormat.format(date_raw)));
+
         Ganancia.setText(String.format("$%s", String.format("%,.2f", itemDetail.getGananciap())));
 
 //        progressBar.setVisibility(View.GONE);
@@ -103,42 +117,26 @@ public class FundBalance extends AppCompatActivity implements NavigationView.OnN
             profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-                   Picasso.get().load(uri).into(profileImage);
+                    Picasso.get().load(uri).into(profileImage);
                 }
             });
 
-           /* Query query = firebaseFirestore.collection("funds")
-                    .document(userID).collection("savings").whereEqualTo(FieldPath.documentId(), fundId);
-            //Query query = firebaseFirestore.collection("users/" + id  + "/Citas/");//.whereEqualTo("id", 1);
-            //Recycler Options
-            FirestoreRecyclerOptions<FundModel> options = new FirestoreRecyclerOptions.Builder<FundModel>()
-                    .setQuery(query, FundModel.class)
-                    .build();
 
-            adapter = new FirestoreRecyclerAdapter<FundModel, TransactionViewHolder>(options){
-
-                @NonNull
-                @Override
-                public TransactionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_fund_balance, parent, false);
-                    return new TransactionViewHolder(view);
-                }
-
-                @Override
-                protected void onBindViewHolder(@NonNull TransactionViewHolder holder, int position, @NonNull FundModel model) {
-                    holder.Retorno.setText(String.format("$%s", String.format("%,.1f", model.getRoi_per()*100)));
-                    holder.Balance.setText(String.format("$%s", String.format("%,.2f", model.getFinal_amount())));
-                    holder.Inversion.setText(String.format("$%s", String.format("%,.2f", model.getInitial_amount())));
-                    holder.Ganancia.setText(String.format("$%s", String.format("%,.2f", model.getRoi_vol())));
-                    holder.Fecha.setText(String.valueOf(model.getDate()));
-
-                }
-            };
-            mFirestoreList.setHasFixedSize(true);
-            mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
-            mFirestoreList.setAdapter(adapter);*/
 
         }
+
+        valueLineChart  = findViewById(R.id.graph);
+        ValueLineSeries series = new ValueLineSeries();
+        series.setColor(0xFF050212);
+        series.addPoint(new ValueLinePoint("Lun",1f));
+        series.addPoint(new ValueLinePoint("Mar",7.0f));
+        series.addPoint(new ValueLinePoint("Mie",3.3f));
+        series.addPoint(new ValueLinePoint("Jue",2.5f));
+        series.addPoint(new ValueLinePoint("Vie",8.0f));
+        series.addPoint(new ValueLinePoint("Sab",1.0f));
+        series.addPoint(new ValueLinePoint("Dom",5.0f));
+        valueLineChart.addSeries(series);
+        valueLineChart.startAnimation();
 
         ImageView profile = findViewById(R.id.profileimg);
         profile.setOnClickListener(view -> {

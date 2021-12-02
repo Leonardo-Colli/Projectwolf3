@@ -119,12 +119,14 @@
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/drawable/esquinas_redondeadas.xml" value="0.2703125" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/drawable/grafica1.xml" value="0.17083333333333334" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/drawable/grafica_disable.xml" value="0.17083333333333334" />
+        <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/drawable/seekbar.xml" value="0.2703125" />
+        <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/drawable/thumb.xml" value="0.2703125" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_card.xml" value="0.264" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_checkout.xml" value="0.23324275362318841" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_deposito.xml" value="0.125" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_detail.xml" value="0.4" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_edit_profile.xml" value="0.125" />
-        <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_fund_balance.xml" value="0.2580364900086881" />
+        <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_fund_balance.xml" value="0.2" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_fund_transactions.xml" value="0.264" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_grafica.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/activity_log_in.xml" value="0.13020833333333334" />
@@ -145,6 +147,7 @@
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/header.xml" value="0.23324275362318841" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/item_table_layout.xml" value="0.4756335282651072" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/list_item.xml" value="0.536" />
+        <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/layout/spinner_item.xml" value="0.19384057971014493" />
         <entry key="..\:/Users/leona/AndroidStudioProjects/Projectwolf3/app/src/main/res/menu/main_menu.xml" value="0.25416666666666665" />
       </map>
     </option>

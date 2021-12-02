@@ -36,7 +36,8 @@ public class card extends AppCompatActivity implements NavigationView.OnNavigati
     ImageView menuIcon;
     DrawerLayout drawerLayout;
     public String cadena;
-
+    public float v1;
+    public int bandera;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +67,8 @@ public class card extends AppCompatActivity implements NavigationView.OnNavigati
         Bundle bundle = this.getIntent().getExtras();
         cantidad = (bundle.getString("ahorro_amt"));
         plazo = bundle.getString("ahorro_plz");
+        v1 = bundle.getFloat("E1");
+        bandera = bundle.getInt("B");
         amountText.setText(cantidad);
         price = Double.valueOf(cantidad);
 
@@ -146,6 +149,8 @@ public class card extends AppCompatActivity implements NavigationView.OnNavigati
                 intents.putExtra("ahorro_amt", cantidad);
                 intents.putExtra("ahorro_plz", plazo);
                 intents.putExtra("numero_orden", cadena);
+                intents.putExtra("E1", v1);
+                intents.putExtra("B", bandera);
                 startActivity(intents);
             }
         });
@@ -156,6 +161,8 @@ public class card extends AppCompatActivity implements NavigationView.OnNavigati
                 intent.putExtra("ahorro_amt", cantidad);
                 intent.putExtra("ahorro_plz", plazo);
                 intent.putExtra("numero_orden", cadena);
+                intent.putExtra("E1", v1);
+                intent.putExtra("B", bandera);
                 startActivity(intent);
             }
         });
