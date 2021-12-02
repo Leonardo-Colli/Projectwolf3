@@ -168,7 +168,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/_rectangle_20_shape"
-        android:fontFamily="@font/poppinsmedium"
+        android:fontFamily="Darker Grotesque"
         android:gravity="center"
         android:text="Nueva inversión"
         android:textColor="@color/white"

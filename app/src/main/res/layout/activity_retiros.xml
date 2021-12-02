@@ -369,7 +369,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="8dp"
             android:background="@drawable/_rectangle_20_shape"
-            android:fontFamily="@font/poppinsmedium"
+            android:fontFamily="Darker Grotesque"
             android:gravity="center"
             android:text="Confirmar"
             android:textColor="@color/white"

@@ -155,6 +155,7 @@
             android:layout_height="48dp"
             android:background="@drawable/_rectangle_3_ek1_shape"
             android:text="@string/registro_string"
+            android:fontFamily="Darker Grotesque"
             android:textColor="@color/white"
             tools:ignore="TouchTargetSizeCheck"
             app:layout_constraintEnd_toEndOf="parent"

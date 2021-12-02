@@ -292,7 +292,7 @@
             android:layout_marginBottom="10dp"
             android:layout_alignParentBottom="true"
             android:background="@drawable/_rectangle_20_shape"
-            android:fontFamily="@font/poppinsmedium"
+            android:fontFamily="Darker Grotesque"
             android:gravity="center"
             android:text="Retirar"
             android:textColor="@color/white"
