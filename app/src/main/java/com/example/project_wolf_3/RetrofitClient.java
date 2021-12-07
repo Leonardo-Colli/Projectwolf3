@@ -11,8 +11,8 @@ public class RetrofitClient {
     public static RetrofitInterface getInstance(){
         if (instance == null){
             instance = new Retrofit.Builder()
-                    //.baseUrl("http://10.0.2.2:8080/api/")
-                    .baseUrl("http://192.168.1.81:8080/api/")
+                    .baseUrl("http://10.0.2.2:8080/api/")
+                    //.baseUrl("http://192.168.1.98:8080/api/")
                     .addConverterFactory(ScalarsConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())

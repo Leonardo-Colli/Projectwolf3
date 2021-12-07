@@ -54,17 +54,17 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawerLayout;
     StorageReference storageReference;
     TextView balance,gananciap,newsaving;
-    double balancetotal;
-    public double Balance;
-    public int number = 7;
-    public int BalanceF[] = new int[7];;
+    public double balancetotal;
+    public double Balance, preciobtc;
+    public float BalanceF[] = new float[7];
+    public float valorb;
     String userID,username;
     View fondo;
     View G1,G2,G3,G4,G5,G6;
 
     private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth mAuth;
-    private RetrofitInterface retrofitApiService;
+    private RetrofitInterface myApi;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,7 +88,10 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
         flechaD.setVisibility(View.INVISIBLE);
         flechaA.setVisibility(View.INVISIBLE);
 
+        RetrofitInterface retrofit = RetrofitClient.getInstance();
+        myApi = retrofit;
 
+        preciobtc = 57441.2700 *20;
         profileImage = navigationView.getHeaderView(0).findViewById(R.id.user_image_nav);
 
         storageReference = FirebaseStorage.getInstance().getReference();
@@ -152,13 +155,8 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
         });
     }
     private void find(String codigo){
-        Retrofit retrofit = new Retrofit.Builder()
-                //.baseUrl("http://10.0.2.2:8080/api/")
-                .baseUrl("http://192.168.1.81:8080/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);
-        Call<List<Posts>> call = retrofitInterface.find(codigo);
+
+        Call<List<Posts>> call = myApi.find(codigo);
         call.enqueue(new Callback<List<Posts>>() {
             @Override
             public void onResponse(Call<List<Posts>> call, Response<List<Posts>> response) {
@@ -167,14 +165,15 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
                     return;
                 }
                 List<Posts> postsList = response.body();
-
+                int j = 1;
                 for(Posts post: postsList){
-                    for(int i=0; i<BalanceF.length; i++);{
                         double ganancias = post.getGananciap();
                         double gananciapor = post.getGanancia();
                         double porcentaje = gananciapor * 100;
-
+                        valorb = post.getValorbtc();
                         Balance = Balance + post.getAmount();
+                        BalanceF[j] = (float) (valorb*preciobtc);
+                        j++;
                         gananciap.setText(String.format("$%s", String.format("%,.2f", ganancias)) + "   "+"(% "+String.format("%s", String.format("%,.2f", porcentaje))+")");
                         if (ganancias<0){
                             flechaA.setVisibility(View.INVISIBLE);
@@ -185,8 +184,6 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
                                 flechaD.setVisibility(View.GONE);
                             }
                         }
-                    }
-
                 }
                 balance.setText(String.format("$%s", String.format("%,.2f", Balance)));
                 BarChart mBarChart = (BarChart) findViewById(R.id.barGraph);
@@ -201,18 +198,12 @@ public class BalanceTotal extends AppCompatActivity implements NavigationView.On
                     mBarChart.setShowValues(false);
                     mBarChart.startAnimation();
                 }
-                for (int i=0; i<BalanceF.length;i++){
-                    if (Balance != 0){
-                        mBarChart.addBar(new BarModel("1",2.3f, 0xFF050212));
-                        mBarChart.addBar(new BarModel("2",1.5f,  0xFF050212));
-                        mBarChart.addBar(new BarModel("3",3.3f, 0xFF501b4e));
-                        mBarChart.addBar(new BarModel("4",1.1f, 0xFF050212));
-                        mBarChart.addBar(new BarModel("5",2.7f, 0xFF050212));
-                        mBarChart.addBar(new BarModel("6",2.f,  0xFF050212));
-                        mBarChart.addBar(new BarModel("7",0.4f, 0xFF050212));
-                        mBarChart.startAnimation();
+                for (int i=1; i<BalanceF.length;i++){
+                    if (BalanceF[i] != 0){
+                        mBarChart.addBar(new BarModel(""+i,BalanceF[i], 0xFF050212));
                     }
                 }
+                mBarChart.startAnimation();
 
                 //Toast.makeText(BalanceTotal.this, ""+Balance, Toast.LENGTH_LONG).show();
             }
